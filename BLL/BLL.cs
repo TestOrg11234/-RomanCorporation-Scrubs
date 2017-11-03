@@ -12,12 +12,17 @@ namespace BLL
     public class BLL:IBLL
     {
         IDAL dal;
+
+        public BLL()
+        {
+        }
+
         public BLL(DBDAL dbDAL)
         {
             dal = dbDAL;
         }
 
-        public int CreateNewCredentials(Credentials credentials)
+        public int CreateNewCredentials(Credential credentials)
         {
             return dal.CreateNewCredentials(credentials);
         }
@@ -87,14 +92,9 @@ namespace BLL
             return dal.DeleteRoles(ID);
         }
 
-        public IEnumerable<Card> GetCard()// возможно удалить
+        public Credential GetCredentialFor(Credential cred)
         {
-            throw new NotImplementedException();
-        }
-
-        public Card GetCard(int ID)// возможно удалить
-        {
-            throw new NotImplementedException();
+            Credential us = dal.GetCredentialByLogin(cred.Login);
         }
 
         public IEnumerable<Diseases> GetDiagnosis()
@@ -156,5 +156,6 @@ namespace BLL
         {
             throw new NotImplementedException();
         }
+
     }
 }

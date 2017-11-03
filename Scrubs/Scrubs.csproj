@@ -91,6 +91,10 @@
       <Project>{c4267f48-aca0-4b5d-8e16-f788541c11ac}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{CC4F3283-FEDF-4BCC-B71C-2C6991CA8F1A}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,8 +8,12 @@ namespace Entity
 {
     public class Spetialisations
     {
-        public long ID { get; set; } // id doctor
+        public int ID { get; set; } // id doctor
         public string Name { get; set; }
+        public Spetialisations()
+        {
+
+        }
 
     }
 }

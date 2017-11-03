@@ -55,6 +55,13 @@
             this.EmploymentDateDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CabinetNumberDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfVisit = new System.Windows.Forms.TabPage();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.IDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumberCardListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DoctorIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PatientIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiagnosisIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Schedule = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.IDShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,25 +70,18 @@
             this.StartTimeSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndTimeSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfDiseases = new System.Windows.Forms.TabPage();
-            this.Medicines = new System.Windows.Forms.TabPage();
-            this.Spetialisations = new System.Windows.Forms.TabPage();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
-            this.IDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumberCardListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DoctorIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiagnosisIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Medicines = new System.Windows.Forms.TabPage();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.IDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Spetialisations = new System.Windows.Forms.TabPage();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.IDSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
@@ -90,14 +90,14 @@
             this.Doctors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.ListsOfVisit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.Schedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ListsOfDiseases.SuspendLayout();
-            this.Medicines.SuspendLayout();
-            this.Spetialisations.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.Medicines.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            this.Spetialisations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,6 +109,7 @@
             this.auth_but_login.TabIndex = 0;
             this.auth_but_login.Text = "Вход";
             this.auth_but_login.UseVisualStyleBackColor = true;
+            this.auth_but_login.Click += new System.EventHandler(this.auth_but_login_Click);
             // 
             // auth_login
             // 
@@ -134,6 +135,7 @@
             this.auth_but_logout.TabIndex = 3;
             this.auth_but_logout.Text = "Выход";
             this.auth_but_logout.UseVisualStyleBackColor = true;
+            this.auth_but_logout.Visible = false;
             // 
             // workBtn
             // 
@@ -183,7 +185,7 @@
             this.tabControl1.Location = new System.Drawing.Point(118, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(625, 294);
+            this.tabControl1.Size = new System.Drawing.Size(886, 294);
             this.tabControl1.TabIndex = 8;
             // 
             // Patients
@@ -192,7 +194,7 @@
             this.Patients.Location = new System.Drawing.Point(4, 22);
             this.Patients.Name = "Patients";
             this.Patients.Padding = new System.Windows.Forms.Padding(3);
-            this.Patients.Size = new System.Drawing.Size(617, 268);
+            this.Patients.Size = new System.Drawing.Size(878, 268);
             this.Patients.TabIndex = 0;
             this.Patients.Text = "Пациены";
             this.Patients.UseVisualStyleBackColor = true;
@@ -210,7 +212,7 @@
             this.CardNumerPatient});
             this.dataGridView2.Location = new System.Drawing.Point(-4, 3);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(440, 149);
+            this.dataGridView2.Size = new System.Drawing.Size(759, 149);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
@@ -256,7 +258,7 @@
             this.Doctors.Location = new System.Drawing.Point(4, 22);
             this.Doctors.Name = "Doctors";
             this.Doctors.Padding = new System.Windows.Forms.Padding(3);
-            this.Doctors.Size = new System.Drawing.Size(617, 268);
+            this.Doctors.Size = new System.Drawing.Size(878, 268);
             this.Doctors.TabIndex = 1;
             this.Doctors.Text = "Doctors";
             this.Doctors.UseVisualStyleBackColor = true;
@@ -273,7 +275,7 @@
             this.CabinetNumberDoctors});
             this.dataGridView3.Location = new System.Drawing.Point(9, 3);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(622, 256);
+            this.dataGridView3.Size = new System.Drawing.Size(666, 256);
             this.dataGridView3.TabIndex = 0;
             // 
             // IDDoctors
@@ -312,17 +314,63 @@
             this.ListsOfVisit.Controls.Add(this.dataGridView4);
             this.ListsOfVisit.Location = new System.Drawing.Point(4, 22);
             this.ListsOfVisit.Name = "ListsOfVisit";
-            this.ListsOfVisit.Size = new System.Drawing.Size(617, 268);
+            this.ListsOfVisit.Size = new System.Drawing.Size(878, 268);
             this.ListsOfVisit.TabIndex = 2;
             this.ListsOfVisit.Text = "СписокПосещений";
             this.ListsOfVisit.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDListOfVisit,
+            this.NumberCardListOfVisit,
+            this.DataListOfVisit,
+            this.DoctorIDListOfVisit,
+            this.PatientIDListOfVisit,
+            this.DiagnosisIDListOfVisit});
+            this.dataGridView4.Location = new System.Drawing.Point(13, 5);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(662, 150);
+            this.dataGridView4.TabIndex = 0;
+            // 
+            // IDListOfVisit
+            // 
+            this.IDListOfVisit.HeaderText = "ID";
+            this.IDListOfVisit.Name = "IDListOfVisit";
+            this.IDListOfVisit.ReadOnly = true;
+            // 
+            // NumberCardListOfVisit
+            // 
+            this.NumberCardListOfVisit.HeaderText = "NumberCard";
+            this.NumberCardListOfVisit.Name = "NumberCardListOfVisit";
+            // 
+            // DataListOfVisit
+            // 
+            this.DataListOfVisit.HeaderText = "Data";
+            this.DataListOfVisit.Name = "DataListOfVisit";
+            // 
+            // DoctorIDListOfVisit
+            // 
+            this.DoctorIDListOfVisit.HeaderText = "DoctorID";
+            this.DoctorIDListOfVisit.Name = "DoctorIDListOfVisit";
+            // 
+            // PatientIDListOfVisit
+            // 
+            this.PatientIDListOfVisit.HeaderText = "PatientID";
+            this.PatientIDListOfVisit.Name = "PatientIDListOfVisit";
+            // 
+            // DiagnosisIDListOfVisit
+            // 
+            this.DiagnosisIDListOfVisit.HeaderText = "DiagnosisID";
+            this.DiagnosisIDListOfVisit.Name = "DiagnosisIDListOfVisit";
             // 
             // Schedule
             // 
             this.Schedule.Controls.Add(this.dataGridView1);
             this.Schedule.Location = new System.Drawing.Point(4, 22);
             this.Schedule.Name = "Schedule";
-            this.Schedule.Size = new System.Drawing.Size(617, 268);
+            this.Schedule.Size = new System.Drawing.Size(878, 268);
             this.Schedule.TabIndex = 3;
             this.Schedule.Text = "График";
             this.Schedule.UseVisualStyleBackColor = true;
@@ -372,45 +420,10 @@
             this.ListsOfDiseases.Controls.Add(this.dataGridView5);
             this.ListsOfDiseases.Location = new System.Drawing.Point(4, 22);
             this.ListsOfDiseases.Name = "ListsOfDiseases";
-            this.ListsOfDiseases.Size = new System.Drawing.Size(617, 268);
+            this.ListsOfDiseases.Size = new System.Drawing.Size(878, 268);
             this.ListsOfDiseases.TabIndex = 4;
             this.ListsOfDiseases.Text = "СписокДиагнозов";
             this.ListsOfDiseases.UseVisualStyleBackColor = true;
-            // 
-            // Medicines
-            // 
-            this.Medicines.Controls.Add(this.dataGridView6);
-            this.Medicines.Location = new System.Drawing.Point(4, 22);
-            this.Medicines.Name = "Medicines";
-            this.Medicines.Size = new System.Drawing.Size(617, 268);
-            this.Medicines.TabIndex = 5;
-            this.Medicines.Text = "Медикаменты";
-            this.Medicines.UseVisualStyleBackColor = true;
-            // 
-            // Spetialisations
-            // 
-            this.Spetialisations.Controls.Add(this.dataGridView7);
-            this.Spetialisations.Location = new System.Drawing.Point(4, 22);
-            this.Spetialisations.Name = "Spetialisations";
-            this.Spetialisations.Size = new System.Drawing.Size(617, 268);
-            this.Spetialisations.TabIndex = 6;
-            this.Spetialisations.Text = "Специализация";
-            this.Spetialisations.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView4
-            // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDListOfVisit,
-            this.NumberCardListOfVisit,
-            this.DataListOfVisit,
-            this.DoctorIDListOfVisit,
-            this.PatientIDListOfVisit,
-            this.DiagnosisIDListOfVisit});
-            this.dataGridView4.Location = new System.Drawing.Point(13, 5);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(589, 150);
-            this.dataGridView4.TabIndex = 0;
             // 
             // dataGridView5
             // 
@@ -423,61 +436,6 @@
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.Size = new System.Drawing.Size(583, 150);
             this.dataGridView5.TabIndex = 0;
-            // 
-            // dataGridView6
-            // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDMedicines,
-            this.NameMedicines,
-            this.DiagnosisIDMedicines,
-            this.DescriptionMedicines});
-            this.dataGridView6.Location = new System.Drawing.Point(12, 5);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(569, 150);
-            this.dataGridView6.TabIndex = 0;
-            // 
-            // dataGridView7
-            // 
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDSpetialisations,
-            this.NameSpetialisations});
-            this.dataGridView7.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.Size = new System.Drawing.Size(566, 150);
-            this.dataGridView7.TabIndex = 0;
-            // 
-            // IDListOfVisit
-            // 
-            this.IDListOfVisit.HeaderText = "ID";
-            this.IDListOfVisit.Name = "IDListOfVisit";
-            this.IDListOfVisit.ReadOnly = true;
-            // 
-            // NumberCardListOfVisit
-            // 
-            this.NumberCardListOfVisit.HeaderText = "NumberCard";
-            this.NumberCardListOfVisit.Name = "NumberCardListOfVisit";
-            // 
-            // DataListOfVisit
-            // 
-            this.DataListOfVisit.HeaderText = "Data";
-            this.DataListOfVisit.Name = "DataListOfVisit";
-            // 
-            // DoctorIDListOfVisit
-            // 
-            this.DoctorIDListOfVisit.HeaderText = "DoctorID";
-            this.DoctorIDListOfVisit.Name = "DoctorIDListOfVisit";
-            // 
-            // PatientIDListOfVisit
-            // 
-            this.PatientIDListOfVisit.HeaderText = "PatientID";
-            this.PatientIDListOfVisit.Name = "PatientIDListOfVisit";
-            // 
-            // DiagnosisIDListOfVisit
-            // 
-            this.DiagnosisIDListOfVisit.HeaderText = "DiagnosisID";
-            this.DiagnosisIDListOfVisit.Name = "DiagnosisIDListOfVisit";
             // 
             // IDListsOfDiseases
             // 
@@ -494,6 +452,29 @@
             // 
             this.DescriptionListsOfDiseases.HeaderText = "Description";
             this.DescriptionListsOfDiseases.Name = "DescriptionListsOfDiseases";
+            // 
+            // Medicines
+            // 
+            this.Medicines.Controls.Add(this.dataGridView6);
+            this.Medicines.Location = new System.Drawing.Point(4, 22);
+            this.Medicines.Name = "Medicines";
+            this.Medicines.Size = new System.Drawing.Size(878, 268);
+            this.Medicines.TabIndex = 5;
+            this.Medicines.Text = "Медикаменты";
+            this.Medicines.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDMedicines,
+            this.NameMedicines,
+            this.DiagnosisIDMedicines,
+            this.DescriptionMedicines});
+            this.dataGridView6.Location = new System.Drawing.Point(12, 5);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(569, 150);
+            this.dataGridView6.TabIndex = 0;
             // 
             // IDMedicines
             // 
@@ -516,6 +497,27 @@
             this.DescriptionMedicines.HeaderText = "Description";
             this.DescriptionMedicines.Name = "DescriptionMedicines";
             // 
+            // Spetialisations
+            // 
+            this.Spetialisations.Controls.Add(this.dataGridView7);
+            this.Spetialisations.Location = new System.Drawing.Point(4, 22);
+            this.Spetialisations.Name = "Spetialisations";
+            this.Spetialisations.Size = new System.Drawing.Size(878, 268);
+            this.Spetialisations.TabIndex = 6;
+            this.Spetialisations.Text = "Специализация";
+            this.Spetialisations.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView7
+            // 
+            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDSpetialisations,
+            this.NameSpetialisations});
+            this.dataGridView7.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.Size = new System.Drawing.Size(566, 150);
+            this.dataGridView7.TabIndex = 0;
+            // 
             // IDSpetialisations
             // 
             this.IDSpetialisations.HeaderText = "ID";
@@ -531,7 +533,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 349);
+            this.ClientSize = new System.Drawing.Size(1032, 349);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.patientBtn);
             this.Controls.Add(this.cardBtn);
@@ -549,14 +551,14 @@
             this.Doctors.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ListsOfVisit.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.Schedule.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ListsOfDiseases.ResumeLayout(false);
-            this.Medicines.ResumeLayout(false);
-            this.Spetialisations.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.Medicines.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            this.Spetialisations.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

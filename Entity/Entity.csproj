@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Card.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="Diseases.cs" />
     <Compile Include="Doctor.cs" />

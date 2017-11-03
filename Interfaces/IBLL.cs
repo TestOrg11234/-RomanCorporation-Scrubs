@@ -13,7 +13,7 @@ namespace Interfaces
         int CreateNewDoctorsCredantials(Doctor doctor);
         int CreateNewListOfVisit(Visit visit);
         int CreateNewMedicines(Medicines medicines);
-        int CreateNewCredentials(Credentials credentials);
+        int CreateNewCredentials(Credential credentials);
         int CreateNewSchedule(Schedule schedule);
         int CreateNewSpetialisations(Spetialisations spetialisations);
         int CreateNewRoles(Roles roles);
@@ -23,8 +23,8 @@ namespace Interfaces
         bool DeleteListOfVisit(long ID);
         bool DeleteListsOfDiseases(long ID);
         bool DeleteMedicines(long ID);
+        Credential GetCredentialFor(Credential cred);
         Patient GetPatient(int ID);
-        Card GetCard(int ID);
         Diseases GetDiagnosis(int ID);
         Doctor GetDoctor(int ID);
         Medicines GetMedicines(int ID);
@@ -32,7 +32,6 @@ namespace Interfaces
         Visit GetVisit(int ID);
 
         IEnumerable<Patient> GetPatient();
-        IEnumerable<Card> GetCard();
         IEnumerable<Diseases> GetDiagnosis();
         IEnumerable<Doctor> GetDoctor();
         IEnumerable<Medicines> GetMedicines();

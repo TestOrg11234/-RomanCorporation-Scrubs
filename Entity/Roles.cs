@@ -8,6 +8,11 @@ namespace Entity
 {
    public class Roles //врач или пациент
     {
+        public int ID { get; set; }
         public string NameRole { get; set; }
+        public Roles()
+        {
+
+        }
     }
 }

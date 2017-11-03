@@ -8,11 +8,15 @@ namespace Entity
 {
     public class Visit
     {
-        public long ID { get; set; }
+        public int ID { get; set; }
         public string NumberCard { get; set; }
         public DateTime Data { get; set; }
-        public long DiagnosisID { get; set; }
-        public long PatientID { get; set; }
-        public long DoctorID { get; set; }
+        public int DiagnosisID { get; set; }
+        public int PatientID { get; set; }
+        public int DoctorID { get; set; }
+        public Visit()
+        {
+
+        }
     }
 }

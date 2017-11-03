@@ -19,7 +19,7 @@ namespace DAL
         {
             connectionstring = ConfigurationManager.ConnectionStrings["B1"].ConnectionString;
         }
-        public int CreateNewPatients (Patient patient)
+        public int CreateNewPatients(Patient patient)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -53,7 +53,7 @@ namespace DAL
                          new SqlParameter()
                         {
                             ParameterName = "cardNumer",
-                            SqlDbType = SqlDbType.Int,                            
+                            SqlDbType = SqlDbType.Int,
                             Value = patient.CardNumer
                         },
                         new SqlParameter()
@@ -66,7 +66,7 @@ namespace DAL
                         new SqlParameter()
                         {
                             ParameterName = "@address",
-                            SqlDbType = SqlDbType.NVarChar,                           
+                            SqlDbType = SqlDbType.NVarChar,
                             Value = patient.Address
                         },
                         new SqlParameter()
@@ -75,13 +75,13 @@ namespace DAL
                             SqlDbType = SqlDbType.NVarChar,
                             Size = 50,
                             Value = patient.FullName
-                        },                        
+                        },
                         new SqlParameter()//тут возможно будет ошибка
                         {
                             ParameterName = "@birthDay",
                             SqlDbType = SqlDbType.Date,
                             Value = patient.BirthDay.ToString("yyyy-MM-dd")
-                        },                        
+                        },
                         new SqlParameter()
                         {
                             ParameterName = "@id",
@@ -100,7 +100,7 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewDoctorsCredantials(Doctor doctor) 
+        public int CreateNewDoctorsCredantials(Doctor doctor)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -127,19 +127,19 @@ namespace DAL
                         new SqlParameter()
                         {
                             ParameterName = "@spetialisation",
-                            SqlDbType = SqlDbType.Int,                            
+                            SqlDbType = SqlDbType.Int,
                             Value = doctor.Spetialisation
                         },
                         new SqlParameter()
                         {
                             ParameterName = "@employmentDate",
-                            SqlDbType = SqlDbType.Date,                            
+                            SqlDbType = SqlDbType.Date,
                             Value = doctor.EmploymentDate
                         },
                          new SqlParameter()
                         {
                             ParameterName = "@cabinetNumber",
-                            SqlDbType = SqlDbType.Int,                            
+                            SqlDbType = SqlDbType.Int,
                             Value = doctor.CabinetNumber
                         },
                           new SqlParameter()
@@ -161,13 +161,13 @@ namespace DAL
                             SqlDbType = SqlDbType.NVarChar,
                             Size = 50,
                             Value = doctor.FullName
-                        },                        
+                        },
                         new SqlParameter()//тут возможно будет ошибка
                         {
                             ParameterName = "@birthDay",
                             SqlDbType = SqlDbType.Date,
                             Value = doctor.BirthDay.ToString("yyyy-MM-dd")
-                        },                        
+                        },
                         new SqlParameter()
                         {
                             ParameterName = "@id",
@@ -186,7 +186,7 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewListOfVisit (Visit visit)
+        public int CreateNewListOfVisit(Visit visit)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -195,7 +195,7 @@ namespace DAL
                 {
                     #region sParams
                     SqlParameter[] sParams =
-                    {                      
+                    {
                         new SqlParameter()
                         {
                             ParameterName = "@numberCard",
@@ -208,7 +208,7 @@ namespace DAL
                             ParameterName = "@data",
                             SqlDbType = SqlDbType.Date,
                             Value = visit.Data
-                        },                        
+                        },
                         new SqlParameter()
                         {
                             ParameterName = "@doctorID",
@@ -245,7 +245,7 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewMedicines (Medicines medicines)
+        public int CreateNewMedicines(Medicines medicines)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -274,7 +274,7 @@ namespace DAL
                             ParameterName = "@diagnosisID",
                             SqlDbType = SqlDbType.Int,
                             Value = medicines.DiagnosisID
-                        },                        
+                        },
                         new SqlParameter()
                         {
                             ParameterName = "@id",
@@ -293,7 +293,7 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewCredentials (Credentials credentials) 
+        public int CreateNewCredentials(Credential credentials)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -301,7 +301,7 @@ namespace DAL
                 using (SqlCommand cmd = new SqlCommand("CreateNewCredentials", scon))
                 {
                     #region sParams
-                    SqlParameter[] sParams= 
+                    SqlParameter[] sParams =
                     {
                         new SqlParameter()
                         {
@@ -321,9 +321,9 @@ namespace DAL
                         {
                             ParameterName = "@role",
                             SqlDbType = SqlDbType.Int,
-                            Value = credentials.Role
+                            Value = credentials._Role
                         },
-                       
+
                         new SqlParameter()
                         {
                             ParameterName = "@id",
@@ -342,7 +342,7 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewSchedule (Schedule schedule) 
+        public int CreateNewSchedule(Schedule schedule)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -394,7 +394,7 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewSpetialisations (Spetialisations spetialisations) 
+        public int CreateNewSpetialisations(Spetialisations spetialisations)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -403,7 +403,7 @@ namespace DAL
                 {
                     #region sParams
                     SqlParameter[] sParams =
-                    {                       
+                    {
                         new SqlParameter()
                         {
                             ParameterName = "@name",
@@ -429,7 +429,7 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewRoles (Roles roles) 
+        public int CreateNewRoles(Roles roles)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -445,7 +445,7 @@ namespace DAL
                             SqlDbType = SqlDbType.NVarChar,
                             Size = 50,
                             Value = roles.NameRole
-                        },                        
+                        },
                         new SqlParameter()
                         {
                             ParameterName = "@id",
@@ -464,7 +464,7 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewListsOfDiseases (Diseases diseases) 
+        public int CreateNewListsOfDiseases(Diseases diseases)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -506,7 +506,7 @@ namespace DAL
             }
             return ID;
         }
-        public bool DeleteCredentials (long ID)
+        public bool DeleteCredentials(long ID)
         {
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
@@ -524,7 +524,7 @@ namespace DAL
             }
             return true; //!!!
         }
-        public bool DeleteRoles (long ID)
+        public bool DeleteRoles(long ID)
         {
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
@@ -542,7 +542,7 @@ namespace DAL
             }
             return true; //!!!
         }
-        public bool DeleteListOfVisit (long ID)
+        public bool DeleteListOfVisit(long ID)
         {
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
@@ -560,7 +560,7 @@ namespace DAL
             }
             return true; //!!!
         }
-        public bool DeleteListsOfDiseases (long ID)
+        public bool DeleteListsOfDiseases(long ID)
         {
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
@@ -578,7 +578,7 @@ namespace DAL
             }
             return true; //!!!
         }
-        public bool DeleteMedicines (long ID)
+        public bool DeleteMedicines(long ID)
         {
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
@@ -596,16 +596,281 @@ namespace DAL
             }
             return true; //!!!
         }
-        public IEnumerable<Card> GetCard()
+        public IEnumerable<Credential> GetCredentials()
         {
-            throw new NotImplementedException();// карта в visit
-        } // подумать
-        public Card GetCard(int ID)
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetCredentials", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Credential()
+                        {
+                            ID = (int)reader["ID"],
+                            Login = ((string)reader["[Login]"]).Trim(),
+                            Password = ((string)reader["[Password]"]).Trim(),
+                            _Role = new Roles()
+                            {
+                                ID = (int)reader["[Role]"], //!!!
+                            }
+                        };
+                    };
+                }
+            }
+        }
+        public IEnumerable<Doctor> GetDoctors()
         {
-            throw new NotImplementedException();
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetDoctorsCredantials", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Doctor()
+                        {
+                            ID = (int)reader["ID"],
+                            BirthDay = (DateTime)reader["Birthday"],
+                            FullName = ((string)reader["FullName"]).Trim(),
+                            Spetialisation = new Spetialisations()
+                            {
+                                ID = (int)reader["Spetialisation"],
+                            },
+                            EmploymentDate = (DateTime)reader["EmploymentDate"],
+                            CabinetNumber = (int)reader["CabinetNumber"],
+                            _Schedule = new Schedule()
+                            {
+                                ID = (int)reader["_Shedule"],//!!!
+                            }
+                        };
+                    };
+                }
+            }
+        }
+        public IEnumerable<Visit> GetVisits()
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetListOfVisit", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Visit()
+                        {
+                            ID = (int)reader["ID"],
+                            NumberCard = ((string)reader["NumberCard"]).Trim(),
+                            Data = (DateTime)reader["[Data]"],
+                            DoctorID = (int)reader["DoctorID"],
+                            PatientID = (int)reader["PatientID"],
+                            DiagnosisID = (int)reader["DiagnosisID"], //!!!
+                        };
+                    };
+                }
+            }
+        }
+        public IEnumerable<Diseases> GetDiagnosis()
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetListsOfDiseases", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Diseases()
+                        {
+                            ID = (int)reader["ID"],
+                            Name = ((string)reader["Name"]).Trim(),
+                            Description = ((string)reader["[Description]"]).Trim(),
+                        };
+                    };
+                }
+            }
+        }
+        public IEnumerable<Medicines> GetMedicines()
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetMedicines", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Medicines()
+                        {
+                            ID = (int)reader["ID"],
+                            Name = ((string)reader["Name"]).Trim(),
+                            Description = ((string)reader["[Description]"]).Trim(),
+                            _Diagnosis=new Diseases()
+                            {
+                                ID = (int)reader["DiagnosisID"],//!!!
+                            }
+                        };
+                    };
+                }
+            }
+        }
+        public IEnumerable<Patient> GetPatients()
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetPatients", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Patient()
+                        {
+                            ID = (int)reader["ID"],
+                            FullName = ((string)reader["FullName"]).Trim(),
+                            BirthDay = (DateTime)reader["Birthday"],
+                            Gender = ((string)reader["Gender"]).Trim(),
+                            Address = ((string)reader["[Address]"]).Trim(),
+                            PhoneNumer = ((string)reader["PhoneNumer"]).Trim(),
+                            CardNumer = (int)reader["CardNumer"],
+                        };
+                    };
+                }
+            }
+        }      
+        public IEnumerable<Roles> GetRoles()
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetRoles", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Roles()
+                        {
+                            ID = (int)reader["ID"],
+                            NameRole = ((string)reader["NameRole"]).Trim(),
+                        };
+                    };
+                }
+            }
+        }
+        public IEnumerable<Schedule> GetSChedules()
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetSchedule", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Schedule()
+                        {
+                            ID = (int)reader["ID"],
+                            Data =(DateTime)reader["[Data]"],
+                            CabinetNumber = ((string)reader["CabinetNumber"]).Trim(),
+                            StartTime = (DateTime)reader["StartTime"],
+                            EndTime = (DateTime)reader["EndTime"],
+                        };
+                    };
+                }
+            }
+        }
+        public IEnumerable<Spetialisations> GetSpetialisations()
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetRoles", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    scon.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        yield return new Spetialisations()
+                        {
+                            ID = (int)reader["ID"],
+                            Name = ((string)reader["Name"]).Trim(),
+                        };
+                    };
+                }
+            }
+        }       
+        public void UpdateCredentials(Credential cr)//!!!
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdateCredentials", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@personnelnum",
+                            SqlDbType = SqlDbType.Int,
+                            Value = u.PersonnelNum
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@fullname",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size=100,
+                            Value = u.PersonnelNum
+                        },
+                         new SqlParameter()
+                        {
+                            ParameterName = "@dateOfbirth",
+                            SqlDbType = SqlDbType.Date,
+                            Value = u.PersonnelNum
+                        },
+                          new SqlParameter()
+                        {
+                            ParameterName = "@homeaddress",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size=-1,
+                            Value = u.PersonnelNum
+                        },
+                           new SqlParameter()
+                        {
+                            ParameterName = "@homenumberphone",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size=50,
+                            Value = u.PersonnelNum
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@worknumberphone",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size=50,
+                            Value = u.PersonnelNum
+                        },
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
-        public IEnumerable<Diseases> GetDiagnosis()
+        public Patient GetPatient(int ID)
         {
             throw new NotImplementedException();
         }
@@ -615,17 +880,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Doctor> GetDoctor()
-        {
-            throw new NotImplementedException();
-        }
-
         public Doctor GetDoctor(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Medicines> GetMedicines()
         {
             throw new NotImplementedException();
         }
@@ -635,27 +890,7 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Patient> GetPatient()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Patient GetPatient(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Schedule> GetSChedule()
-        {
-            throw new NotImplementedException();
-        }
-
         public Schedule GetSChedule(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Visit> GetVisit()
         {
             throw new NotImplementedException();
         }
@@ -664,5 +899,15 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+
+        
+
+        
+        public Credential GetCredentialByLogin(string login)
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }
