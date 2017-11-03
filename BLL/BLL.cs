@@ -6,20 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 using DAL;
+using System.Security.Cryptography;
 
 namespace BLL
 {
-    public class BLL:IBLL
+    public class BLL : IBLL
     {
         IDAL dal;
-
+        Random r;
+        List<Credential> authCreds = new List<Credential>();
         public BLL()
         {
+            dal = new DBDAL();
         }
 
-        public BLL(DBDAL dbDAL)
+        private string Hash(string text)
         {
-            dal = dbDAL;
+            byte[] data = Encoding.Default.GetBytes(text);
+            var result = new SHA256Managed().ComputeHash(data);
+            return BitConverter.ToString(result).Replace("-", "").ToLower();
         }
 
         public int CreateNewCredentials(Credential credentials)
@@ -95,6 +100,16 @@ namespace BLL
         public Credential GetCredentialFor(Credential cred)
         {
             Credential us = dal.GetCredentialByLogin(cred.Login);
+            if (us != null)
+            {
+                if (Hash(cred.Password) == us.Password)
+                {
+                    r = new Random();
+                    us.AuthKey = r.Next(0, 999999) + "";
+                    authCreds.Add(us);
+                }
+            }
+            return us;
         }
 
         public IEnumerable<Diseases> GetDiagnosis()
@@ -157,5 +172,9 @@ namespace BLL
             throw new NotImplementedException();
         }
 
+        public void LogOut(string authKey)
+        {
+            authCreds.Remove(authCreds.FirstOrDefault(x => x.AuthKey == authKey));
+        }
     }
 }

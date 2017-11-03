@@ -12,6 +12,8 @@ namespace Entity
         public string Login { get; set; }
         public string Password { get; set; }
         public Roles _Role { get; set; }
+
+        public string AuthKey { get; set; }
         public Credential()
         {
 

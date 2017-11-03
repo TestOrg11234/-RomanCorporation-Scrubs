@@ -17,7 +17,7 @@ namespace DAL
         private string connectionstring;
         public DBDAL()
         {
-            connectionstring = ConfigurationManager.ConnectionStrings["B1"].ConnectionString;
+            connectionstring = "Data Source=VATO;Initial Catalog=B1;Integrated Security=True";
         }
         public int CreateNewPatients(Patient patient)
         {
@@ -146,7 +146,7 @@ namespace DAL
                         {
                             ParameterName = "@shedule",
                             SqlDbType = SqlDbType.Int,
-                            Value = doctor.Shedule
+                            Value = doctor._Schedule
                         },
                         //new SqlParameter()
                         //{
@@ -273,7 +273,7 @@ namespace DAL
                         {
                             ParameterName = "@diagnosisID",
                             SqlDbType = SqlDbType.Int,
-                            Value = medicines.DiagnosisID
+                            Value = medicines._Diagnosis.ID
                         },
                         new SqlParameter()
                         {
@@ -314,7 +314,7 @@ namespace DAL
                         {
                             ParameterName = "@password",
                             SqlDbType = SqlDbType.NVarChar,
-                            Size = 50,
+                            Size = 64,
                             Value = credentials.Password
                         },
                         new SqlParameter()
@@ -713,7 +713,7 @@ namespace DAL
                             ID = (int)reader["ID"],
                             Name = ((string)reader["Name"]).Trim(),
                             Description = ((string)reader["[Description]"]).Trim(),
-                            _Diagnosis=new Diseases()
+                            _Diagnosis = new Diseases()
                             {
                                 ID = (int)reader["DiagnosisID"],//!!!
                             }
@@ -746,7 +746,7 @@ namespace DAL
                     };
                 }
             }
-        }      
+        }
         public IEnumerable<Roles> GetRoles()
         {
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -781,7 +781,7 @@ namespace DAL
                         yield return new Schedule()
                         {
                             ID = (int)reader["ID"],
-                            Data =(DateTime)reader["[Data]"],
+                            Data = (DateTime)reader["[Data]"],
                             CabinetNumber = ((string)reader["CabinetNumber"]).Trim(),
                             StartTime = (DateTime)reader["StartTime"],
                             EndTime = (DateTime)reader["EndTime"],
@@ -809,66 +809,66 @@ namespace DAL
                     };
                 }
             }
-        }       
-        public void UpdateCredentials(Credential cr)//!!!
-        {
-            using (SqlConnection scon = new SqlConnection(connectionstring))
-            {
-                using (SqlCommand cmd = new SqlCommand("UpdateCredentials", scon))
-                {
-                    #region sParams
-                    SqlParameter[] sParams =
-                    {
-                        new SqlParameter()
-                        {
-                            ParameterName = "@personnelnum",
-                            SqlDbType = SqlDbType.Int,
-                            Value = u.PersonnelNum
-                        },
-                        new SqlParameter()
-                        {
-                            ParameterName = "@fullname",
-                            SqlDbType = SqlDbType.NVarChar,
-                            Size=100,
-                            Value = u.PersonnelNum
-                        },
-                         new SqlParameter()
-                        {
-                            ParameterName = "@dateOfbirth",
-                            SqlDbType = SqlDbType.Date,
-                            Value = u.PersonnelNum
-                        },
-                          new SqlParameter()
-                        {
-                            ParameterName = "@homeaddress",
-                            SqlDbType = SqlDbType.NVarChar,
-                            Size=-1,
-                            Value = u.PersonnelNum
-                        },
-                           new SqlParameter()
-                        {
-                            ParameterName = "@homenumberphone",
-                            SqlDbType = SqlDbType.NVarChar,
-                            Size=50,
-                            Value = u.PersonnelNum
-                        },
-                        new SqlParameter()
-                        {
-                            ParameterName = "@worknumberphone",
-                            SqlDbType = SqlDbType.NVarChar,
-                            Size=50,
-                            Value = u.PersonnelNum
-                        },
-                    };
-                    #endregion
-
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddRange(sParams);
-                    scon.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
         }
+        //public void UpdateCredentials(Credential u)//!!!
+        //{
+        //    using (SqlConnection scon = new SqlConnection(connectionstring))
+        //    {
+        //        using (SqlCommand cmd = new SqlCommand("UpdateCredentials", scon))
+        //        {
+        //            #region sParams
+        //            SqlParameter[] sParams =
+        //            {
+        //                new SqlParameter()
+        //                {
+        //                    ParameterName = "@personnelnum",
+        //                    SqlDbType = SqlDbType.Int,
+        //                    Value = u.PersonnelNum
+        //                },
+        //                new SqlParameter()
+        //                {
+        //                    ParameterName = "@fullname",
+        //                    SqlDbType = SqlDbType.NVarChar,
+        //                    Size=100,
+        //                    Value = u.PersonnelNum
+        //                },
+        //                 new SqlParameter()
+        //                {
+        //                    ParameterName = "@dateOfbirth",
+        //                    SqlDbType = SqlDbType.Date,
+        //                    Value = u.PersonnelNum
+        //                },
+        //                  new SqlParameter()
+        //                {
+        //                    ParameterName = "@homeaddress",
+        //                    SqlDbType = SqlDbType.NVarChar,
+        //                    Size=-1,
+        //                    Value = u.PersonnelNum
+        //                },
+        //                   new SqlParameter()
+        //                {
+        //                    ParameterName = "@homenumberphone",
+        //                    SqlDbType = SqlDbType.NVarChar,
+        //                    Size=50,
+        //                    Value = u.PersonnelNum
+        //                },
+        //                new SqlParameter()
+        //                {
+        //                    ParameterName = "@worknumberphone",
+        //                    SqlDbType = SqlDbType.NVarChar,
+        //                    Size=50,
+        //                    Value = u.PersonnelNum
+        //                },
+        //            };
+        //            #endregion
+
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddRange(sParams);
+        //            scon.Open();
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
 
         public Patient GetPatient(int ID)
         {
@@ -900,14 +900,128 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        
 
-        
+
+
         public Credential GetCredentialByLogin(string login)
         {
-            throw new NotImplementedException();
+            var u = new Credential()
+            {
+                Login = login,
+                _Role = new Roles()
+            };
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetCredentialByLogin", scon))
+                {
+
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                                    new SqlParameter()
+                                    {
+                                        ParameterName = "@login",
+                                        SqlDbType = SqlDbType.NVarChar,
+                                        Size = 50,
+                                        Value = u.Login
+                                    },
+                                    new SqlParameter()
+                                    {
+                                        ParameterName = "@ID",
+                                        SqlDbType = SqlDbType.Int,
+                                        Value = u.ID,
+                                        Direction = ParameterDirection.Output
+                                    },
+                                    new SqlParameter()
+                                    {
+                                        ParameterName = "@password",
+                                        SqlDbType = SqlDbType.NVarChar,
+                                        Size = 64,
+                                        Value = u.Password,
+                                        Direction = ParameterDirection.Output
+                                    },
+                                    new SqlParameter()
+                                    {
+                                        ParameterName = "@role",
+                                        SqlDbType = SqlDbType.Int,
+                                        Value = u._Role.ID,
+                                        Direction = ParameterDirection.Output
+                                    }
+                                };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        u.ID = (int)cmd.Parameters["@ID"].Value;
+                        u.Password = (string)cmd.Parameters["@password"].Value;
+                        u._Role.ID = (int)cmd.Parameters["@role"].Value;
+                    }
+                    catch
+                    {
+                        u = null;
+                    }
+                           
+                }
+            }
+            if (u != null)
+            {
+                u._Role = this.GetRoleByID(u._Role.ID);
+            }
+            return u;
+        }
+        public Roles GetRoleByID(int ID)
+        {
+            var u = new Roles()
+            {
+                ID = ID
+            };
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetRoleByID", scon))
+                {
+                    
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                                    new SqlParameter()
+                                    {
+                                        ParameterName = "@ID",
+                                        SqlDbType = SqlDbType.Int,
+                                        Value = u.ID
+                                    },
+                                    new SqlParameter()
+                                    {
+                                        ParameterName = "@NameRole",
+                                        SqlDbType = SqlDbType.NVarChar,
+                                        Size = 50,
+                                        Value = u.NameRole,
+                                        Direction = ParameterDirection.Output
+                                    }
+                                };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        u.ID = (int)cmd.Parameters["@ID"].Value;
+                        u.NameRole = (string)cmd.Parameters["@NameRole"].Value;
+                    }
+                    catch
+                    {
+                        u = null;
+                    }
+
+                }
+            }
+            return u;
         }
 
-        
     }
 }

@@ -37,6 +37,6 @@ namespace Interfaces
         IEnumerable<Medicines> GetMedicines();
         IEnumerable<Schedule> GetSChedule();
         IEnumerable<Visit> GetVisit();
-
+        void LogOut(string authKey);
     }
 }

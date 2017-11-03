@@ -36,7 +36,7 @@
             this.listOfReceptionBtn = new System.Windows.Forms.Button();
             this.cardBtn = new System.Windows.Forms.Button();
             this.patientBtn = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tcTabs = new System.Windows.Forms.TabControl();
             this.Patients = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.IDPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,7 +84,7 @@
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.IDSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabControl1.SuspendLayout();
+            this.tcTabs.SuspendLayout();
             this.Patients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.Doctors.SuspendLayout();
@@ -136,6 +136,7 @@
             this.auth_but_logout.Text = "Выход";
             this.auth_but_logout.UseVisualStyleBackColor = true;
             this.auth_but_logout.Visible = false;
+            this.auth_but_logout.Click += new System.EventHandler(this.auth_but_logout_Click);
             // 
             // workBtn
             // 
@@ -173,20 +174,21 @@
             this.patientBtn.Text = "Пациенты";
             this.patientBtn.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // tcTabs
             // 
-            this.tabControl1.Controls.Add(this.Patients);
-            this.tabControl1.Controls.Add(this.Doctors);
-            this.tabControl1.Controls.Add(this.ListsOfVisit);
-            this.tabControl1.Controls.Add(this.Schedule);
-            this.tabControl1.Controls.Add(this.ListsOfDiseases);
-            this.tabControl1.Controls.Add(this.Medicines);
-            this.tabControl1.Controls.Add(this.Spetialisations);
-            this.tabControl1.Location = new System.Drawing.Point(118, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(886, 294);
-            this.tabControl1.TabIndex = 8;
+            this.tcTabs.Controls.Add(this.Patients);
+            this.tcTabs.Controls.Add(this.Doctors);
+            this.tcTabs.Controls.Add(this.ListsOfVisit);
+            this.tcTabs.Controls.Add(this.Schedule);
+            this.tcTabs.Controls.Add(this.ListsOfDiseases);
+            this.tcTabs.Controls.Add(this.Medicines);
+            this.tcTabs.Controls.Add(this.Spetialisations);
+            this.tcTabs.Location = new System.Drawing.Point(118, 12);
+            this.tcTabs.Name = "tcTabs";
+            this.tcTabs.SelectedIndex = 0;
+            this.tcTabs.Size = new System.Drawing.Size(886, 294);
+            this.tcTabs.TabIndex = 8;
+            this.tcTabs.Visible = false;
             // 
             // Patients
             // 
@@ -534,7 +536,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 349);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tcTabs);
             this.Controls.Add(this.patientBtn);
             this.Controls.Add(this.cardBtn);
             this.Controls.Add(this.listOfReceptionBtn);
@@ -545,7 +547,7 @@
             this.Controls.Add(this.auth_but_login);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.tabControl1.ResumeLayout(false);
+            this.tcTabs.ResumeLayout(false);
             this.Patients.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.Doctors.ResumeLayout(false);
@@ -575,7 +577,7 @@
         private System.Windows.Forms.Button listOfReceptionBtn;
         private System.Windows.Forms.Button cardBtn;
         private System.Windows.Forms.Button patientBtn;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tcTabs;
         private System.Windows.Forms.TabPage Patients;
         private System.Windows.Forms.TabPage Doctors;
         private System.Windows.Forms.TabPage ListsOfVisit;

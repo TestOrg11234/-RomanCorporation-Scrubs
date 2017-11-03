@@ -50,6 +50,14 @@ namespace Scrubs
             auth_but_logout.Visible = !auth_but_logout.Visible;
             auth_login.Visible = !auth_login.Visible;
             auth_password.Visible = !auth_password.Visible;
+            tcTabs.Visible = !tcTabs.Visible;
+        }
+
+        private void auth_but_logout_Click(object sender, EventArgs e)
+        {
+            bll.LogOut(credAuth.AuthKey);
+            credAuth = new Credential();
+            HideBoxes();
         }
     }
 }

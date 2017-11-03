@@ -18,17 +18,20 @@ namespace Interfaces
         int CreateNewSpetialisations(Spetialisations spetialisations);
         int CreateNewRoles(Roles roles);
         int CreateNewListsOfDiseases(Diseases diseases);
+
         bool DeleteCredentials(long ID);
         bool DeleteRoles(long ID);
         bool DeleteListOfVisit(long ID);
         bool DeleteListsOfDiseases(long ID);
         bool DeleteMedicines(long ID);
+
         Patient GetPatient(int ID);
         Diseases GetDiagnosis(int ID);
         Doctor GetDoctor(int ID);
         Medicines GetMedicines(int ID);
         Schedule GetSChedule(int ID);
         Visit GetVisit(int ID);
+        Roles GetRoleByID(int ID);
 
         IEnumerable<Patient> GetPatients();
         IEnumerable<Diseases> GetDiagnosis();
