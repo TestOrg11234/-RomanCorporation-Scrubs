@@ -38,7 +38,7 @@
             this.patientBtn = new System.Windows.Forms.Button();
             this.tcTabs = new System.Windows.Forms.TabControl();
             this.Patients = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvPatients = new System.Windows.Forms.DataGridView();
             this.IDPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullNamePatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BithdayPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,13 +62,6 @@
             this.DoctorIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Schedule = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.IDShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CabinetNumberSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartTimeSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndTimeSchedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfDiseases = new System.Windows.Forms.TabPage();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.IDListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,25 +73,19 @@
             this.NameMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Spetialisations = new System.Windows.Forms.TabPage();
-            this.dataGridView7 = new System.Windows.Forms.DataGridView();
-            this.IDSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.butUpdatePatient = new System.Windows.Forms.Button();
+            this.butDeletePatient = new System.Windows.Forms.Button();
             this.tcTabs.SuspendLayout();
             this.Patients.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
             this.Doctors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.ListsOfVisit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            this.Schedule.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ListsOfDiseases.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.Medicines.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
-            this.Spetialisations.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.SuspendLayout();
             // 
             // auth_but_login
@@ -179,10 +166,8 @@
             this.tcTabs.Controls.Add(this.Patients);
             this.tcTabs.Controls.Add(this.Doctors);
             this.tcTabs.Controls.Add(this.ListsOfVisit);
-            this.tcTabs.Controls.Add(this.Schedule);
             this.tcTabs.Controls.Add(this.ListsOfDiseases);
             this.tcTabs.Controls.Add(this.Medicines);
-            this.tcTabs.Controls.Add(this.Spetialisations);
             this.tcTabs.Location = new System.Drawing.Point(118, 12);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
@@ -192,7 +177,9 @@
             // 
             // Patients
             // 
-            this.Patients.Controls.Add(this.dataGridView2);
+            this.Patients.Controls.Add(this.butDeletePatient);
+            this.Patients.Controls.Add(this.butUpdatePatient);
+            this.Patients.Controls.Add(this.dgvPatients);
             this.Patients.Location = new System.Drawing.Point(4, 22);
             this.Patients.Name = "Patients";
             this.Patients.Padding = new System.Windows.Forms.Padding(3);
@@ -201,10 +188,10 @@
             this.Patients.Text = "Пациены";
             this.Patients.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgvPatients
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPatients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPatient,
             this.FullNamePatient,
             this.BithdayPatient,
@@ -212,11 +199,11 @@
             this.AddressPatient,
             this.PhoneNumerPatient,
             this.CardNumerPatient});
-            this.dataGridView2.Location = new System.Drawing.Point(-4, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(759, 149);
-            this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dgvPatients.Location = new System.Drawing.Point(-4, 3);
+            this.dgvPatients.Name = "dgvPatients";
+            this.dgvPatients.Size = new System.Drawing.Size(759, 149);
+            this.dgvPatients.TabIndex = 0;
+            this.dgvPatients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // IDPatient
             // 
@@ -367,56 +354,6 @@
             this.DiagnosisIDListOfVisit.HeaderText = "DiagnosisID";
             this.DiagnosisIDListOfVisit.Name = "DiagnosisIDListOfVisit";
             // 
-            // Schedule
-            // 
-            this.Schedule.Controls.Add(this.dataGridView1);
-            this.Schedule.Location = new System.Drawing.Point(4, 22);
-            this.Schedule.Name = "Schedule";
-            this.Schedule.Size = new System.Drawing.Size(878, 268);
-            this.Schedule.TabIndex = 3;
-            this.Schedule.Text = "График";
-            this.Schedule.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDShedule,
-            this.DataSchedule,
-            this.CabinetNumberSchedule,
-            this.StartTimeSchedule,
-            this.EndTimeSchedule});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(548, 150);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // IDShedule
-            // 
-            this.IDShedule.HeaderText = "ID";
-            this.IDShedule.Name = "IDShedule";
-            this.IDShedule.ReadOnly = true;
-            // 
-            // DataSchedule
-            // 
-            this.DataSchedule.HeaderText = "Data";
-            this.DataSchedule.Name = "DataSchedule";
-            // 
-            // CabinetNumberSchedule
-            // 
-            this.CabinetNumberSchedule.HeaderText = "CabinetNumber";
-            this.CabinetNumberSchedule.Name = "CabinetNumberSchedule";
-            // 
-            // StartTimeSchedule
-            // 
-            this.StartTimeSchedule.HeaderText = "StartTime";
-            this.StartTimeSchedule.Name = "StartTimeSchedule";
-            // 
-            // EndTimeSchedule
-            // 
-            this.EndTimeSchedule.HeaderText = "EndTime";
-            this.EndTimeSchedule.Name = "EndTimeSchedule";
-            // 
             // ListsOfDiseases
             // 
             this.ListsOfDiseases.Controls.Add(this.dataGridView5);
@@ -499,37 +436,25 @@
             this.DescriptionMedicines.HeaderText = "Description";
             this.DescriptionMedicines.Name = "DescriptionMedicines";
             // 
-            // Spetialisations
+            // butUpdatePatient
             // 
-            this.Spetialisations.Controls.Add(this.dataGridView7);
-            this.Spetialisations.Location = new System.Drawing.Point(4, 22);
-            this.Spetialisations.Name = "Spetialisations";
-            this.Spetialisations.Size = new System.Drawing.Size(878, 268);
-            this.Spetialisations.TabIndex = 6;
-            this.Spetialisations.Text = "Специализация";
-            this.Spetialisations.UseVisualStyleBackColor = true;
+            this.butUpdatePatient.Location = new System.Drawing.Point(6, 158);
+            this.butUpdatePatient.Name = "butUpdatePatient";
+            this.butUpdatePatient.Size = new System.Drawing.Size(75, 23);
+            this.butUpdatePatient.TabIndex = 1;
+            this.butUpdatePatient.Text = "Update";
+            this.butUpdatePatient.UseVisualStyleBackColor = true;
+            this.butUpdatePatient.Click += new System.EventHandler(this.butUpdatePatient_Click);
             // 
-            // dataGridView7
+            // butDeletePatient
             // 
-            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDSpetialisations,
-            this.NameSpetialisations});
-            this.dataGridView7.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.Size = new System.Drawing.Size(566, 150);
-            this.dataGridView7.TabIndex = 0;
-            // 
-            // IDSpetialisations
-            // 
-            this.IDSpetialisations.HeaderText = "ID";
-            this.IDSpetialisations.Name = "IDSpetialisations";
-            this.IDSpetialisations.ReadOnly = true;
-            // 
-            // NameSpetialisations
-            // 
-            this.NameSpetialisations.HeaderText = "Name";
-            this.NameSpetialisations.Name = "NameSpetialisations";
+            this.butDeletePatient.Location = new System.Drawing.Point(99, 158);
+            this.butDeletePatient.Name = "butDeletePatient";
+            this.butDeletePatient.Size = new System.Drawing.Size(75, 23);
+            this.butDeletePatient.TabIndex = 1;
+            this.butDeletePatient.Text = "Delete";
+            this.butDeletePatient.UseVisualStyleBackColor = true;
+            this.butDeletePatient.Click += new System.EventHandler(this.butDeletePatient_Click);
             // 
             // Form1
             // 
@@ -549,19 +474,15 @@
             this.Text = "Form1";
             this.tcTabs.ResumeLayout(false);
             this.Patients.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
             this.Doctors.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ListsOfVisit.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            this.Schedule.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ListsOfDiseases.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.Medicines.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
-            this.Spetialisations.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,9 +502,7 @@
         private System.Windows.Forms.TabPage Patients;
         private System.Windows.Forms.TabPage Doctors;
         private System.Windows.Forms.TabPage ListsOfVisit;
-        private System.Windows.Forms.TabPage Schedule;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvPatients;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDPatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullNamePatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn BithdayPatient;
@@ -598,18 +517,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BirthdayDoctors;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmploymentDateDoctors;
         private System.Windows.Forms.DataGridViewTextBoxColumn CabinetNumberDoctors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDShedule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataSchedule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CabinetNumberSchedule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartTimeSchedule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndTimeSchedule;
         private System.Windows.Forms.TabPage ListsOfDiseases;
         private System.Windows.Forms.TabPage Medicines;
-        private System.Windows.Forms.TabPage Spetialisations;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.DataGridView dataGridView6;
-        private System.Windows.Forms.DataGridView dataGridView7;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDListOfVisit;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberCardListOfVisit;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataListOfVisit;
@@ -623,8 +535,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameMedicines;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiagnosisIDMedicines;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionMedicines;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDSpetialisations;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameSpetialisations;
+        private System.Windows.Forms.Button butDeletePatient;
+        private System.Windows.Forms.Button butUpdatePatient;
     }
 }
 

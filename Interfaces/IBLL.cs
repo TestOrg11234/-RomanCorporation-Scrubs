@@ -18,11 +18,11 @@ namespace Interfaces
         int CreateNewSpetialisations(Spetialisations spetialisations);
         int CreateNewRoles(Roles roles);
         int CreateNewListsOfDiseases(Diseases diseases);
-        bool DeleteCredentials(long ID);
-        bool DeleteRoles(long ID);
-        bool DeleteListOfVisit(long ID);
-        bool DeleteListsOfDiseases(long ID);
-        bool DeleteMedicines(long ID);
+        bool DeleteCredentials(int ID, string authKey);
+        bool DeleteRoles(int ID, string authKey);
+        bool DeleteListOfVisit(int ID, string authKey);
+        bool DeleteListsOfDiseases(int ID, string authKey);
+        bool DeleteMedicines(int ID, string authKey);
         Credential GetCredentialFor(Credential cred);
         Patient GetPatient(int ID);
         Diseases GetDiagnosis(int ID);
@@ -32,11 +32,13 @@ namespace Interfaces
         Visit GetVisit(int ID);
 
         IEnumerable<Patient> GetPatient();
+        List<Patient> GetAllPatients(string authKey);
         IEnumerable<Diseases> GetDiagnosis();
         IEnumerable<Doctor> GetDoctor();
         IEnumerable<Medicines> GetMedicines();
         IEnumerable<Schedule> GetSChedule();
         IEnumerable<Visit> GetVisit();
         void LogOut(string authKey);
+        void UpdatePatient(Patient p, string authKey);
     }
 }

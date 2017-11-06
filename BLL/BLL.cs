@@ -20,6 +20,11 @@ namespace BLL
             dal = new DBDAL();
         }
 
+        private bool CheckAuth(string authKey)
+        {
+            return authCreds.FirstOrDefault(x => x.AuthKey == authKey) != null;
+        }
+
         private string Hash(string text)
         {
             byte[] data = Encoding.Default.GetBytes(text);
@@ -72,29 +77,39 @@ namespace BLL
             return dal.CreateNewSpetialisations(spetialisations);
         }
 
-        public bool DeleteCredentials(long ID)
+        public bool DeleteCredentials(int ID, string authKey)
         {
-            return dal.DeleteCredentials(ID);
+            if (CheckAuth(authKey))
+                return dal.DeleteCredentials(ID);
+            return false;
         }
 
-        public bool DeleteListOfVisit(long ID)
+        public bool DeleteListOfVisit(int ID, string authKey)
         {
-            return dal.DeleteListOfVisit(ID);
+            if (CheckAuth(authKey))
+                return dal.DeleteListOfVisit(ID);
+            return false;
         }
 
-        public bool DeleteListsOfDiseases(long ID)
+        public bool DeleteListsOfDiseases(int ID, string authKey)
         {
-            return dal.DeleteListsOfDiseases(ID);
+            if (CheckAuth(authKey))
+                return dal.DeleteListsOfDiseases(ID);
+            return false;
         }
 
-        public bool DeleteMedicines(long ID)
+        public bool DeleteMedicines(int ID, string authKey)
         {
-            return dal.DeleteMedicines(ID);
+            if (CheckAuth(authKey))
+                return dal.DeleteMedicines(ID);
+            return false;
         }
 
-        public bool DeleteRoles(long ID)
+        public bool DeleteRoles(int ID, string authKey)
         {
-            return dal.DeleteRoles(ID);
+            if (CheckAuth(authKey))
+                return dal.DeleteRoles(ID);
+            return false;
         }
 
         public Credential GetCredentialFor(Credential cred)
@@ -175,6 +190,23 @@ namespace BLL
         public void LogOut(string authKey)
         {
             authCreds.Remove(authCreds.FirstOrDefault(x => x.AuthKey == authKey));
+        }
+
+        public List<Patient> GetAllPatients(string authKey)
+        {            
+            if (CheckAuth(authKey))
+            {
+                return dal.GetPatients().ToList();
+            }
+            return null;
+        }
+
+        public void UpdatePatient(Patient p, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                dal.UpdatePatient(p);
+            }
         }
     }
 }

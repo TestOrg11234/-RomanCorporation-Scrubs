@@ -40,8 +40,25 @@ namespace Scrubs
             {
                 HideBoxes();
                 credAuth = us;
+                LoadDataes();
             }
 
+        }
+
+        private void LoadDataes()
+        {
+            List<Patient> patients = bll.GetAllPatients(credAuth.AuthKey);
+            for (int i = 0; i < patients.Count; i++)
+            {
+                dgvPatients.Rows.Add();
+                dgvPatients[0, i].Value = patients[i].ID;
+                dgvPatients[1, i].Value = patients[i].FullName;
+                dgvPatients[2, i].Value = patients[i].BirthDay;
+                dgvPatients[3, i].Value = patients[i].Gender;
+                dgvPatients[4, i].Value = patients[i].Address;
+                dgvPatients[5, i].Value = patients[i].PhoneNumer;
+                dgvPatients[6, i].Value = patients[i].CardNumer;
+            }
         }
 
         private void HideBoxes()
@@ -58,6 +75,31 @@ namespace Scrubs
             bll.LogOut(credAuth.AuthKey);
             credAuth = new Credential();
             HideBoxes();
+
+            dgvPatients.Rows.Clear();
+        }
+
+        private void butUpdatePatient_Click(object sender, EventArgs e)
+        {
+            var p = new Patient()
+            {
+                ID = int.Parse(dgvPatients.CurrentRow.Cells[0].Value + ""),
+                FullName = dgvPatients.CurrentRow.Cells[1].Value + "",
+                BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[2].Value + ""),
+                Gender = dgvPatients.CurrentRow.Cells[3].Value + "",
+                Address = dgvPatients.CurrentRow.Cells[4].Value + "",
+                PhoneNumer = dgvPatients.CurrentRow.Cells[5].Value + "",
+                CardNumer = int.Parse(dgvPatients.CurrentRow.Cells[6].Value + "")
+            };
+            bll.UpdatePatient(p, credAuth.AuthKey);
+        }
+
+        private void butDeletePatient_Click(object sender, EventArgs e)
+        {
+            if (bll.DeleteCredentials((int)dgvPatients.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            {
+                dgvPatients.Rows.RemoveAt(dgvPatients.CurrentRow.Index);
+            }
         }
     }
 }

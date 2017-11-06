@@ -519,6 +519,7 @@ namespace DAL
                         SqlDbType = SqlDbType.Int,
                         Value = ID
                     });
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -739,7 +740,7 @@ namespace DAL
                             FullName = ((string)reader["FullName"]).Trim(),
                             BirthDay = (DateTime)reader["Birthday"],
                             Gender = ((string)reader["Gender"]).Trim(),
-                            Address = ((string)reader["[Address]"]).Trim(),
+                            Address = ((string)reader["Address"]).Trim(),
                             PhoneNumer = ((string)reader["PhoneNumer"]).Trim(),
                             CardNumer = (int)reader["CardNumer"],
                         };
@@ -964,7 +965,7 @@ namespace DAL
                     {
                         u = null;
                     }
-                           
+
                 }
             }
             if (u != null)
@@ -983,7 +984,7 @@ namespace DAL
             {
                 using (SqlCommand cmd = new SqlCommand("GetRoleByID", scon))
                 {
-                    
+
                     #region sParams
                     SqlParameter[] sParams =
                     {
@@ -1023,5 +1024,71 @@ namespace DAL
             return u;
         }
 
+        public void UpdatePatient(Patient p)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdatePatients", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = p.ID
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@fullname",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = p.FullName
+                        },
+                        new SqlParameter()
+                         {
+                            ParameterName = "@birthday",
+                            SqlDbType = SqlDbType.Date,
+                            Value = p.BirthDay
+                        },
+                        new SqlParameter()
+                         {
+                            ParameterName = "@gender",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = p.Gender
+                        },
+                         new SqlParameter()
+                         {
+                            ParameterName = "@address",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = -1,
+                            Value = p.Address
+                        },
+                         new SqlParameter()
+                         {
+                            ParameterName = "@phonenumer",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = p.PhoneNumer
+                         },
+                          new SqlParameter()
+                         {
+                            ParameterName = "@cardnumer",
+                            SqlDbType = SqlDbType.Int,
+                            Value = p.CardNumer
+                         }
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
+

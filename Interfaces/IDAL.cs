@@ -40,5 +40,6 @@ namespace Interfaces
         IEnumerable<Schedule> GetSChedules();
         IEnumerable<Visit> GetVisits();
         Credential GetCredentialByLogin(string login);
+        void UpdatePatient(Patient p);
     }
 }
