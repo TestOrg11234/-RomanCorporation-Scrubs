@@ -1089,6 +1089,213 @@ namespace DAL
                 }
             }
         }
+
+        public void UpdateDoctor(Doctor d)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdateDoctor", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = d.ID
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@fullname",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = d.FullName
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@spetialisation",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = d.Spetialisation
+                        },
+                        new SqlParameter()
+                         {
+                            ParameterName = "@birthday",
+                            SqlDbType = SqlDbType.Date,
+                            Value = d.BirthDay
+                        },
+                         new SqlParameter()
+                         {
+                            ParameterName = "@employmentDate",
+                            SqlDbType = SqlDbType.Date,
+                            Value = d.EmploymentDate
+                        },
+                         new SqlParameter()
+                        {
+                            ParameterName = "@cabinetNumber",
+                            SqlDbType = SqlDbType.Int,
+                            Value = d.CabinetNumber
+                        },
+                         new SqlParameter()
+                        {
+                            ParameterName = "@shedule",
+                            SqlDbType = SqlDbType.Int,
+                            Value = d._Schedule
+                        },
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateVisit(Visit v)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdateVisit", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = v.ID
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@numberCard",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = v.NumberCard
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@data",
+                            SqlDbType = SqlDbType.Date,
+                            Value = v.Data
+                        },
+                        new SqlParameter()
+                         {
+                            ParameterName = "@doctorID",
+                            SqlDbType = SqlDbType.Int,
+                            Value = v.DoctorID
+                        },
+                         new SqlParameter()
+                         {
+                            ParameterName = "@patientID",
+                            SqlDbType = SqlDbType.Int,
+                            Value = v.PatientID
+                        },
+                         new SqlParameter()
+                        {
+                            ParameterName = "@diagnosisID",
+                            SqlDbType = SqlDbType.Int,
+                            Value = v.DiagnosisID
+                        },
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateDiagnose(Diseases d)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdateDiagnose", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = d.ID
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@name",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = d.Name
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@description",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = d.Description
+                        },
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdateMedicine(Medicines m)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdateMedicine", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = m.ID
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@name",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = m.Name
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@diagnosisID",
+                            SqlDbType = SqlDbType.Int,
+                            Value = m._Diagnosis
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@description",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = m.Description
+                        },
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
 

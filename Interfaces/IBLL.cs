@@ -40,5 +40,13 @@ namespace Interfaces
         IEnumerable<Visit> GetVisit();
         void LogOut(string authKey);
         void UpdatePatient(Patient p, string authKey);
+        List<Doctor> GetAllDoctors(string authKey);
+        List<Visit> GetAllVisits(string authKey);
+        List<Diseases> GetAllDiseases(string authKey);
+        List<Medicines> GetAllMedicines(string authKey);
+        void UpdateDoctor(Doctor d, string authKey);
+        void UpdateVisit(Visit v, string authKey);
+        void UpdateDiagnose(Diseases d, string authKey);
+        void UpdateMedicine(Medicines m, string authKey);
     }
 }

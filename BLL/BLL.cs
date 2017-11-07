@@ -208,5 +208,73 @@ namespace BLL
                 dal.UpdatePatient(p);
             }
         }
+
+        public List<Doctor> GetAllDoctors(string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.GetDoctors().ToList();
+            }
+            return null;
+        }
+
+        public List<Visit> GetAllVisits(string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.GetVisits().ToList();
+            }
+            return null;
+        }
+
+        public List<Diseases> GetAllDiseases(string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.GetDiagnosis().ToList();
+            }
+            return null;
+        }
+
+        public List<Medicines> GetAllMedicines(string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.GetMedicines().ToList();
+            }
+            return null;
+        }
+
+        public void UpdateDoctor(Doctor d, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                dal.UpdateDoctor(d);
+            }
+        }
+
+        public void UpdateVisit(Visit v, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                dal.UpdateVisit(v);
+            }
+        }
+
+        public void UpdateDiagnose(Diseases d, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                dal.UpdateDiagnose(d);
+            }
+        }
+
+        public void UpdateMedicine(Medicines m, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                dal.UpdateMedicine(m);
+            }
+        }
     }
 }

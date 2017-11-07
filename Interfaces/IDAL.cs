@@ -41,5 +41,9 @@ namespace Interfaces
         IEnumerable<Visit> GetVisits();
         Credential GetCredentialByLogin(string login);
         void UpdatePatient(Patient p);
+        void UpdateDoctor(Doctor d);
+        void UpdateVisit(Visit v);
+        void UpdateDiagnose(Diseases d);
+        void UpdateMedicine(Medicines m);
     }
 }

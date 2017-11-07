@@ -38,6 +38,8 @@
             this.patientBtn = new System.Windows.Forms.Button();
             this.tcTabs = new System.Windows.Forms.TabControl();
             this.Patients = new System.Windows.Forms.TabPage();
+            this.butDeletePatient = new System.Windows.Forms.Button();
+            this.butUpdatePatient = new System.Windows.Forms.Button();
             this.dgvPatients = new System.Windows.Forms.DataGridView();
             this.IDPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullNamePatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +49,7 @@
             this.PhoneNumerPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CardNumerPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Doctors = new System.Windows.Forms.TabPage();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgvDoctors = new System.Windows.Forms.DataGridView();
             this.IDDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullNameDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SpetialisationDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +57,7 @@
             this.EmploymentDateDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CabinetNumberDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfVisit = new System.Windows.Forms.TabPage();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dgvVisit = new System.Windows.Forms.DataGridView();
             this.IDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumberCardListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,29 +65,35 @@
             this.PatientIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfDiseases = new System.Windows.Forms.TabPage();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.dgvDiagnos = new System.Windows.Forms.DataGridView();
             this.IDListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medicines = new System.Windows.Forms.TabPage();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.dgvMed = new System.Windows.Forms.DataGridView();
             this.IDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.butUpdatePatient = new System.Windows.Forms.Button();
-            this.butDeletePatient = new System.Windows.Forms.Button();
+            this.butUpdateDoctor = new System.Windows.Forms.Button();
+            this.butDeleteDoctor = new System.Windows.Forms.Button();
+            this.butDeleteVisit = new System.Windows.Forms.Button();
+            this.butUpdateVisit = new System.Windows.Forms.Button();
+            this.butDeleteDiagnose = new System.Windows.Forms.Button();
+            this.butUpdateDiagnose = new System.Windows.Forms.Button();
+            this.butDeleteMedicine = new System.Windows.Forms.Button();
+            this.butUpdateMedicine = new System.Windows.Forms.Button();
             this.tcTabs.SuspendLayout();
             this.Patients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
             this.Doctors.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).BeginInit();
             this.ListsOfVisit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVisit)).BeginInit();
             this.ListsOfDiseases.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnos)).BeginInit();
             this.Medicines.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).BeginInit();
             this.SuspendLayout();
             // 
             // auth_but_login
@@ -188,6 +196,26 @@
             this.Patients.Text = "Пациены";
             this.Patients.UseVisualStyleBackColor = true;
             // 
+            // butDeletePatient
+            // 
+            this.butDeletePatient.Location = new System.Drawing.Point(99, 158);
+            this.butDeletePatient.Name = "butDeletePatient";
+            this.butDeletePatient.Size = new System.Drawing.Size(75, 23);
+            this.butDeletePatient.TabIndex = 1;
+            this.butDeletePatient.Text = "Delete";
+            this.butDeletePatient.UseVisualStyleBackColor = true;
+            this.butDeletePatient.Click += new System.EventHandler(this.butDeletePatient_Click);
+            // 
+            // butUpdatePatient
+            // 
+            this.butUpdatePatient.Location = new System.Drawing.Point(6, 158);
+            this.butUpdatePatient.Name = "butUpdatePatient";
+            this.butUpdatePatient.Size = new System.Drawing.Size(75, 23);
+            this.butUpdatePatient.TabIndex = 1;
+            this.butUpdatePatient.Text = "Update";
+            this.butUpdatePatient.UseVisualStyleBackColor = true;
+            this.butUpdatePatient.Click += new System.EventHandler(this.butUpdatePatient_Click);
+            // 
             // dgvPatients
             // 
             this.dgvPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -243,7 +271,9 @@
             // 
             // Doctors
             // 
-            this.Doctors.Controls.Add(this.dataGridView3);
+            this.Doctors.Controls.Add(this.butDeleteDoctor);
+            this.Doctors.Controls.Add(this.butUpdateDoctor);
+            this.Doctors.Controls.Add(this.dgvDoctors);
             this.Doctors.Location = new System.Drawing.Point(4, 22);
             this.Doctors.Name = "Doctors";
             this.Doctors.Padding = new System.Windows.Forms.Padding(3);
@@ -252,20 +282,20 @@
             this.Doctors.Text = "Doctors";
             this.Doctors.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // dgvDoctors
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDoctors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDDoctors,
             this.FullNameDoctors,
             this.SpetialisationDoctors,
             this.BirthdayDoctors,
             this.EmploymentDateDoctors,
             this.CabinetNumberDoctors});
-            this.dataGridView3.Location = new System.Drawing.Point(9, 3);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(666, 256);
-            this.dataGridView3.TabIndex = 0;
+            this.dgvDoctors.Location = new System.Drawing.Point(9, 3);
+            this.dgvDoctors.Name = "dgvDoctors";
+            this.dgvDoctors.Size = new System.Drawing.Size(666, 137);
+            this.dgvDoctors.TabIndex = 0;
             // 
             // IDDoctors
             // 
@@ -300,7 +330,9 @@
             // 
             // ListsOfVisit
             // 
-            this.ListsOfVisit.Controls.Add(this.dataGridView4);
+            this.ListsOfVisit.Controls.Add(this.butDeleteVisit);
+            this.ListsOfVisit.Controls.Add(this.butUpdateVisit);
+            this.ListsOfVisit.Controls.Add(this.dgvVisit);
             this.ListsOfVisit.Location = new System.Drawing.Point(4, 22);
             this.ListsOfVisit.Name = "ListsOfVisit";
             this.ListsOfVisit.Size = new System.Drawing.Size(878, 268);
@@ -308,20 +340,20 @@
             this.ListsOfVisit.Text = "СписокПосещений";
             this.ListsOfVisit.UseVisualStyleBackColor = true;
             // 
-            // dataGridView4
+            // dgvVisit
             // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvVisit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVisit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDListOfVisit,
             this.NumberCardListOfVisit,
             this.DataListOfVisit,
             this.DoctorIDListOfVisit,
             this.PatientIDListOfVisit,
             this.DiagnosisIDListOfVisit});
-            this.dataGridView4.Location = new System.Drawing.Point(13, 5);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(662, 150);
-            this.dataGridView4.TabIndex = 0;
+            this.dgvVisit.Location = new System.Drawing.Point(13, 5);
+            this.dgvVisit.Name = "dgvVisit";
+            this.dgvVisit.Size = new System.Drawing.Size(662, 150);
+            this.dgvVisit.TabIndex = 0;
             // 
             // IDListOfVisit
             // 
@@ -356,7 +388,9 @@
             // 
             // ListsOfDiseases
             // 
-            this.ListsOfDiseases.Controls.Add(this.dataGridView5);
+            this.ListsOfDiseases.Controls.Add(this.butDeleteDiagnose);
+            this.ListsOfDiseases.Controls.Add(this.butUpdateDiagnose);
+            this.ListsOfDiseases.Controls.Add(this.dgvDiagnos);
             this.ListsOfDiseases.Location = new System.Drawing.Point(4, 22);
             this.ListsOfDiseases.Name = "ListsOfDiseases";
             this.ListsOfDiseases.Size = new System.Drawing.Size(878, 268);
@@ -364,17 +398,17 @@
             this.ListsOfDiseases.Text = "СписокДиагнозов";
             this.ListsOfDiseases.UseVisualStyleBackColor = true;
             // 
-            // dataGridView5
+            // dgvDiagnos
             // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDiagnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDiagnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDListsOfDiseases,
             this.NameListsOfDiseases,
             this.DescriptionListsOfDiseases});
-            this.dataGridView5.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(583, 150);
-            this.dataGridView5.TabIndex = 0;
+            this.dgvDiagnos.Location = new System.Drawing.Point(3, 3);
+            this.dgvDiagnos.Name = "dgvDiagnos";
+            this.dgvDiagnos.Size = new System.Drawing.Size(583, 150);
+            this.dgvDiagnos.TabIndex = 0;
             // 
             // IDListsOfDiseases
             // 
@@ -394,7 +428,9 @@
             // 
             // Medicines
             // 
-            this.Medicines.Controls.Add(this.dataGridView6);
+            this.Medicines.Controls.Add(this.butDeleteMedicine);
+            this.Medicines.Controls.Add(this.butUpdateMedicine);
+            this.Medicines.Controls.Add(this.dgvMed);
             this.Medicines.Location = new System.Drawing.Point(4, 22);
             this.Medicines.Name = "Medicines";
             this.Medicines.Size = new System.Drawing.Size(878, 268);
@@ -402,18 +438,18 @@
             this.Medicines.Text = "Медикаменты";
             this.Medicines.UseVisualStyleBackColor = true;
             // 
-            // dataGridView6
+            // dgvMed
             // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMed.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDMedicines,
             this.NameMedicines,
             this.DiagnosisIDMedicines,
             this.DescriptionMedicines});
-            this.dataGridView6.Location = new System.Drawing.Point(12, 5);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(569, 150);
-            this.dataGridView6.TabIndex = 0;
+            this.dgvMed.Location = new System.Drawing.Point(12, 5);
+            this.dgvMed.Name = "dgvMed";
+            this.dgvMed.Size = new System.Drawing.Size(569, 150);
+            this.dgvMed.TabIndex = 0;
             // 
             // IDMedicines
             // 
@@ -436,25 +472,85 @@
             this.DescriptionMedicines.HeaderText = "Description";
             this.DescriptionMedicines.Name = "DescriptionMedicines";
             // 
-            // butUpdatePatient
+            // butUpdateDoctor
             // 
-            this.butUpdatePatient.Location = new System.Drawing.Point(6, 158);
-            this.butUpdatePatient.Name = "butUpdatePatient";
-            this.butUpdatePatient.Size = new System.Drawing.Size(75, 23);
-            this.butUpdatePatient.TabIndex = 1;
-            this.butUpdatePatient.Text = "Update";
-            this.butUpdatePatient.UseVisualStyleBackColor = true;
-            this.butUpdatePatient.Click += new System.EventHandler(this.butUpdatePatient_Click);
+            this.butUpdateDoctor.Location = new System.Drawing.Point(9, 157);
+            this.butUpdateDoctor.Name = "butUpdateDoctor";
+            this.butUpdateDoctor.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateDoctor.TabIndex = 1;
+            this.butUpdateDoctor.Text = "UPDATE";
+            this.butUpdateDoctor.UseVisualStyleBackColor = true;
+            this.butUpdateDoctor.Click += new System.EventHandler(this.butUpdateDoctor_Click);
             // 
-            // butDeletePatient
+            // butDeleteDoctor
             // 
-            this.butDeletePatient.Location = new System.Drawing.Point(99, 158);
-            this.butDeletePatient.Name = "butDeletePatient";
-            this.butDeletePatient.Size = new System.Drawing.Size(75, 23);
-            this.butDeletePatient.TabIndex = 1;
-            this.butDeletePatient.Text = "Delete";
-            this.butDeletePatient.UseVisualStyleBackColor = true;
-            this.butDeletePatient.Click += new System.EventHandler(this.butDeletePatient_Click);
+            this.butDeleteDoctor.Location = new System.Drawing.Point(90, 157);
+            this.butDeleteDoctor.Name = "butDeleteDoctor";
+            this.butDeleteDoctor.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteDoctor.TabIndex = 1;
+            this.butDeleteDoctor.Text = "DELETE";
+            this.butDeleteDoctor.UseVisualStyleBackColor = true;
+            this.butDeleteDoctor.Click += new System.EventHandler(this.butDeleteDoctor_Click);
+            // 
+            // butDeleteVisit
+            // 
+            this.butDeleteVisit.Location = new System.Drawing.Point(94, 175);
+            this.butDeleteVisit.Name = "butDeleteVisit";
+            this.butDeleteVisit.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteVisit.TabIndex = 2;
+            this.butDeleteVisit.Text = "DELETE";
+            this.butDeleteVisit.UseVisualStyleBackColor = true;
+            this.butDeleteVisit.Click += new System.EventHandler(this.butDeleteVisit_Click);
+            // 
+            // butUpdateVisit
+            // 
+            this.butUpdateVisit.Location = new System.Drawing.Point(13, 175);
+            this.butUpdateVisit.Name = "butUpdateVisit";
+            this.butUpdateVisit.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateVisit.TabIndex = 3;
+            this.butUpdateVisit.Text = "UPDATE";
+            this.butUpdateVisit.UseVisualStyleBackColor = true;
+            this.butUpdateVisit.Click += new System.EventHandler(this.butUpdateVisit_Click);
+            // 
+            // butDeleteDiagnose
+            // 
+            this.butDeleteDiagnose.Location = new System.Drawing.Point(84, 159);
+            this.butDeleteDiagnose.Name = "butDeleteDiagnose";
+            this.butDeleteDiagnose.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteDiagnose.TabIndex = 4;
+            this.butDeleteDiagnose.Text = "DELETE";
+            this.butDeleteDiagnose.UseVisualStyleBackColor = true;
+            this.butDeleteDiagnose.Click += new System.EventHandler(this.butDeleteDiagnose_Click);
+            // 
+            // butUpdateDiagnose
+            // 
+            this.butUpdateDiagnose.Location = new System.Drawing.Point(3, 159);
+            this.butUpdateDiagnose.Name = "butUpdateDiagnose";
+            this.butUpdateDiagnose.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateDiagnose.TabIndex = 5;
+            this.butUpdateDiagnose.Text = "UPDATE";
+            this.butUpdateDiagnose.UseVisualStyleBackColor = true;
+            this.butUpdateDiagnose.Click += new System.EventHandler(this.butUpdateDiagnose_Click);
+            // 
+            // butDeleteMedicine
+            // 
+            this.butDeleteMedicine.Location = new System.Drawing.Point(93, 161);
+            this.butDeleteMedicine.Name = "butDeleteMedicine";
+            this.butDeleteMedicine.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteMedicine.TabIndex = 6;
+            this.butDeleteMedicine.Text = "DELETE";
+            this.butDeleteMedicine.UseVisualStyleBackColor = true;
+            this.butDeleteMedicine.Click += new System.EventHandler(this.butDeleteMedicine_Click);
+            // 
+            // butUpdateMedicine
+            // 
+            this.butUpdateMedicine.Location = new System.Drawing.Point(12, 161);
+            this.butUpdateMedicine.Name = "butUpdateMedicine";
+            this.butUpdateMedicine.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateMedicine.TabIndex = 7;
+            this.butUpdateMedicine.Text = "UPDATE";
+            this.butUpdateMedicine.UseVisualStyleBackColor = true;
+            this.butUpdateMedicine.Click += new System.EventHandler(this.butUpdateMedicine_Click);
             // 
             // Form1
             // 
@@ -476,13 +572,13 @@
             this.Patients.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
             this.Doctors.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
             this.ListsOfVisit.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVisit)).EndInit();
             this.ListsOfDiseases.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnos)).EndInit();
             this.Medicines.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,7 +606,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AddressPatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumerPatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn CardNumerPatient;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dgvDoctors;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDDoctors;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullNameDoctors;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpetialisationDoctors;
@@ -519,9 +615,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CabinetNumberDoctors;
         private System.Windows.Forms.TabPage ListsOfDiseases;
         private System.Windows.Forms.TabPage Medicines;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.DataGridView dgvVisit;
+        private System.Windows.Forms.DataGridView dgvDiagnos;
+        private System.Windows.Forms.DataGridView dgvMed;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDListOfVisit;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumberCardListOfVisit;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataListOfVisit;
@@ -537,6 +633,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionMedicines;
         private System.Windows.Forms.Button butDeletePatient;
         private System.Windows.Forms.Button butUpdatePatient;
+        private System.Windows.Forms.Button butDeleteDoctor;
+        private System.Windows.Forms.Button butUpdateDoctor;
+        private System.Windows.Forms.Button butDeleteVisit;
+        private System.Windows.Forms.Button butUpdateVisit;
+        private System.Windows.Forms.Button butDeleteDiagnose;
+        private System.Windows.Forms.Button butUpdateDiagnose;
+        private System.Windows.Forms.Button butDeleteMedicine;
+        private System.Windows.Forms.Button butUpdateMedicine;
     }
 }
 

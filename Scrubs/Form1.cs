@@ -59,6 +59,50 @@ namespace Scrubs
                 dgvPatients[5, i].Value = patients[i].PhoneNumer;
                 dgvPatients[6, i].Value = patients[i].CardNumer;
             }
+
+            List<Doctor> doctors = bll.GetAllDoctors(credAuth.AuthKey);//сделать
+            for(int i = 0; i < doctors.Count; i++)
+            {
+                dgvDoctors.Rows.Add();
+                dgvDoctors[0, i].Value = doctors[i].ID;
+                dgvDoctors[1, i].Value = doctors[i].FullName;
+                dgvDoctors[2, i].Value = doctors[i].Spetialisation.ID;
+                dgvDoctors[3, i].Value = doctors[i].BirthDay;
+                dgvDoctors[4, i].Value = doctors[i].EmploymentDate;
+                dgvDoctors[5, i].Value = doctors[i].CabinetNumber;
+                //возможно добавить shedule
+            }
+
+            List<Visit> visits = bll.GetAllVisits(credAuth.AuthKey);//сделать
+            for (int i = 0; i < visits.Count; i++)
+            {
+                dgvVisit.Rows.Add();
+                dgvVisit[0, i].Value = visits[i].ID;
+                dgvVisit[1, i].Value = visits[i].NumberCard;
+                dgvVisit[2, i].Value = visits[i].Data;
+                dgvVisit[3, i].Value = visits[i].DoctorID;
+                dgvVisit[4, i].Value = visits[i].PatientID;
+                dgvVisit[5, i].Value = visits[i].DiagnosisID;
+            }
+
+            List<Diseases> diseases = bll.GetAllDiseases(credAuth.AuthKey);//сделать
+            for (int i = 0; i < diseases.Count; i++)
+            {
+                dgvDiagnos.Rows.Add();
+                dgvDiagnos[0, i].Value = diseases[i].ID;
+                dgvDiagnos[1, i].Value = diseases[i].Name;
+                dgvDiagnos[2, i].Value = diseases[i].Description;
+            }
+
+            List<Medicines> meds = bll.GetAllMedicines(credAuth.AuthKey);//сделвть
+            for (int i = 0; i < meds.Count; i++)
+            {
+                dgvMed.Rows.Add();
+                dgvMed[0, i].Value = meds[i].ID;
+                dgvMed[1, i].Value = meds[i].Name;
+                dgvMed[2, i].Value = meds[i]._Diagnosis.ID;
+                dgvMed[3, i].Value = meds[i].Description;
+            }
         }
 
         private void HideBoxes()
@@ -94,11 +138,100 @@ namespace Scrubs
             bll.UpdatePatient(p, credAuth.AuthKey);
         }
 
+        private void butUpdateDoctor_Click(object sender, EventArgs e)
+        {
+            var d = new Doctor() {
+                ID = int.Parse(dgvDoctors.CurrentRow.Cells[0].Value + ""),
+                FullName = dgvDoctors.CurrentRow.Cells[1].Value + "",
+                Spetialisation = new Spetialisations()
+                {
+                    ID = int.Parse(dgvDoctors.CurrentRow.Cells[2].Value + "")
+                },
+                BirthDay = DateTime.Parse(dgvDoctors.CurrentRow.Cells[3].Value + ""),
+                EmploymentDate = DateTime.Parse(dgvDoctors.CurrentRow.Cells[4].Value + ""),
+                CabinetNumber = int.Parse(dgvDoctors.CurrentRow.Cells[0].Value + "")
+                //возможно добавить shedule
+            };
+            bll.UpdateDoctor(d, credAuth.AuthKey);//realisation
+        }
+
+        private void butUpdateVisit_Click(object sender, EventArgs e)
+        {
+            var v = new Visit()
+            {
+                ID = int.Parse(dgvVisit.CurrentRow.Cells[0].Value + ""),
+                NumberCard = dgvVisit.CurrentRow.Cells[1].Value + "",
+                Data = DateTime.Parse(dgvVisit.CurrentRow.Cells[2].Value + ""),
+                DoctorID = int.Parse(dgvVisit.CurrentRow.Cells[3].Value + ""),
+                PatientID = int.Parse(dgvVisit.CurrentRow.Cells[4].Value + ""),
+                DiagnosisID = int.Parse(dgvVisit.CurrentRow.Cells[5].Value + "")
+            };
+            bll.UpdateVisit(v, credAuth.AuthKey);
+        }
+
+        private void butUpdateDiagnose_Click(object sender, EventArgs e)
+        {
+            var d = new Diseases()
+            {
+                ID = int.Parse(dgvDiagnos.CurrentRow.Cells[0].Value + ""),
+                Name = dgvDiagnos.CurrentRow.Cells[1].Value + "",
+                Description = dgvDiagnos.CurrentRow.Cells[2].Value + ""
+            };
+            bll.UpdateDiagnose(d, credAuth.AuthKey);
+        }
+
+        private void butUpdateMedicine_Click(object sender, EventArgs e)
+        {
+            var m = new Medicines()
+            {
+                ID = int.Parse(dgvMed.CurrentRow.Cells[0].Value + ""),
+                Name = dgvMed.CurrentRow.Cells[1].Value + "",
+                _Diagnosis = new Diseases()
+                {
+                    ID = int.Parse(dgvMed.CurrentRow.Cells[2].Value + "")
+                },
+                Description = dgvMed.CurrentRow.Cells[3].Value + ""
+            };
+            bll.UpdateMedicine(m, credAuth.AuthKey);
+        }
+
         private void butDeletePatient_Click(object sender, EventArgs e)
         {
             if (bll.DeleteCredentials((int)dgvPatients.CurrentRow.Cells[0].Value, credAuth.AuthKey))
             {
                 dgvPatients.Rows.RemoveAt(dgvPatients.CurrentRow.Index);
+            }
+        }
+
+        private void butDeleteDoctor_Click(object sender, EventArgs e)
+        {
+            if (bll.DeleteCredentials((int)dgvDoctors.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            {
+                dgvDoctors.Rows.RemoveAt(dgvDoctors.CurrentRow.Index);
+            }
+        }
+
+        private void butDeleteVisit_Click(object sender, EventArgs e)
+        {
+            if (bll.DeleteListOfVisit((int)dgvVisit.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            {
+                dgvVisit.Rows.RemoveAt(dgvVisit.CurrentRow.Index);
+            }
+        }
+
+        private void butDeleteDiagnose_Click(object sender, EventArgs e)
+        {
+            if (bll.DeleteListsOfDiseases((int)dgvDiagnos.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            {
+                dgvDiagnos.Rows.RemoveAt(dgvDiagnos.CurrentRow.Index);
+            }
+        }
+
+        private void butDeleteMedicine_Click(object sender, EventArgs e)
+        {
+            if (bll.DeleteMedicines((int)dgvMed.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            {
+                dgvMed.Rows.RemoveAt(dgvMed.CurrentRow.Index);
             }
         }
     }
