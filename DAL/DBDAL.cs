@@ -9,7 +9,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Net;
-
+//переделать удаление пациентов
 namespace DAL
 {
     public class DBDAL : IDAL
@@ -94,6 +94,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -180,6 +181,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -239,6 +241,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -287,6 +290,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -336,6 +340,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -388,6 +393,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -423,6 +429,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -458,6 +465,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -500,6 +508,7 @@ namespace DAL
 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddRange(sParams);
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                     ID = (int)cmd.Parameters["@id"].Value;
                 }
@@ -538,6 +547,7 @@ namespace DAL
                         SqlDbType = SqlDbType.Int,
                         Value = ID
                     });
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -556,6 +566,7 @@ namespace DAL
                         SqlDbType = SqlDbType.Int,
                         Value = ID
                     });
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -574,6 +585,7 @@ namespace DAL
                         SqlDbType = SqlDbType.Int,
                         Value = ID
                     });
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -592,6 +604,7 @@ namespace DAL
                         SqlDbType = SqlDbType.Int,
                         Value = ID
                     });
+                    scon.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
