@@ -234,5 +234,77 @@ namespace Scrubs
                 dgvMed.Rows.RemoveAt(dgvMed.CurrentRow.Index);
             }
         }
+
+        private void butAddPatient_Click(object sender, EventArgs e)
+        {
+            var p = new Patient()
+            {
+                FullName = (string)dgvPatients.CurrentRow.Cells[1].Value,
+                BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[2].Value+""),
+                Gender = (string)dgvPatients.CurrentRow.Cells[3].Value,
+                Address = (string)dgvPatients.CurrentRow.Cells[4].Value,
+                PhoneNumer = (string)dgvPatients.CurrentRow.Cells[5].Value,
+                CardNumer = int.Parse(dgvPatients.CurrentRow.Cells[6].Value+"")
+            };
+            var id = bll.CreateNewPatients(p, credAuth.AuthKey);
+            dgvPatients.CurrentRow.Cells[0].Value = id;
+        }
+
+        private void butAddDoctor_Click(object sender, EventArgs e)
+        {
+            var d = new Doctor()
+            {
+                FullName = (string)dgvPatients.CurrentRow.Cells[1].Value,
+                Spetialisation = new Spetialisations()
+                {
+                    ID = int.Parse(dgvDoctors.CurrentRow.Cells[2].Value + "")
+                },
+                BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[3].Value + ""),
+                EmploymentDate = DateTime.Parse(dgvDoctors.CurrentRow.Cells[4].Value + ""),
+                CabinetNumber = int.Parse(dgvDoctors.CurrentRow.Cells[5].Value + "")
+            };
+            var id = bll.CreateNewDoctorsCredantials(d, credAuth.AuthKey);
+            dgvDoctors.CurrentRow.Cells[0].Value = id;
+        }
+
+        private void butAddVisit_Click(object sender, EventArgs e)
+        {
+            var v = new Visit()
+            {
+                NumberCard = (string)dgvVisit.CurrentRow.Cells[1].Value,
+                Data = DateTime.Parse(dgvVisit.CurrentRow.Cells[2].Value + ""),
+                DoctorID = int.Parse(dgvVisit.CurrentRow.Cells[3].Value + ""),
+                PatientID = int.Parse(dgvVisit.CurrentRow.Cells[4].Value + ""),
+                DiagnosisID = int.Parse(dgvVisit.CurrentRow.Cells[5].Value + ""),
+            };
+            var id = bll.CreateNewListOfVisit(v, credAuth.AuthKey);
+            dgvVisit.CurrentRow.Cells[0].Value = id;
+        }
+
+        private void butAddDiagnose_Click(object sender, EventArgs e)
+        {
+            var d = new Diseases()
+            {
+                Name = (string)dgvDiagnos.CurrentRow.Cells[1].Value,
+                Description = (string)dgvDiagnos.CurrentRow.Cells[2].Value
+            };
+            var id = bll.CreateNewListsOfDiseases(d, credAuth.AuthKey);
+            dgvDiagnos.CurrentRow.Cells[0].Value = id;
+        }
+
+        private void butAddMedicine_Click(object sender, EventArgs e)
+        {
+            var m = new Medicines()
+            {
+                Name = (string)dgvDiagnos.CurrentRow.Cells[1].Value,
+                _Diagnosis = new Diseases()
+                {
+                    ID = int.Parse(dgvMed.CurrentRow.Cells[2].Value + "")
+                },
+                Description = (string)dgvMed.CurrentRow.Cells[3].Value
+            };
+            var id = bll.CreateNewMedicines(m, credAuth.AuthKey);
+            dgvMed.CurrentRow.Cells[0].Value = id;
+        }
     }
 }

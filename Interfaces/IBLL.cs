@@ -9,15 +9,15 @@ namespace Interfaces
 {
     public interface IBLL
     {
-        int CreateNewPatients(Patient patient);
-        int CreateNewDoctorsCredantials(Doctor doctor);
-        int CreateNewListOfVisit(Visit visit);
-        int CreateNewMedicines(Medicines medicines);
-        int CreateNewCredentials(Credential credentials);
-        int CreateNewSchedule(Schedule schedule);
-        int CreateNewSpetialisations(Spetialisations spetialisations);
-        int CreateNewRoles(Roles roles);
-        int CreateNewListsOfDiseases(Diseases diseases);
+        int CreateNewPatients(Patient patient, string authKey);
+        int CreateNewDoctorsCredantials(Doctor doctor, string authKey);
+        int CreateNewListOfVisit(Visit visit, string authKey);
+        int CreateNewMedicines(Medicines medicines, string authKey);
+        int CreateNewCredentials(Credential credentials, string authKey);
+        int CreateNewSchedule(Schedule schedule, string authKey);
+        int CreateNewSpetialisations(Spetialisations spetialisations, string authKey);
+        int CreateNewRoles(Roles roles, string authKey);
+        int CreateNewListsOfDiseases(Diseases diseases, string authKey);
         bool DeleteCredentials(int ID, string authKey);
         bool DeleteRoles(int ID, string authKey);
         bool DeleteListOfVisit(int ID, string authKey);

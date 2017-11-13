@@ -32,49 +32,67 @@ namespace BLL
             return BitConverter.ToString(result).Replace("-", "").ToLower();
         }
 
-        public int CreateNewCredentials(Credential credentials)
+        public int CreateNewCredentials(Credential credentials, string authKey)
         {
-            return dal.CreateNewCredentials(credentials);
+            if (CheckAuth(authKey))
+                return dal.CreateNewCredentials(credentials);
+            return 0;
         }
 
-        public int CreateNewDoctorsCredantials(Doctor doctor)
+        public int CreateNewDoctorsCredantials(Doctor doctor, string authKey)
         {
-            return dal.CreateNewDoctorsCredantials(doctor);
+            if (CheckAuth(authKey))
+                return dal.CreateNewDoctorsCredantials(doctor);
+            return 0;
         }
 
-        public int CreateNewListOfVisit(Visit visit)
+        public int CreateNewListOfVisit(Visit visit, string authKey)
         {
-            return dal.CreateNewListOfVisit(visit);
+            if (CheckAuth(authKey))
+                return dal.CreateNewListOfVisit(visit);
+            return 0;
         }
 
-        public int CreateNewListsOfDiseases(Diseases diseases)
+        public int CreateNewListsOfDiseases(Diseases diseases, string authKey)
         {
-            return dal.CreateNewListsOfDiseases(diseases);
+            if (CheckAuth(authKey))
+                return dal.CreateNewListsOfDiseases(diseases);
+            return 0;
         }
 
-        public int CreateNewMedicines(Medicines medicines)
+        public int CreateNewMedicines(Medicines medicines, string authKey)
         {
-            return dal.CreateNewMedicines(medicines);
+            if (CheckAuth(authKey))
+                return dal.CreateNewMedicines(medicines);
+            return 0;
         }
 
-        public int CreateNewPatients(Patient patient)
+        public int CreateNewPatients(Patient patient, string authKey)
         {
-            return dal.CreateNewPatients(patient);
+            if (CheckAuth(authKey))
+                return dal.CreateNewPatients(patient);
+            return 0;
         }
 
-        public int CreateNewRoles(Roles roles)
+        public int CreateNewRoles(Roles roles, string authKey)
         {
-            return dal.CreateNewRoles(roles);
+            if (CheckAuth(authKey))
+                return dal.CreateNewRoles(roles);
+            return 0;
         }
 
-        public int CreateNewSchedule(Schedule schedule)
+        public int CreateNewSchedule(Schedule schedule, string authKey)
         {
-            return dal.CreateNewSchedule(schedule);
+            if (CheckAuth(authKey))
+                return dal.CreateNewSchedule(schedule);
+            return 0;
         }
 
-        public int CreateNewSpetialisations(Spetialisations spetialisations)
+        public int CreateNewSpetialisations(Spetialisations spetialisations, string authKey)
         {
-            return dal.CreateNewSpetialisations(spetialisations);
+            if (CheckAuth(authKey))
+                return dal.CreateNewSpetialisations(spetialisations);
+            return 0;
         }
 
         public bool DeleteCredentials(int ID, string authKey)

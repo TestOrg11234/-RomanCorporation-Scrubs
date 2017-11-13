@@ -32,10 +32,6 @@
             this.auth_login = new System.Windows.Forms.TextBox();
             this.auth_password = new System.Windows.Forms.TextBox();
             this.auth_but_logout = new System.Windows.Forms.Button();
-            this.workBtn = new System.Windows.Forms.Button();
-            this.listOfReceptionBtn = new System.Windows.Forms.Button();
-            this.cardBtn = new System.Windows.Forms.Button();
-            this.patientBtn = new System.Windows.Forms.Button();
             this.tcTabs = new System.Windows.Forms.TabControl();
             this.Patients = new System.Windows.Forms.TabPage();
             this.butDeletePatient = new System.Windows.Forms.Button();
@@ -49,6 +45,8 @@
             this.PhoneNumerPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CardNumerPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Doctors = new System.Windows.Forms.TabPage();
+            this.butDeleteDoctor = new System.Windows.Forms.Button();
+            this.butUpdateDoctor = new System.Windows.Forms.Button();
             this.dgvDoctors = new System.Windows.Forms.DataGridView();
             this.IDDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullNameDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +55,8 @@
             this.EmploymentDateDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CabinetNumberDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfVisit = new System.Windows.Forms.TabPage();
+            this.butDeleteVisit = new System.Windows.Forms.Button();
+            this.butUpdateVisit = new System.Windows.Forms.Button();
             this.dgvVisit = new System.Windows.Forms.DataGridView();
             this.IDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumberCardListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,24 +65,25 @@
             this.PatientIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfDiseases = new System.Windows.Forms.TabPage();
+            this.butDeleteDiagnose = new System.Windows.Forms.Button();
+            this.butUpdateDiagnose = new System.Windows.Forms.Button();
             this.dgvDiagnos = new System.Windows.Forms.DataGridView();
             this.IDListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medicines = new System.Windows.Forms.TabPage();
+            this.butDeleteMedicine = new System.Windows.Forms.Button();
+            this.butUpdateMedicine = new System.Windows.Forms.Button();
             this.dgvMed = new System.Windows.Forms.DataGridView();
             this.IDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.butUpdateDoctor = new System.Windows.Forms.Button();
-            this.butDeleteDoctor = new System.Windows.Forms.Button();
-            this.butDeleteVisit = new System.Windows.Forms.Button();
-            this.butUpdateVisit = new System.Windows.Forms.Button();
-            this.butDeleteDiagnose = new System.Windows.Forms.Button();
-            this.butUpdateDiagnose = new System.Windows.Forms.Button();
-            this.butDeleteMedicine = new System.Windows.Forms.Button();
-            this.butUpdateMedicine = new System.Windows.Forms.Button();
+            this.butAddPatient = new System.Windows.Forms.Button();
+            this.butAddDoctor = new System.Windows.Forms.Button();
+            this.butAddVisit = new System.Windows.Forms.Button();
+            this.butAddDiagnose = new System.Windows.Forms.Button();
+            this.butAddMedicine = new System.Windows.Forms.Button();
             this.tcTabs.SuspendLayout();
             this.Patients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -133,42 +134,6 @@
             this.auth_but_logout.Visible = false;
             this.auth_but_logout.Click += new System.EventHandler(this.auth_but_logout_Click);
             // 
-            // workBtn
-            // 
-            this.workBtn.Location = new System.Drawing.Point(13, 238);
-            this.workBtn.Name = "workBtn";
-            this.workBtn.Size = new System.Drawing.Size(75, 23);
-            this.workBtn.TabIndex = 4;
-            this.workBtn.Text = "График работы";
-            this.workBtn.UseVisualStyleBackColor = true;
-            // 
-            // listOfReceptionBtn
-            // 
-            this.listOfReceptionBtn.Location = new System.Drawing.Point(12, 209);
-            this.listOfReceptionBtn.Name = "listOfReceptionBtn";
-            this.listOfReceptionBtn.Size = new System.Drawing.Size(75, 23);
-            this.listOfReceptionBtn.TabIndex = 5;
-            this.listOfReceptionBtn.Text = "Список посещений";
-            this.listOfReceptionBtn.UseVisualStyleBackColor = true;
-            // 
-            // cardBtn
-            // 
-            this.cardBtn.Location = new System.Drawing.Point(12, 180);
-            this.cardBtn.Name = "cardBtn";
-            this.cardBtn.Size = new System.Drawing.Size(75, 23);
-            this.cardBtn.TabIndex = 6;
-            this.cardBtn.Text = "Мед. карты";
-            this.cardBtn.UseVisualStyleBackColor = true;
-            // 
-            // patientBtn
-            // 
-            this.patientBtn.Location = new System.Drawing.Point(13, 151);
-            this.patientBtn.Name = "patientBtn";
-            this.patientBtn.Size = new System.Drawing.Size(75, 23);
-            this.patientBtn.TabIndex = 7;
-            this.patientBtn.Text = "Пациенты";
-            this.patientBtn.UseVisualStyleBackColor = true;
-            // 
             // tcTabs
             // 
             this.tcTabs.Controls.Add(this.Patients);
@@ -185,6 +150,7 @@
             // 
             // Patients
             // 
+            this.Patients.Controls.Add(this.butAddPatient);
             this.Patients.Controls.Add(this.butDeletePatient);
             this.Patients.Controls.Add(this.butUpdatePatient);
             this.Patients.Controls.Add(this.dgvPatients);
@@ -271,6 +237,7 @@
             // 
             // Doctors
             // 
+            this.Doctors.Controls.Add(this.butAddDoctor);
             this.Doctors.Controls.Add(this.butDeleteDoctor);
             this.Doctors.Controls.Add(this.butUpdateDoctor);
             this.Doctors.Controls.Add(this.dgvDoctors);
@@ -281,6 +248,26 @@
             this.Doctors.TabIndex = 1;
             this.Doctors.Text = "Doctors";
             this.Doctors.UseVisualStyleBackColor = true;
+            // 
+            // butDeleteDoctor
+            // 
+            this.butDeleteDoctor.Location = new System.Drawing.Point(90, 157);
+            this.butDeleteDoctor.Name = "butDeleteDoctor";
+            this.butDeleteDoctor.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteDoctor.TabIndex = 1;
+            this.butDeleteDoctor.Text = "DELETE";
+            this.butDeleteDoctor.UseVisualStyleBackColor = true;
+            this.butDeleteDoctor.Click += new System.EventHandler(this.butDeleteDoctor_Click);
+            // 
+            // butUpdateDoctor
+            // 
+            this.butUpdateDoctor.Location = new System.Drawing.Point(9, 157);
+            this.butUpdateDoctor.Name = "butUpdateDoctor";
+            this.butUpdateDoctor.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateDoctor.TabIndex = 1;
+            this.butUpdateDoctor.Text = "UPDATE";
+            this.butUpdateDoctor.UseVisualStyleBackColor = true;
+            this.butUpdateDoctor.Click += new System.EventHandler(this.butUpdateDoctor_Click);
             // 
             // dgvDoctors
             // 
@@ -330,6 +317,7 @@
             // 
             // ListsOfVisit
             // 
+            this.ListsOfVisit.Controls.Add(this.butAddVisit);
             this.ListsOfVisit.Controls.Add(this.butDeleteVisit);
             this.ListsOfVisit.Controls.Add(this.butUpdateVisit);
             this.ListsOfVisit.Controls.Add(this.dgvVisit);
@@ -339,6 +327,26 @@
             this.ListsOfVisit.TabIndex = 2;
             this.ListsOfVisit.Text = "СписокПосещений";
             this.ListsOfVisit.UseVisualStyleBackColor = true;
+            // 
+            // butDeleteVisit
+            // 
+            this.butDeleteVisit.Location = new System.Drawing.Point(94, 175);
+            this.butDeleteVisit.Name = "butDeleteVisit";
+            this.butDeleteVisit.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteVisit.TabIndex = 2;
+            this.butDeleteVisit.Text = "DELETE";
+            this.butDeleteVisit.UseVisualStyleBackColor = true;
+            this.butDeleteVisit.Click += new System.EventHandler(this.butDeleteVisit_Click);
+            // 
+            // butUpdateVisit
+            // 
+            this.butUpdateVisit.Location = new System.Drawing.Point(13, 175);
+            this.butUpdateVisit.Name = "butUpdateVisit";
+            this.butUpdateVisit.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateVisit.TabIndex = 3;
+            this.butUpdateVisit.Text = "UPDATE";
+            this.butUpdateVisit.UseVisualStyleBackColor = true;
+            this.butUpdateVisit.Click += new System.EventHandler(this.butUpdateVisit_Click);
             // 
             // dgvVisit
             // 
@@ -388,6 +396,7 @@
             // 
             // ListsOfDiseases
             // 
+            this.ListsOfDiseases.Controls.Add(this.butAddDiagnose);
             this.ListsOfDiseases.Controls.Add(this.butDeleteDiagnose);
             this.ListsOfDiseases.Controls.Add(this.butUpdateDiagnose);
             this.ListsOfDiseases.Controls.Add(this.dgvDiagnos);
@@ -397,6 +406,26 @@
             this.ListsOfDiseases.TabIndex = 4;
             this.ListsOfDiseases.Text = "СписокДиагнозов";
             this.ListsOfDiseases.UseVisualStyleBackColor = true;
+            // 
+            // butDeleteDiagnose
+            // 
+            this.butDeleteDiagnose.Location = new System.Drawing.Point(84, 159);
+            this.butDeleteDiagnose.Name = "butDeleteDiagnose";
+            this.butDeleteDiagnose.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteDiagnose.TabIndex = 4;
+            this.butDeleteDiagnose.Text = "DELETE";
+            this.butDeleteDiagnose.UseVisualStyleBackColor = true;
+            this.butDeleteDiagnose.Click += new System.EventHandler(this.butDeleteDiagnose_Click);
+            // 
+            // butUpdateDiagnose
+            // 
+            this.butUpdateDiagnose.Location = new System.Drawing.Point(3, 159);
+            this.butUpdateDiagnose.Name = "butUpdateDiagnose";
+            this.butUpdateDiagnose.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateDiagnose.TabIndex = 5;
+            this.butUpdateDiagnose.Text = "UPDATE";
+            this.butUpdateDiagnose.UseVisualStyleBackColor = true;
+            this.butUpdateDiagnose.Click += new System.EventHandler(this.butUpdateDiagnose_Click);
             // 
             // dgvDiagnos
             // 
@@ -428,6 +457,7 @@
             // 
             // Medicines
             // 
+            this.Medicines.Controls.Add(this.butAddMedicine);
             this.Medicines.Controls.Add(this.butDeleteMedicine);
             this.Medicines.Controls.Add(this.butUpdateMedicine);
             this.Medicines.Controls.Add(this.dgvMed);
@@ -437,6 +467,26 @@
             this.Medicines.TabIndex = 5;
             this.Medicines.Text = "Медикаменты";
             this.Medicines.UseVisualStyleBackColor = true;
+            // 
+            // butDeleteMedicine
+            // 
+            this.butDeleteMedicine.Location = new System.Drawing.Point(93, 161);
+            this.butDeleteMedicine.Name = "butDeleteMedicine";
+            this.butDeleteMedicine.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteMedicine.TabIndex = 6;
+            this.butDeleteMedicine.Text = "DELETE";
+            this.butDeleteMedicine.UseVisualStyleBackColor = true;
+            this.butDeleteMedicine.Click += new System.EventHandler(this.butDeleteMedicine_Click);
+            // 
+            // butUpdateMedicine
+            // 
+            this.butUpdateMedicine.Location = new System.Drawing.Point(12, 161);
+            this.butUpdateMedicine.Name = "butUpdateMedicine";
+            this.butUpdateMedicine.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateMedicine.TabIndex = 7;
+            this.butUpdateMedicine.Text = "UPDATE";
+            this.butUpdateMedicine.UseVisualStyleBackColor = true;
+            this.butUpdateMedicine.Click += new System.EventHandler(this.butUpdateMedicine_Click);
             // 
             // dgvMed
             // 
@@ -472,85 +522,55 @@
             this.DescriptionMedicines.HeaderText = "Description";
             this.DescriptionMedicines.Name = "DescriptionMedicines";
             // 
-            // butUpdateDoctor
+            // butAddPatient
             // 
-            this.butUpdateDoctor.Location = new System.Drawing.Point(9, 157);
-            this.butUpdateDoctor.Name = "butUpdateDoctor";
-            this.butUpdateDoctor.Size = new System.Drawing.Size(75, 23);
-            this.butUpdateDoctor.TabIndex = 1;
-            this.butUpdateDoctor.Text = "UPDATE";
-            this.butUpdateDoctor.UseVisualStyleBackColor = true;
-            this.butUpdateDoctor.Click += new System.EventHandler(this.butUpdateDoctor_Click);
+            this.butAddPatient.Location = new System.Drawing.Point(210, 158);
+            this.butAddPatient.Name = "butAddPatient";
+            this.butAddPatient.Size = new System.Drawing.Size(75, 23);
+            this.butAddPatient.TabIndex = 2;
+            this.butAddPatient.Text = "Add";
+            this.butAddPatient.UseVisualStyleBackColor = true;
+            this.butAddPatient.Click += new System.EventHandler(this.butAddPatient_Click);
             // 
-            // butDeleteDoctor
+            // butAddDoctor
             // 
-            this.butDeleteDoctor.Location = new System.Drawing.Point(90, 157);
-            this.butDeleteDoctor.Name = "butDeleteDoctor";
-            this.butDeleteDoctor.Size = new System.Drawing.Size(75, 23);
-            this.butDeleteDoctor.TabIndex = 1;
-            this.butDeleteDoctor.Text = "DELETE";
-            this.butDeleteDoctor.UseVisualStyleBackColor = true;
-            this.butDeleteDoctor.Click += new System.EventHandler(this.butDeleteDoctor_Click);
+            this.butAddDoctor.Location = new System.Drawing.Point(183, 157);
+            this.butAddDoctor.Name = "butAddDoctor";
+            this.butAddDoctor.Size = new System.Drawing.Size(75, 23);
+            this.butAddDoctor.TabIndex = 3;
+            this.butAddDoctor.Text = "Add";
+            this.butAddDoctor.UseVisualStyleBackColor = true;
+            this.butAddDoctor.Click += new System.EventHandler(this.butAddDoctor_Click);
             // 
-            // butDeleteVisit
+            // butAddVisit
             // 
-            this.butDeleteVisit.Location = new System.Drawing.Point(94, 175);
-            this.butDeleteVisit.Name = "butDeleteVisit";
-            this.butDeleteVisit.Size = new System.Drawing.Size(75, 23);
-            this.butDeleteVisit.TabIndex = 2;
-            this.butDeleteVisit.Text = "DELETE";
-            this.butDeleteVisit.UseVisualStyleBackColor = true;
-            this.butDeleteVisit.Click += new System.EventHandler(this.butDeleteVisit_Click);
+            this.butAddVisit.Location = new System.Drawing.Point(192, 175);
+            this.butAddVisit.Name = "butAddVisit";
+            this.butAddVisit.Size = new System.Drawing.Size(75, 23);
+            this.butAddVisit.TabIndex = 4;
+            this.butAddVisit.Text = "Add";
+            this.butAddVisit.UseVisualStyleBackColor = true;
+            this.butAddVisit.Click += new System.EventHandler(this.butAddVisit_Click);
             // 
-            // butUpdateVisit
+            // butAddDiagnose
             // 
-            this.butUpdateVisit.Location = new System.Drawing.Point(13, 175);
-            this.butUpdateVisit.Name = "butUpdateVisit";
-            this.butUpdateVisit.Size = new System.Drawing.Size(75, 23);
-            this.butUpdateVisit.TabIndex = 3;
-            this.butUpdateVisit.Text = "UPDATE";
-            this.butUpdateVisit.UseVisualStyleBackColor = true;
-            this.butUpdateVisit.Click += new System.EventHandler(this.butUpdateVisit_Click);
+            this.butAddDiagnose.Location = new System.Drawing.Point(176, 159);
+            this.butAddDiagnose.Name = "butAddDiagnose";
+            this.butAddDiagnose.Size = new System.Drawing.Size(75, 23);
+            this.butAddDiagnose.TabIndex = 6;
+            this.butAddDiagnose.Text = "Add";
+            this.butAddDiagnose.UseVisualStyleBackColor = true;
+            this.butAddDiagnose.Click += new System.EventHandler(this.butAddDiagnose_Click);
             // 
-            // butDeleteDiagnose
+            // butAddMedicine
             // 
-            this.butDeleteDiagnose.Location = new System.Drawing.Point(84, 159);
-            this.butDeleteDiagnose.Name = "butDeleteDiagnose";
-            this.butDeleteDiagnose.Size = new System.Drawing.Size(75, 23);
-            this.butDeleteDiagnose.TabIndex = 4;
-            this.butDeleteDiagnose.Text = "DELETE";
-            this.butDeleteDiagnose.UseVisualStyleBackColor = true;
-            this.butDeleteDiagnose.Click += new System.EventHandler(this.butDeleteDiagnose_Click);
-            // 
-            // butUpdateDiagnose
-            // 
-            this.butUpdateDiagnose.Location = new System.Drawing.Point(3, 159);
-            this.butUpdateDiagnose.Name = "butUpdateDiagnose";
-            this.butUpdateDiagnose.Size = new System.Drawing.Size(75, 23);
-            this.butUpdateDiagnose.TabIndex = 5;
-            this.butUpdateDiagnose.Text = "UPDATE";
-            this.butUpdateDiagnose.UseVisualStyleBackColor = true;
-            this.butUpdateDiagnose.Click += new System.EventHandler(this.butUpdateDiagnose_Click);
-            // 
-            // butDeleteMedicine
-            // 
-            this.butDeleteMedicine.Location = new System.Drawing.Point(93, 161);
-            this.butDeleteMedicine.Name = "butDeleteMedicine";
-            this.butDeleteMedicine.Size = new System.Drawing.Size(75, 23);
-            this.butDeleteMedicine.TabIndex = 6;
-            this.butDeleteMedicine.Text = "DELETE";
-            this.butDeleteMedicine.UseVisualStyleBackColor = true;
-            this.butDeleteMedicine.Click += new System.EventHandler(this.butDeleteMedicine_Click);
-            // 
-            // butUpdateMedicine
-            // 
-            this.butUpdateMedicine.Location = new System.Drawing.Point(12, 161);
-            this.butUpdateMedicine.Name = "butUpdateMedicine";
-            this.butUpdateMedicine.Size = new System.Drawing.Size(75, 23);
-            this.butUpdateMedicine.TabIndex = 7;
-            this.butUpdateMedicine.Text = "UPDATE";
-            this.butUpdateMedicine.UseVisualStyleBackColor = true;
-            this.butUpdateMedicine.Click += new System.EventHandler(this.butUpdateMedicine_Click);
+            this.butAddMedicine.Location = new System.Drawing.Point(191, 161);
+            this.butAddMedicine.Name = "butAddMedicine";
+            this.butAddMedicine.Size = new System.Drawing.Size(75, 23);
+            this.butAddMedicine.TabIndex = 8;
+            this.butAddMedicine.Text = "Add";
+            this.butAddMedicine.UseVisualStyleBackColor = true;
+            this.butAddMedicine.Click += new System.EventHandler(this.butAddMedicine_Click);
             // 
             // Form1
             // 
@@ -558,10 +578,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 349);
             this.Controls.Add(this.tcTabs);
-            this.Controls.Add(this.patientBtn);
-            this.Controls.Add(this.cardBtn);
-            this.Controls.Add(this.listOfReceptionBtn);
-            this.Controls.Add(this.workBtn);
             this.Controls.Add(this.auth_but_logout);
             this.Controls.Add(this.auth_password);
             this.Controls.Add(this.auth_login);
@@ -590,10 +606,6 @@
         private System.Windows.Forms.TextBox auth_login;
         private System.Windows.Forms.TextBox auth_password;
         private System.Windows.Forms.Button auth_but_logout;
-        private System.Windows.Forms.Button workBtn;
-        private System.Windows.Forms.Button listOfReceptionBtn;
-        private System.Windows.Forms.Button cardBtn;
-        private System.Windows.Forms.Button patientBtn;
         private System.Windows.Forms.TabControl tcTabs;
         private System.Windows.Forms.TabPage Patients;
         private System.Windows.Forms.TabPage Doctors;
@@ -641,6 +653,11 @@
         private System.Windows.Forms.Button butUpdateDiagnose;
         private System.Windows.Forms.Button butDeleteMedicine;
         private System.Windows.Forms.Button butUpdateMedicine;
+        private System.Windows.Forms.Button butAddPatient;
+        private System.Windows.Forms.Button butAddDoctor;
+        private System.Windows.Forms.Button butAddVisit;
+        private System.Windows.Forms.Button butAddDiagnose;
+        private System.Windows.Forms.Button butAddMedicine;
     }
 }
 
