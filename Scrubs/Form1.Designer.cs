@@ -34,6 +34,7 @@
             this.auth_but_logout = new System.Windows.Forms.Button();
             this.tcTabs = new System.Windows.Forms.TabControl();
             this.Patients = new System.Windows.Forms.TabPage();
+            this.butAddPatient = new System.Windows.Forms.Button();
             this.butDeletePatient = new System.Windows.Forms.Button();
             this.butUpdatePatient = new System.Windows.Forms.Button();
             this.dgvPatients = new System.Windows.Forms.DataGridView();
@@ -45,6 +46,7 @@
             this.PhoneNumerPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CardNumerPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Doctors = new System.Windows.Forms.TabPage();
+            this.butAddDoctor = new System.Windows.Forms.Button();
             this.butDeleteDoctor = new System.Windows.Forms.Button();
             this.butUpdateDoctor = new System.Windows.Forms.Button();
             this.dgvDoctors = new System.Windows.Forms.DataGridView();
@@ -55,6 +57,7 @@
             this.EmploymentDateDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CabinetNumberDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfVisit = new System.Windows.Forms.TabPage();
+            this.butAddVisit = new System.Windows.Forms.Button();
             this.butDeleteVisit = new System.Windows.Forms.Button();
             this.butUpdateVisit = new System.Windows.Forms.Button();
             this.dgvVisit = new System.Windows.Forms.DataGridView();
@@ -65,6 +68,7 @@
             this.PatientIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDListOfVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfDiseases = new System.Windows.Forms.TabPage();
+            this.butAddDiagnose = new System.Windows.Forms.Button();
             this.butDeleteDiagnose = new System.Windows.Forms.Button();
             this.butUpdateDiagnose = new System.Windows.Forms.Button();
             this.dgvDiagnos = new System.Windows.Forms.DataGridView();
@@ -72,6 +76,7 @@
             this.NameListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionListsOfDiseases = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Medicines = new System.Windows.Forms.TabPage();
+            this.butAddMedicine = new System.Windows.Forms.Button();
             this.butDeleteMedicine = new System.Windows.Forms.Button();
             this.butUpdateMedicine = new System.Windows.Forms.Button();
             this.dgvMed = new System.Windows.Forms.DataGridView();
@@ -79,11 +84,17 @@
             this.NameMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiagnosisIDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.butAddPatient = new System.Windows.Forms.Button();
-            this.butAddDoctor = new System.Windows.Forms.Button();
-            this.butAddVisit = new System.Windows.Forms.Button();
-            this.butAddDiagnose = new System.Windows.Forms.Button();
-            this.butAddMedicine = new System.Windows.Forms.Button();
+            this.Shedules = new System.Windows.Forms.TabPage();
+            this.dgvShedule = new System.Windows.Forms.DataGridView();
+            this.IDShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CabinetNumberShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartTimeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndTimeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.butAddShedule = new System.Windows.Forms.Button();
+            this.butDeleteShedule = new System.Windows.Forms.Button();
+            this.butUpdateShedule = new System.Windows.Forms.Button();
+            this.SheduleDoctorsCredantials = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcTabs.SuspendLayout();
             this.Patients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -95,6 +106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnos)).BeginInit();
             this.Medicines.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).BeginInit();
+            this.Shedules.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShedule)).BeginInit();
             this.SuspendLayout();
             // 
             // auth_but_login
@@ -141,6 +154,7 @@
             this.tcTabs.Controls.Add(this.ListsOfVisit);
             this.tcTabs.Controls.Add(this.ListsOfDiseases);
             this.tcTabs.Controls.Add(this.Medicines);
+            this.tcTabs.Controls.Add(this.Shedules);
             this.tcTabs.Location = new System.Drawing.Point(118, 12);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
@@ -161,6 +175,16 @@
             this.Patients.TabIndex = 0;
             this.Patients.Text = "Пациены";
             this.Patients.UseVisualStyleBackColor = true;
+            // 
+            // butAddPatient
+            // 
+            this.butAddPatient.Location = new System.Drawing.Point(210, 158);
+            this.butAddPatient.Name = "butAddPatient";
+            this.butAddPatient.Size = new System.Drawing.Size(75, 23);
+            this.butAddPatient.TabIndex = 2;
+            this.butAddPatient.Text = "Add";
+            this.butAddPatient.UseVisualStyleBackColor = true;
+            this.butAddPatient.Click += new System.EventHandler(this.butAddPatient_Click);
             // 
             // butDeletePatient
             // 
@@ -249,6 +273,16 @@
             this.Doctors.Text = "Doctors";
             this.Doctors.UseVisualStyleBackColor = true;
             // 
+            // butAddDoctor
+            // 
+            this.butAddDoctor.Location = new System.Drawing.Point(183, 157);
+            this.butAddDoctor.Name = "butAddDoctor";
+            this.butAddDoctor.Size = new System.Drawing.Size(75, 23);
+            this.butAddDoctor.TabIndex = 3;
+            this.butAddDoctor.Text = "Add";
+            this.butAddDoctor.UseVisualStyleBackColor = true;
+            this.butAddDoctor.Click += new System.EventHandler(this.butAddDoctor_Click);
+            // 
             // butDeleteDoctor
             // 
             this.butDeleteDoctor.Location = new System.Drawing.Point(90, 157);
@@ -278,10 +312,11 @@
             this.SpetialisationDoctors,
             this.BirthdayDoctors,
             this.EmploymentDateDoctors,
-            this.CabinetNumberDoctors});
+            this.CabinetNumberDoctors,
+            this.SheduleDoctorsCredantials});
             this.dgvDoctors.Location = new System.Drawing.Point(9, 3);
             this.dgvDoctors.Name = "dgvDoctors";
-            this.dgvDoctors.Size = new System.Drawing.Size(666, 137);
+            this.dgvDoctors.Size = new System.Drawing.Size(702, 137);
             this.dgvDoctors.TabIndex = 0;
             // 
             // IDDoctors
@@ -327,6 +362,16 @@
             this.ListsOfVisit.TabIndex = 2;
             this.ListsOfVisit.Text = "СписокПосещений";
             this.ListsOfVisit.UseVisualStyleBackColor = true;
+            // 
+            // butAddVisit
+            // 
+            this.butAddVisit.Location = new System.Drawing.Point(192, 175);
+            this.butAddVisit.Name = "butAddVisit";
+            this.butAddVisit.Size = new System.Drawing.Size(75, 23);
+            this.butAddVisit.TabIndex = 4;
+            this.butAddVisit.Text = "Add";
+            this.butAddVisit.UseVisualStyleBackColor = true;
+            this.butAddVisit.Click += new System.EventHandler(this.butAddVisit_Click);
             // 
             // butDeleteVisit
             // 
@@ -407,6 +452,16 @@
             this.ListsOfDiseases.Text = "СписокДиагнозов";
             this.ListsOfDiseases.UseVisualStyleBackColor = true;
             // 
+            // butAddDiagnose
+            // 
+            this.butAddDiagnose.Location = new System.Drawing.Point(176, 159);
+            this.butAddDiagnose.Name = "butAddDiagnose";
+            this.butAddDiagnose.Size = new System.Drawing.Size(75, 23);
+            this.butAddDiagnose.TabIndex = 6;
+            this.butAddDiagnose.Text = "Add";
+            this.butAddDiagnose.UseVisualStyleBackColor = true;
+            this.butAddDiagnose.Click += new System.EventHandler(this.butAddDiagnose_Click);
+            // 
             // butDeleteDiagnose
             // 
             this.butDeleteDiagnose.Location = new System.Drawing.Point(84, 159);
@@ -468,6 +523,16 @@
             this.Medicines.Text = "Медикаменты";
             this.Medicines.UseVisualStyleBackColor = true;
             // 
+            // butAddMedicine
+            // 
+            this.butAddMedicine.Location = new System.Drawing.Point(191, 161);
+            this.butAddMedicine.Name = "butAddMedicine";
+            this.butAddMedicine.Size = new System.Drawing.Size(75, 23);
+            this.butAddMedicine.TabIndex = 8;
+            this.butAddMedicine.Text = "Add";
+            this.butAddMedicine.UseVisualStyleBackColor = true;
+            this.butAddMedicine.Click += new System.EventHandler(this.butAddMedicine_Click);
+            // 
             // butDeleteMedicine
             // 
             this.butDeleteMedicine.Location = new System.Drawing.Point(93, 161);
@@ -522,55 +587,90 @@
             this.DescriptionMedicines.HeaderText = "Description";
             this.DescriptionMedicines.Name = "DescriptionMedicines";
             // 
-            // butAddPatient
+            // Shedules
             // 
-            this.butAddPatient.Location = new System.Drawing.Point(210, 158);
-            this.butAddPatient.Name = "butAddPatient";
-            this.butAddPatient.Size = new System.Drawing.Size(75, 23);
-            this.butAddPatient.TabIndex = 2;
-            this.butAddPatient.Text = "Add";
-            this.butAddPatient.UseVisualStyleBackColor = true;
-            this.butAddPatient.Click += new System.EventHandler(this.butAddPatient_Click);
+            this.Shedules.Controls.Add(this.butAddShedule);
+            this.Shedules.Controls.Add(this.butDeleteShedule);
+            this.Shedules.Controls.Add(this.butUpdateShedule);
+            this.Shedules.Controls.Add(this.dgvShedule);
+            this.Shedules.Location = new System.Drawing.Point(4, 22);
+            this.Shedules.Name = "Shedules";
+            this.Shedules.Size = new System.Drawing.Size(878, 268);
+            this.Shedules.TabIndex = 6;
+            this.Shedules.Text = "Графики";
+            this.Shedules.UseVisualStyleBackColor = true;
             // 
-            // butAddDoctor
+            // dgvShedule
             // 
-            this.butAddDoctor.Location = new System.Drawing.Point(183, 157);
-            this.butAddDoctor.Name = "butAddDoctor";
-            this.butAddDoctor.Size = new System.Drawing.Size(75, 23);
-            this.butAddDoctor.TabIndex = 3;
-            this.butAddDoctor.Text = "Add";
-            this.butAddDoctor.UseVisualStyleBackColor = true;
-            this.butAddDoctor.Click += new System.EventHandler(this.butAddDoctor_Click);
+            this.dgvShedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShedule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDShedule,
+            this.DataShedule,
+            this.CabinetNumberShedule,
+            this.StartTimeShedule,
+            this.EndTimeShedule});
+            this.dgvShedule.Location = new System.Drawing.Point(3, 5);
+            this.dgvShedule.Name = "dgvShedule";
+            this.dgvShedule.Size = new System.Drawing.Size(565, 180);
+            this.dgvShedule.TabIndex = 0;
             // 
-            // butAddVisit
+            // IDShedule
             // 
-            this.butAddVisit.Location = new System.Drawing.Point(192, 175);
-            this.butAddVisit.Name = "butAddVisit";
-            this.butAddVisit.Size = new System.Drawing.Size(75, 23);
-            this.butAddVisit.TabIndex = 4;
-            this.butAddVisit.Text = "Add";
-            this.butAddVisit.UseVisualStyleBackColor = true;
-            this.butAddVisit.Click += new System.EventHandler(this.butAddVisit_Click);
+            this.IDShedule.HeaderText = "ID";
+            this.IDShedule.Name = "IDShedule";
+            this.IDShedule.ReadOnly = true;
             // 
-            // butAddDiagnose
+            // DataShedule
             // 
-            this.butAddDiagnose.Location = new System.Drawing.Point(176, 159);
-            this.butAddDiagnose.Name = "butAddDiagnose";
-            this.butAddDiagnose.Size = new System.Drawing.Size(75, 23);
-            this.butAddDiagnose.TabIndex = 6;
-            this.butAddDiagnose.Text = "Add";
-            this.butAddDiagnose.UseVisualStyleBackColor = true;
-            this.butAddDiagnose.Click += new System.EventHandler(this.butAddDiagnose_Click);
+            this.DataShedule.HeaderText = "Data";
+            this.DataShedule.Name = "DataShedule";
             // 
-            // butAddMedicine
+            // CabinetNumberShedule
             // 
-            this.butAddMedicine.Location = new System.Drawing.Point(191, 161);
-            this.butAddMedicine.Name = "butAddMedicine";
-            this.butAddMedicine.Size = new System.Drawing.Size(75, 23);
-            this.butAddMedicine.TabIndex = 8;
-            this.butAddMedicine.Text = "Add";
-            this.butAddMedicine.UseVisualStyleBackColor = true;
-            this.butAddMedicine.Click += new System.EventHandler(this.butAddMedicine_Click);
+            this.CabinetNumberShedule.HeaderText = "CabinetNumber";
+            this.CabinetNumberShedule.Name = "CabinetNumberShedule";
+            // 
+            // StartTimeShedule
+            // 
+            this.StartTimeShedule.HeaderText = "StartTime";
+            this.StartTimeShedule.Name = "StartTimeShedule";
+            // 
+            // EndTimeShedule
+            // 
+            this.EndTimeShedule.HeaderText = "EndTime";
+            this.EndTimeShedule.Name = "EndTimeShedule";
+            // 
+            // butAddShedule
+            // 
+            this.butAddShedule.Location = new System.Drawing.Point(192, 218);
+            this.butAddShedule.Name = "butAddShedule";
+            this.butAddShedule.Size = new System.Drawing.Size(75, 23);
+            this.butAddShedule.TabIndex = 11;
+            this.butAddShedule.Text = "Add";
+            this.butAddShedule.UseVisualStyleBackColor = true;
+            // 
+            // butDeleteShedule
+            // 
+            this.butDeleteShedule.Location = new System.Drawing.Point(94, 218);
+            this.butDeleteShedule.Name = "butDeleteShedule";
+            this.butDeleteShedule.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteShedule.TabIndex = 9;
+            this.butDeleteShedule.Text = "DELETE";
+            this.butDeleteShedule.UseVisualStyleBackColor = true;
+            // 
+            // butUpdateShedule
+            // 
+            this.butUpdateShedule.Location = new System.Drawing.Point(13, 218);
+            this.butUpdateShedule.Name = "butUpdateShedule";
+            this.butUpdateShedule.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateShedule.TabIndex = 10;
+            this.butUpdateShedule.Text = "UPDATE";
+            this.butUpdateShedule.UseVisualStyleBackColor = true;
+            // 
+            // SheduleDoctorsCredantials
+            // 
+            this.SheduleDoctorsCredantials.HeaderText = "Shedule";
+            this.SheduleDoctorsCredantials.Name = "SheduleDoctorsCredantials";
             // 
             // Form1
             // 
@@ -595,6 +695,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagnos)).EndInit();
             this.Medicines.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).EndInit();
+            this.Shedules.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShedule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -658,6 +760,17 @@
         private System.Windows.Forms.Button butAddVisit;
         private System.Windows.Forms.Button butAddDiagnose;
         private System.Windows.Forms.Button butAddMedicine;
+        private System.Windows.Forms.TabPage Shedules;
+        private System.Windows.Forms.Button butAddShedule;
+        private System.Windows.Forms.Button butDeleteShedule;
+        private System.Windows.Forms.Button butUpdateShedule;
+        private System.Windows.Forms.DataGridView dgvShedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDShedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataShedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CabinetNumberShedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartTimeShedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndTimeShedule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SheduleDoctorsCredantials;
     }
 }
 

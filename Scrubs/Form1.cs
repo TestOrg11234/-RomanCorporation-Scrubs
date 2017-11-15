@@ -254,12 +254,12 @@ namespace Scrubs
         {
             var d = new Doctor()
             {
-                FullName = (string)dgvPatients.CurrentRow.Cells[1].Value,
+                FullName = (string)dgvDoctors.CurrentRow.Cells[1].Value,
                 Spetialisation = new Spetialisations()
                 {
                     ID = int.Parse(dgvDoctors.CurrentRow.Cells[2].Value + "")
                 },
-                BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[3].Value + ""),
+                BirthDay = DateTime.Parse(dgvDoctors.CurrentRow.Cells[3].Value + ""),
                 EmploymentDate = DateTime.Parse(dgvDoctors.CurrentRow.Cells[4].Value + ""),
                 CabinetNumber = int.Parse(dgvDoctors.CurrentRow.Cells[5].Value + "")
             };

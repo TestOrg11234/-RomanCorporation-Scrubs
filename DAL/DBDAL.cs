@@ -129,7 +129,7 @@ namespace DAL
                         {
                             ParameterName = "@spetialisation",
                             SqlDbType = SqlDbType.Int,
-                            Value = doctor.Spetialisation
+                            Value = doctor.Spetialisation.ID
                         },
                         new SqlParameter()
                         {
