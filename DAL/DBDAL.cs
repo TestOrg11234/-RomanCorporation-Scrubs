@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Net;
 //переделать удаление пациентов
+//доделать addshedule, написать хранимку addshedule
 namespace DAL
 {
     public class DBDAL : IDAL
@@ -796,7 +797,7 @@ namespace DAL
                         {
                             ID = (int)reader["ID"],
                             Data = (DateTime)reader["[Data]"],
-                            CabinetNumber = ((string)reader["CabinetNumber"]).Trim(),
+                            CabinetNumber = ((int)reader["CabinetNumber"]),
                             StartTime = (DateTime)reader["StartTime"],
                             EndTime = (DateTime)reader["EndTime"],
                         };
@@ -1308,6 +1309,132 @@ namespace DAL
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public void UpdateSchedule(Schedule s)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdateSchedule", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = s.ID
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@data",
+                            SqlDbType = SqlDbType.Date,
+                            Value = s.Data
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@cabinetnumber",
+                            SqlDbType = SqlDbType.Int,
+                            Value = s.CabinetNumber
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@starttime",
+                            SqlDbType = SqlDbType.Time,
+                            Size = 0,
+                            Value = s.StartTime
+                        },
+                         new SqlParameter()
+                        {
+                            ParameterName = "@endtime",
+                            SqlDbType = SqlDbType.Time,
+                            Size = 0,
+                            Value = s.EndTime
+                        },
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool DeleteSedule(int value)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("DeleteSchedule", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter()
+                    {
+                        ParameterName = "@ID",
+                        SqlDbType = SqlDbType.Int,
+                        Value = value
+                    });
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true; //!!!
+        }
+
+        public void AddSchedule(object s)
+        {
+            int ID = 0;
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("AddSchedule", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@data",
+                            SqlDbType = SqlDbType.Date,
+                            Value = schedule.Data
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@cabinetNumber",
+                            SqlDbType = SqlDbType.Int,
+                            Value = schedule.CabinetNumber
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@startTime",
+                            SqlDbType = SqlDbType.Time,
+                            Value = schedule.StartTime
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@endTime",
+                            SqlDbType = SqlDbType.Time,
+                            Value = schedule.EndTime
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = schedule.ID,
+                            Direction = ParameterDirection.Output
+                        }
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                    ID = (int)cmd.Parameters["@id"].Value;
+                }
+            }
+            return ID;
         }
     }
 }

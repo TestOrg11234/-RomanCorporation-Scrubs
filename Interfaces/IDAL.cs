@@ -45,5 +45,8 @@ namespace Interfaces
         void UpdateVisit(Visit v);
         void UpdateDiagnose(Diseases d);
         void UpdateMedicine(Medicines m);
+        void UpdateSchedule(Schedule s);
+        bool DeleteSedule(int value);
+        void AddSchedule(object s);
     }
 }

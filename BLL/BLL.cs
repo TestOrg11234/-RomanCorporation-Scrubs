@@ -294,5 +294,30 @@ namespace BLL
                 dal.UpdateMedicine(m);
             }
         }
+
+        public void UpdateShedule(Schedule s, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                dal.UpdateSchedule(s);
+            }
+        }
+
+        public bool DeleteShedule(int value, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.DeleteSedule(value);
+            }
+            return false;
+        }
+
+        public object AddShedule(object p, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                dal.AddSchedule(s);
+            }
+        }
     }
 }

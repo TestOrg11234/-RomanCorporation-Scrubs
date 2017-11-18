@@ -306,5 +306,39 @@ namespace Scrubs
             var id = bll.CreateNewMedicines(m, credAuth.AuthKey);
             dgvMed.CurrentRow.Cells[0].Value = id;
         }
+
+        private void butUpdateShedule_Click(object sender, EventArgs e)
+        {
+            var s = new Schedule()
+            {
+                ID = int.Parse(dgvShedule.CurrentRow.Cells[0].Value + ""),
+                CabinetNumber =int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
+                Data = DateTime.Parse(dgvShedule.CurrentRow.Cells[1].Value + ""),
+                StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
+                EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + "")
+            };
+            bll.UpdateShedule(s, credAuth.AuthKey);
+        }
+
+        private void butDeleteShedule_Click(object sender, EventArgs e)
+        {
+            if (bll.DeleteShedule((int)dgvShedule.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            {
+                dgvShedule.Rows.RemoveAt(dgvShedule.CurrentRow.Index);
+            }
+        }
+
+        private void butAddShedule_Click(object sender, EventArgs e)
+        {
+            var s = new Schedule()
+            {
+                Data = DateTime.Parse(dgvShedule.CurrentRow.Cells[1].Value + ""),
+                CabinetNumber =  int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
+                StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
+                EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + ""),
+            };
+            var id = bll.AddShedule(p, credAuth.AuthKey);
+            dgvShedule.CurrentRow.Cells[0].Value = id;
+        }
     }
 }

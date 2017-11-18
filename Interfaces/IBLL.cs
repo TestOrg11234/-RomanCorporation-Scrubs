@@ -48,5 +48,8 @@ namespace Interfaces
         void UpdateVisit(Visit v, string authKey);
         void UpdateDiagnose(Diseases d, string authKey);
         void UpdateMedicine(Medicines m, string authKey);
+        void UpdateShedule(Schedule s, string authKey);
+        bool DeleteShedule(int value, string authKey);
+        object AddShedule(object p, string authKey);
     }
 }

@@ -56,6 +56,7 @@
             this.BirthdayDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmploymentDateDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CabinetNumberDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SheduleDoctorsCredantials = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfVisit = new System.Windows.Forms.TabPage();
             this.butAddVisit = new System.Windows.Forms.Button();
             this.butDeleteVisit = new System.Windows.Forms.Button();
@@ -85,16 +86,15 @@
             this.DiagnosisIDMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionMedicines = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Shedules = new System.Windows.Forms.TabPage();
+            this.butAddShedule = new System.Windows.Forms.Button();
+            this.butDeleteShedule = new System.Windows.Forms.Button();
+            this.butUpdateShedule = new System.Windows.Forms.Button();
             this.dgvShedule = new System.Windows.Forms.DataGridView();
             this.IDShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CabinetNumberShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartTimeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndTimeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.butAddShedule = new System.Windows.Forms.Button();
-            this.butDeleteShedule = new System.Windows.Forms.Button();
-            this.butUpdateShedule = new System.Windows.Forms.Button();
-            this.SheduleDoctorsCredantials = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcTabs.SuspendLayout();
             this.Patients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -350,6 +350,11 @@
             this.CabinetNumberDoctors.HeaderText = "CabinetNumber";
             this.CabinetNumberDoctors.Name = "CabinetNumberDoctors";
             // 
+            // SheduleDoctorsCredantials
+            // 
+            this.SheduleDoctorsCredantials.HeaderText = "Shedule";
+            this.SheduleDoctorsCredantials.Name = "SheduleDoctorsCredantials";
+            // 
             // ListsOfVisit
             // 
             this.ListsOfVisit.Controls.Add(this.butAddVisit);
@@ -600,6 +605,36 @@
             this.Shedules.Text = "Графики";
             this.Shedules.UseVisualStyleBackColor = true;
             // 
+            // butAddShedule
+            // 
+            this.butAddShedule.Location = new System.Drawing.Point(192, 218);
+            this.butAddShedule.Name = "butAddShedule";
+            this.butAddShedule.Size = new System.Drawing.Size(75, 23);
+            this.butAddShedule.TabIndex = 11;
+            this.butAddShedule.Text = "Add";
+            this.butAddShedule.UseVisualStyleBackColor = true;
+            this.butAddShedule.Click += new System.EventHandler(this.butAddShedule_Click);
+            // 
+            // butDeleteShedule
+            // 
+            this.butDeleteShedule.Location = new System.Drawing.Point(94, 218);
+            this.butDeleteShedule.Name = "butDeleteShedule";
+            this.butDeleteShedule.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteShedule.TabIndex = 9;
+            this.butDeleteShedule.Text = "DELETE";
+            this.butDeleteShedule.UseVisualStyleBackColor = true;
+            this.butDeleteShedule.Click += new System.EventHandler(this.butDeleteShedule_Click);
+            // 
+            // butUpdateShedule
+            // 
+            this.butUpdateShedule.Location = new System.Drawing.Point(13, 218);
+            this.butUpdateShedule.Name = "butUpdateShedule";
+            this.butUpdateShedule.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateShedule.TabIndex = 10;
+            this.butUpdateShedule.Text = "UPDATE";
+            this.butUpdateShedule.UseVisualStyleBackColor = true;
+            this.butUpdateShedule.Click += new System.EventHandler(this.butUpdateShedule_Click);
+            // 
             // dgvShedule
             // 
             this.dgvShedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -639,38 +674,6 @@
             // 
             this.EndTimeShedule.HeaderText = "EndTime";
             this.EndTimeShedule.Name = "EndTimeShedule";
-            // 
-            // butAddShedule
-            // 
-            this.butAddShedule.Location = new System.Drawing.Point(192, 218);
-            this.butAddShedule.Name = "butAddShedule";
-            this.butAddShedule.Size = new System.Drawing.Size(75, 23);
-            this.butAddShedule.TabIndex = 11;
-            this.butAddShedule.Text = "Add";
-            this.butAddShedule.UseVisualStyleBackColor = true;
-            // 
-            // butDeleteShedule
-            // 
-            this.butDeleteShedule.Location = new System.Drawing.Point(94, 218);
-            this.butDeleteShedule.Name = "butDeleteShedule";
-            this.butDeleteShedule.Size = new System.Drawing.Size(75, 23);
-            this.butDeleteShedule.TabIndex = 9;
-            this.butDeleteShedule.Text = "DELETE";
-            this.butDeleteShedule.UseVisualStyleBackColor = true;
-            // 
-            // butUpdateShedule
-            // 
-            this.butUpdateShedule.Location = new System.Drawing.Point(13, 218);
-            this.butUpdateShedule.Name = "butUpdateShedule";
-            this.butUpdateShedule.Size = new System.Drawing.Size(75, 23);
-            this.butUpdateShedule.TabIndex = 10;
-            this.butUpdateShedule.Text = "UPDATE";
-            this.butUpdateShedule.UseVisualStyleBackColor = true;
-            // 
-            // SheduleDoctorsCredantials
-            // 
-            this.SheduleDoctorsCredantials.HeaderText = "Shedule";
-            this.SheduleDoctorsCredantials.Name = "SheduleDoctorsCredantials";
             // 
             // Form1
             // 

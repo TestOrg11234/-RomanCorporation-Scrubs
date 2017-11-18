@@ -10,7 +10,7 @@ namespace Entity
     {
         public int ID { get; set; }
         public DateTime Data { get; set; }
-        public string CabinetNumber { get; set; }
+        public int CabinetNumber { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
 
