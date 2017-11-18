@@ -48,5 +48,6 @@ namespace Interfaces
         void UpdateSchedule(Schedule s);
         bool DeleteSedule(int value);
         int AddSchedule(Schedule s);
+        bool DeletePatient(int ID);
     }
 }

@@ -147,7 +147,7 @@ namespace DAL
                         {
                             ParameterName = "@shedule",
                             SqlDbType = SqlDbType.Int,
-                            Value = doctor._Schedule
+                            Value = doctor._Schedule.ID
                         },
                         //new SqlParameter()
                         //{
@@ -167,7 +167,7 @@ namespace DAL
                         {
                             ParameterName = "@birthDay",
                             SqlDbType = SqlDbType.Date,
-                            Value = doctor.BirthDay.ToString("yyyy-MM-dd")
+                            Value = doctor.BirthDay
                         },
                         new SqlParameter()
                         {
@@ -705,7 +705,7 @@ namespace DAL
                         {
                             ID = (int)reader["ID"],
                             Name = ((string)reader["Name"]).Trim(),
-                            Description = ((string)reader["[Description]"]).Trim(),
+                            Description = ((string)reader["Description"]).Trim(),
                         };
                     };
                 }
@@ -726,7 +726,7 @@ namespace DAL
                         {
                             ID = (int)reader["ID"],
                             Name = ((string)reader["Name"]).Trim(),
-                            Description = ((string)reader["[Description]"]).Trim(),
+                            Description = ((string)reader["Description"]).Trim(),
                             _Diagnosis = new Diseases()
                             {
                                 ID = (int)reader["DiagnosisID"],//!!!
@@ -785,7 +785,7 @@ namespace DAL
         {
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
-                using (SqlCommand cmd = new SqlCommand("GetSchedule", scon))
+                using (SqlCommand cmd = new SqlCommand("GetSchedules", scon))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     scon.Open();
@@ -795,7 +795,7 @@ namespace DAL
                         yield return new Schedule()
                         {
                             ID = (int)reader["ID"],
-                            Data = (DateTime)reader["[Data]"],
+                            Data = (DateTime)reader["Data"],
                             CabinetNumber = ((int)reader["CabinetNumber"]),
                             StartTime = (DateTime)reader["StartTime"],
                             EndTime = (DateTime)reader["EndTime"],
@@ -1290,7 +1290,7 @@ namespace DAL
                         {
                             ParameterName = "@diagnosisID",
                             SqlDbType = SqlDbType.Int,
-                            Value = m._Diagnosis
+                            Value = m._Diagnosis.ID
                         },
                         new SqlParameter()
                         {
@@ -1340,15 +1340,13 @@ namespace DAL
                         new SqlParameter()
                         {
                             ParameterName = "@starttime",
-                            SqlDbType = SqlDbType.Time,
-                            Size = 0,
+                            SqlDbType = SqlDbType.DateTime,
                             Value = s.StartTime
                         },
                          new SqlParameter()
                         {
                             ParameterName = "@endtime",
-                            SqlDbType = SqlDbType.Time,
-                            Size = 0,
+                            SqlDbType = SqlDbType.DateTime,
                             Value = s.EndTime
                         },
                     };
@@ -1388,7 +1386,7 @@ namespace DAL
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
-                using (SqlCommand cmd = new SqlCommand("AddSchedule", scon))
+                using (SqlCommand cmd = new SqlCommand("CreateNewSchedule", scon))
                 {
                     #region sParams
                     SqlParameter[] sParams =
@@ -1408,13 +1406,13 @@ namespace DAL
                         new SqlParameter()
                         {
                             ParameterName = "@startTime",
-                            SqlDbType = SqlDbType.Time,
+                            SqlDbType = SqlDbType.DateTime,
                             Value = s.StartTime
                         },
                         new SqlParameter()
                         {
                             ParameterName = "@endTime",
-                            SqlDbType = SqlDbType.Time,
+                            SqlDbType = SqlDbType.DateTime,
                             Value = s.EndTime
                         },
                         new SqlParameter()
@@ -1435,6 +1433,26 @@ namespace DAL
                 }
             }
             return ID;
+        }
+
+        public bool DeletePatient(int ID)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("DeletePatients", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter()
+                    {
+                        ParameterName = "@ID",
+                        SqlDbType = SqlDbType.Int,
+                        Value = ID
+                    });
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true; //!!!
         }
     }
 }

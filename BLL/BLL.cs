@@ -316,9 +316,27 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
-                dal.AddSchedule(s);
+                return dal.AddSchedule(s);
             }
             return -1;
+        }
+
+        public List<Schedule> GetAllSchedules(string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.GetSChedules().ToList();
+            }
+            return null;
+        }
+
+        public bool DeletePatient(int value, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.DeletePatient(value);
+            }
+            return false;
         }
     }
 }

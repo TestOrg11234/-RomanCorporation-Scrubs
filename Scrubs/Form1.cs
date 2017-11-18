@@ -103,6 +103,17 @@ namespace Scrubs
                 dgvMed[2, i].Value = meds[i]._Diagnosis.ID;
                 dgvMed[3, i].Value = meds[i].Description;
             }
+
+            List<Schedule> schedules = bll.GetAllSchedules(credAuth.AuthKey);
+            for (int i = 0; i < schedules.Count; i++)
+            {
+                dgvShedule.Rows.Add();
+                dgvShedule[0, i].Value = schedules[i].ID;
+                dgvShedule[1, i].Value = schedules[i].Data;
+                dgvShedule[2, i].Value = schedules[i].CabinetNumber;
+                dgvShedule[3, i].Value = schedules[i].StartTime;
+                dgvShedule[4, i].Value = schedules[i].EndTime;
+            }
         }
 
         private void HideBoxes()
@@ -197,7 +208,7 @@ namespace Scrubs
 
         private void butDeletePatient_Click(object sender, EventArgs e)
         {
-            if (bll.DeleteCredentials((int)dgvPatients.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            if (bll.DeletePatient((int)dgvPatients.CurrentRow.Cells[0].Value, credAuth.AuthKey))
             {
                 dgvPatients.Rows.RemoveAt(dgvPatients.CurrentRow.Index);
             }
@@ -261,7 +272,11 @@ namespace Scrubs
                 },
                 BirthDay = DateTime.Parse(dgvDoctors.CurrentRow.Cells[3].Value + ""),
                 EmploymentDate = DateTime.Parse(dgvDoctors.CurrentRow.Cells[4].Value + ""),
-                CabinetNumber = int.Parse(dgvDoctors.CurrentRow.Cells[5].Value + "")
+                CabinetNumber = int.Parse(dgvDoctors.CurrentRow.Cells[5].Value + ""),
+                _Schedule = new Schedule()
+                {
+                    ID = int.Parse(dgvDoctors.CurrentRow.Cells[6].Value + "")
+                },
             };
             var id = bll.CreateNewDoctorsCredantials(d, credAuth.AuthKey);
             dgvDoctors.CurrentRow.Cells[0].Value = id;
@@ -296,7 +311,7 @@ namespace Scrubs
         {
             var m = new Medicines()
             {
-                Name = (string)dgvDiagnos.CurrentRow.Cells[1].Value,
+                Name = (string)dgvMed.CurrentRow.Cells[1].Value,
                 _Diagnosis = new Diseases()
                 {
                     ID = int.Parse(dgvMed.CurrentRow.Cells[2].Value + "")
