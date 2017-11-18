@@ -337,7 +337,7 @@ namespace Scrubs
                 StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
                 EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + ""),
             };
-            var id = bll.AddShedule(p, credAuth.AuthKey);
+            int id = bll.AddSchedule(s, credAuth.AuthKey);
             dgvShedule.CurrentRow.Cells[0].Value = id;
         }
     }

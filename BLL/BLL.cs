@@ -312,12 +312,13 @@ namespace BLL
             return false;
         }
 
-        public object AddShedule(object p, string authKey)
+        public int AddSchedule(Schedule s, string authKey)
         {
             if (CheckAuth(authKey))
             {
                 dal.AddSchedule(s);
             }
+            return -1;
         }
     }
 }

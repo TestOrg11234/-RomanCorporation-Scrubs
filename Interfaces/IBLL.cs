@@ -50,6 +50,6 @@ namespace Interfaces
         void UpdateMedicine(Medicines m, string authKey);
         void UpdateShedule(Schedule s, string authKey);
         bool DeleteShedule(int value, string authKey);
-        object AddShedule(object p, string authKey);
+        int AddSchedule(Schedule s, string authKey);
     }
 }

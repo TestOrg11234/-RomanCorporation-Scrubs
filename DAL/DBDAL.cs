@@ -10,7 +10,6 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Net;
 //переделать удаление пациентов
-//доделать addshedule, написать хранимку addshedule
 namespace DAL
 {
     public class DBDAL : IDAL
@@ -1383,7 +1382,8 @@ namespace DAL
             return true; //!!!
         }
 
-        public void AddSchedule(object s)
+       
+        public int AddSchedule(Schedule s)
         {
             int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
@@ -1397,31 +1397,31 @@ namespace DAL
                         {
                             ParameterName = "@data",
                             SqlDbType = SqlDbType.Date,
-                            Value = schedule.Data
+                            Value = s.Data
                         },
                         new SqlParameter()
                         {
                             ParameterName = "@cabinetNumber",
                             SqlDbType = SqlDbType.Int,
-                            Value = schedule.CabinetNumber
+                            Value = s.CabinetNumber
                         },
                         new SqlParameter()
                         {
                             ParameterName = "@startTime",
                             SqlDbType = SqlDbType.Time,
-                            Value = schedule.StartTime
+                            Value = s.StartTime
                         },
                         new SqlParameter()
                         {
                             ParameterName = "@endTime",
                             SqlDbType = SqlDbType.Time,
-                            Value = schedule.EndTime
+                            Value = s.EndTime
                         },
                         new SqlParameter()
                         {
                             ParameterName = "@id",
                             SqlDbType = SqlDbType.Int,
-                            Value = schedule.ID,
+                            Value = s.ID,
                             Direction = ParameterDirection.Output
                         }
                     };
