@@ -60,8 +60,8 @@ namespace Scrubs
                 dgvPatients[6, i].Value = patients[i].CardNumer;
             }
 
-            List<Doctor> doctors = bll.GetAllDoctors(credAuth.AuthKey);//сделать
-            for(int i = 0; i < doctors.Count; i++)
+            List<Doctor> doctors = bll.GetAllDoctors(credAuth.AuthKey);
+            for (int i = 0; i < doctors.Count; i++)
             {
                 dgvDoctors.Rows.Add();
                 dgvDoctors[0, i].Value = doctors[i].ID;
@@ -70,10 +70,10 @@ namespace Scrubs
                 dgvDoctors[3, i].Value = doctors[i].BirthDay;
                 dgvDoctors[4, i].Value = doctors[i].EmploymentDate;
                 dgvDoctors[5, i].Value = doctors[i].CabinetNumber;
-                //возможно добавить shedule
+                dgvShedule[6, i].Value = doctors[i]._Schedule.ID;
             }
 
-            List<Visit> visits = bll.GetAllVisits(credAuth.AuthKey);//сделать
+            List<Visit> visits = bll.GetAllVisits(credAuth.AuthKey);
             for (int i = 0; i < visits.Count; i++)
             {
                 dgvVisit.Rows.Add();
@@ -85,7 +85,7 @@ namespace Scrubs
                 dgvVisit[5, i].Value = visits[i].DiagnosisID;
             }
 
-            List<Diseases> diseases = bll.GetAllDiseases(credAuth.AuthKey);//сделать
+            List<Diseases> diseases = bll.GetAllDiseases(credAuth.AuthKey);
             for (int i = 0; i < diseases.Count; i++)
             {
                 dgvDiagnos.Rows.Add();
@@ -94,7 +94,7 @@ namespace Scrubs
                 dgvDiagnos[2, i].Value = diseases[i].Description;
             }
 
-            List<Medicines> meds = bll.GetAllMedicines(credAuth.AuthKey);//сделвть
+            List<Medicines> meds = bll.GetAllMedicines(credAuth.AuthKey);
             for (int i = 0; i < meds.Count; i++)
             {
                 dgvMed.Rows.Add();
@@ -113,6 +113,13 @@ namespace Scrubs
                 dgvShedule[2, i].Value = schedules[i].CabinetNumber;
                 dgvShedule[3, i].Value = schedules[i].StartTime;
                 dgvShedule[4, i].Value = schedules[i].EndTime;
+            }
+            List<Spetialisations> spetialisations = bll.GetAllSpetialisations(credAuth.AuthKey);
+            for (int i = 0; i<spetialisations.Count; i++)
+            {
+                dgvSpetialisations.Rows.Add();
+                dgvSpetialisations[0, i].Value = spetialisations[i].ID;
+                dgvSpetialisations[1, i].Value = spetialisations[i].Name;
             }
         }
 
@@ -151,7 +158,8 @@ namespace Scrubs
 
         private void butUpdateDoctor_Click(object sender, EventArgs e)
         {
-            var d = new Doctor() {
+            var d = new Doctor()
+            {
                 ID = int.Parse(dgvDoctors.CurrentRow.Cells[0].Value + ""),
                 FullName = dgvDoctors.CurrentRow.Cells[1].Value + "",
                 Spetialisation = new Spetialisations()
@@ -251,11 +259,11 @@ namespace Scrubs
             var p = new Patient()
             {
                 FullName = (string)dgvPatients.CurrentRow.Cells[1].Value,
-                BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[2].Value+""),
+                BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[2].Value + ""),
                 Gender = (string)dgvPatients.CurrentRow.Cells[3].Value,
                 Address = (string)dgvPatients.CurrentRow.Cells[4].Value,
                 PhoneNumer = (string)dgvPatients.CurrentRow.Cells[5].Value,
-                CardNumer = int.Parse(dgvPatients.CurrentRow.Cells[6].Value+"")
+                CardNumer = int.Parse(dgvPatients.CurrentRow.Cells[6].Value + "")
             };
             var id = bll.CreateNewPatients(p, credAuth.AuthKey);
             dgvPatients.CurrentRow.Cells[0].Value = id;
@@ -327,7 +335,7 @@ namespace Scrubs
             var s = new Schedule()
             {
                 ID = int.Parse(dgvShedule.CurrentRow.Cells[0].Value + ""),
-                CabinetNumber =int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
+                CabinetNumber = int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
                 Data = DateTime.Parse(dgvShedule.CurrentRow.Cells[1].Value + ""),
                 StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
                 EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + "")
@@ -348,12 +356,39 @@ namespace Scrubs
             var s = new Schedule()
             {
                 Data = DateTime.Parse(dgvShedule.CurrentRow.Cells[1].Value + ""),
-                CabinetNumber =  int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
+                CabinetNumber = int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
                 StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
                 EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + ""),
             };
             int id = bll.AddSchedule(s, credAuth.AuthKey);
             dgvShedule.CurrentRow.Cells[0].Value = id;
+        }
+        private void butUpdateSpetialisations_Click(object sender, EventArgs e)
+        {
+            var s = new Spetialisations()
+            {
+                ID = int.Parse(dgvSpetialisations.CurrentRow.Cells[0].Value + ""),
+                Name = (string)dgvSpetialisations.CurrentRow.Cells[1].Value
+            };
+            bll.UpdateSpetialisations(s, credAuth.AuthKey);
+        }
+
+        private void butDeleteSpetialisations_Click(object sender, EventArgs e)
+        {
+            if (bll.DeleteSpetialisations((int)dgvSpetialisations.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            {
+                dgvSpetialisations.Rows.RemoveAt(dgvSpetialisations.CurrentRow.Index);
+            }
+        }
+
+        private void butAddSpetialisations_Click(object sender, EventArgs e)
+        {
+            var s = new Spetialisations()
+            {
+                Name = (string)dgvSpetialisations.CurrentRow.Cells[1].Value
+            };
+            int id = bll.AddSpetialisations(s, credAuth.AuthKey);
+            dgvSpetialisations.CurrentRow.Cells[0].Value = id;
         }
     }
 }

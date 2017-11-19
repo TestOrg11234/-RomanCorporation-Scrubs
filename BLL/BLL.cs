@@ -338,5 +338,40 @@ namespace BLL
             }
             return false;
         }
+
+        public void UpdateSpetialisations(Spetialisations s, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                dal.UpdateSpetialisations(s);
+            }
+        }
+
+        public bool DeleteSpetialisations(int value, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.DeleteSpetialisations(value);
+            }
+            return false;
+        }
+
+        public int AddSpetialisations(Spetialisations s, string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.AddSpetialisations(s);
+            }
+            return -1;
+        }
+
+        public List<Spetialisations> GetAllSpetialisations(string authKey)
+        {
+            if (CheckAuth(authKey))
+            {
+                return dal.GetSpetialisations().ToList();
+            }
+            return null;
+        }
     }
 }

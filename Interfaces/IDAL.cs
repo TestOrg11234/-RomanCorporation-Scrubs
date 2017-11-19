@@ -49,5 +49,9 @@ namespace Interfaces
         bool DeleteSedule(int value);
         int AddSchedule(Schedule s);
         bool DeletePatient(int ID);
+        void UpdateSpetialisations(Spetialisations s);
+        bool DeleteSpetialisations(int value);
+        int AddSpetialisations(Spetialisations s);
+        IEnumerable<Spetialisations> GetSpetialisations();
     }
 }

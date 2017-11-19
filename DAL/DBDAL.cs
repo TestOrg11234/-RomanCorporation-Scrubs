@@ -808,7 +808,7 @@ namespace DAL
         {
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
-                using (SqlCommand cmd = new SqlCommand("GetRoles", scon))
+                using (SqlCommand cmd = new SqlCommand("GetSpetialisations", scon))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     scon.Open();
@@ -1453,6 +1453,96 @@ namespace DAL
                 }
             }
             return true; //!!!
+        }
+
+        public void UpdateSpetialisations(Spetialisations s)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("UpdateSpetialisations", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = s.ID
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@name",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = s.Name
+                        },                        
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool DeleteSpetialisations(int ID)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("DeleteSpetialisations", scon))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter()
+                    {
+                        ParameterName = "@ID",
+                        SqlDbType = SqlDbType.Int,
+                        Value = ID
+                    });
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return true; //!!!
+        }
+
+        public int AddSpetialisations(Spetialisations s)
+        {
+            int ID = 0;
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("CreateNewSpetialisations", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {                        
+                        new SqlParameter()
+                        {
+                            ParameterName = "@name",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = 50,
+                            Value = s.Name
+                        },
+                        new SqlParameter()
+                        {
+                            ParameterName = "@id",
+                            SqlDbType = SqlDbType.Int,
+                            Value = s.ID,
+                            Direction = ParameterDirection.Output
+                        }
+                    };
+                    #endregion
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                    ID = (int)cmd.Parameters["@id"].Value;
+                }
+            }
+            return ID;
         }
     }
 }

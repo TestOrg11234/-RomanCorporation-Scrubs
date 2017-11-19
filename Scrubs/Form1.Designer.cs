@@ -95,6 +95,13 @@
             this.CabinetNumberShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartTimeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndTimeShedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Spetialisations = new System.Windows.Forms.TabPage();
+            this.butAddSpetialisations = new System.Windows.Forms.Button();
+            this.butDeleteSpetialisations = new System.Windows.Forms.Button();
+            this.butUpdateSpetialisations = new System.Windows.Forms.Button();
+            this.dgvSpetialisations = new System.Windows.Forms.DataGridView();
+            this.IDSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcTabs.SuspendLayout();
             this.Patients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -108,6 +115,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).BeginInit();
             this.Shedules.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShedule)).BeginInit();
+            this.Spetialisations.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSpetialisations)).BeginInit();
             this.SuspendLayout();
             // 
             // auth_but_login
@@ -155,6 +164,7 @@
             this.tcTabs.Controls.Add(this.ListsOfDiseases);
             this.tcTabs.Controls.Add(this.Medicines);
             this.tcTabs.Controls.Add(this.Shedules);
+            this.tcTabs.Controls.Add(this.Spetialisations);
             this.tcTabs.Location = new System.Drawing.Point(118, 12);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
@@ -675,6 +685,72 @@
             this.EndTimeShedule.HeaderText = "EndTime";
             this.EndTimeShedule.Name = "EndTimeShedule";
             // 
+            // Spetialisations
+            // 
+            this.Spetialisations.Controls.Add(this.butAddSpetialisations);
+            this.Spetialisations.Controls.Add(this.butDeleteSpetialisations);
+            this.Spetialisations.Controls.Add(this.butUpdateSpetialisations);
+            this.Spetialisations.Controls.Add(this.dgvSpetialisations);
+            this.Spetialisations.Location = new System.Drawing.Point(4, 22);
+            this.Spetialisations.Name = "Spetialisations";
+            this.Spetialisations.Padding = new System.Windows.Forms.Padding(3);
+            this.Spetialisations.Size = new System.Drawing.Size(878, 268);
+            this.Spetialisations.TabIndex = 7;
+            this.Spetialisations.Text = "Специализации";
+            this.Spetialisations.UseVisualStyleBackColor = true;
+            // 
+            // butAddSpetialisations
+            // 
+            this.butAddSpetialisations.Location = new System.Drawing.Point(294, 207);
+            this.butAddSpetialisations.Name = "butAddSpetialisations";
+            this.butAddSpetialisations.Size = new System.Drawing.Size(75, 23);
+            this.butAddSpetialisations.TabIndex = 14;
+            this.butAddSpetialisations.Text = "Add";
+            this.butAddSpetialisations.UseVisualStyleBackColor = true;
+            this.butAddSpetialisations.Click += new System.EventHandler(this.butAddSpetialisations_Click);
+            // 
+            // butDeleteSpetialisations
+            // 
+            this.butDeleteSpetialisations.Location = new System.Drawing.Point(196, 207);
+            this.butDeleteSpetialisations.Name = "butDeleteSpetialisations";
+            this.butDeleteSpetialisations.Size = new System.Drawing.Size(75, 23);
+            this.butDeleteSpetialisations.TabIndex = 12;
+            this.butDeleteSpetialisations.Text = "DELETE";
+            this.butDeleteSpetialisations.UseVisualStyleBackColor = true;
+            this.butDeleteSpetialisations.Click += new System.EventHandler(this.butDeleteSpetialisations_Click);
+            // 
+            // butUpdateSpetialisations
+            // 
+            this.butUpdateSpetialisations.Location = new System.Drawing.Point(115, 207);
+            this.butUpdateSpetialisations.Name = "butUpdateSpetialisations";
+            this.butUpdateSpetialisations.Size = new System.Drawing.Size(75, 23);
+            this.butUpdateSpetialisations.TabIndex = 13;
+            this.butUpdateSpetialisations.Text = "UPDATE";
+            this.butUpdateSpetialisations.UseVisualStyleBackColor = true;
+            this.butUpdateSpetialisations.Click += new System.EventHandler(this.butUpdateSpetialisations_Click);
+            // 
+            // dgvSpetialisations
+            // 
+            this.dgvSpetialisations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSpetialisations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDSpetialisations,
+            this.NameSpetialisations});
+            this.dgvSpetialisations.Location = new System.Drawing.Point(60, 6);
+            this.dgvSpetialisations.Name = "dgvSpetialisations";
+            this.dgvSpetialisations.Size = new System.Drawing.Size(391, 150);
+            this.dgvSpetialisations.TabIndex = 0;
+            // 
+            // IDSpetialisations
+            // 
+            this.IDSpetialisations.HeaderText = "ID";
+            this.IDSpetialisations.Name = "IDSpetialisations";
+            this.IDSpetialisations.ReadOnly = true;
+            // 
+            // NameSpetialisations
+            // 
+            this.NameSpetialisations.HeaderText = "Name";
+            this.NameSpetialisations.Name = "NameSpetialisations";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -700,6 +776,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).EndInit();
             this.Shedules.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShedule)).EndInit();
+            this.Spetialisations.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSpetialisations)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -774,6 +852,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StartTimeShedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndTimeShedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn SheduleDoctorsCredantials;
+        private System.Windows.Forms.TabPage Spetialisations;
+        private System.Windows.Forms.Button butAddSpetialisations;
+        private System.Windows.Forms.Button butDeleteSpetialisations;
+        private System.Windows.Forms.Button butUpdateSpetialisations;
+        private System.Windows.Forms.DataGridView dgvSpetialisations;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDSpetialisations;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameSpetialisations;
     }
 }
 

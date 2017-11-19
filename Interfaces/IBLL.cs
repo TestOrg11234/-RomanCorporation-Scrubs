@@ -53,5 +53,9 @@ namespace Interfaces
         int AddSchedule(Schedule s, string authKey);
         List<Schedule> GetAllSchedules(string authKey);
         bool DeletePatient(int value, string authKey);
+        void UpdateSpetialisations(Spetialisations s, string authKey);
+        bool DeleteSpetialisations(int value, string authKey);
+        int AddSpetialisations(Spetialisations s, string authKey);
+        List<Spetialisations> GetAllSpetialisations(string authKey);
     }
 }
