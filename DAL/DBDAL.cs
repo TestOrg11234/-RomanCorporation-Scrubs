@@ -9,7 +9,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Net;
-//переделать удаление пациентов
+//переделать удаление пациентов!!!скорее всего сделано
 namespace DAL
 {
     public class DBDAL : IDAL
@@ -101,9 +101,8 @@ namespace DAL
             }
             return ID;
         }
-        public int CreateNewDoctorsCredantials(Doctor doctor)
+        public void CreateNewDoctorsCredantials(Doctor doctor)
         {
-            int ID = 0;
             using (SqlConnection scon = new SqlConnection(connectionstring))
             {
                 using (SqlCommand cmd = new SqlCommand("CreateNewDoctorsCredantials", scon))
@@ -173,8 +172,7 @@ namespace DAL
                         {
                             ParameterName = "@id",
                             SqlDbType = SqlDbType.Int,
-                            Value = doctor.ID,
-                            Direction = ParameterDirection.Output
+                            Value = doctor.ID
                         }
                     };
                     #endregion
@@ -183,10 +181,8 @@ namespace DAL
                     cmd.Parameters.AddRange(sParams);
                     scon.Open();
                     cmd.ExecuteNonQuery();
-                    ID = (int)cmd.Parameters["@id"].Value;
                 }
             }
-            return ID;
         }
         public int CreateNewListOfVisit(Visit visit)
         {

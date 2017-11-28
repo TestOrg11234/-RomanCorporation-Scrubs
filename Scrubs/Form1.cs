@@ -276,7 +276,7 @@ namespace Scrubs
                 FullName = (string)dgvDoctors.CurrentRow.Cells[1].Value,
                 Spetialisation = new Spetialisations()
                 {
-                    ID = int.Parse(dgvDoctors.CurrentRow.Cells[2].Value + "")
+                          ID = int.Parse(dgvDoctors.CurrentRow.Cells[2].Value + "")
                 },
                 BirthDay = DateTime.Parse(dgvDoctors.CurrentRow.Cells[3].Value + ""),
                 EmploymentDate = DateTime.Parse(dgvDoctors.CurrentRow.Cells[4].Value + ""),
@@ -284,9 +284,17 @@ namespace Scrubs
                 _Schedule = new Schedule()
                 {
                     ID = int.Parse(dgvDoctors.CurrentRow.Cells[6].Value + "")
-                },
+                }
             };
-            var id = bll.CreateNewDoctorsCredantials(d, credAuth.AuthKey);
+            var dc = new Credential()
+            {
+                Login = dgvDoctors.CurrentRow.Cells[7]+"",
+                Password = dgvDoctors.CurrentRow.Cells[8]+"",
+                _Role = new Roles() { ID = 1, NameRole = "Doctor" }//doctors
+            };
+            int id = bll.CreateNewCredentials(dc, credAuth.AuthKey);
+            d.ID = id;
+            bll.CreateNewDoctorsCredantials(d, credAuth.AuthKey);
             dgvDoctors.CurrentRow.Cells[0].Value = id;
         }
 

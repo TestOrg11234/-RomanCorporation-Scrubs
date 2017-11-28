@@ -39,11 +39,10 @@ namespace BLL
             return 0;
         }
 
-        public int CreateNewDoctorsCredantials(Doctor doctor, string authKey)
+        public void CreateNewDoctorsCredantials(Doctor doctor, string authKey)
         {
             if (CheckAuth(authKey))
-                return dal.CreateNewDoctorsCredantials(doctor);
-            return 0;
+                dal.CreateNewDoctorsCredantials(doctor);
         }
 
         public int CreateNewListOfVisit(Visit visit, string authKey)

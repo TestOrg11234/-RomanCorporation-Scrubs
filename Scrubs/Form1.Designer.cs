@@ -50,13 +50,6 @@
             this.butDeleteDoctor = new System.Windows.Forms.Button();
             this.butUpdateDoctor = new System.Windows.Forms.Button();
             this.dgvDoctors = new System.Windows.Forms.DataGridView();
-            this.IDDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullNameDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpetialisationDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthdayDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmploymentDateDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CabinetNumberDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SheduleDoctorsCredantials = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ListsOfVisit = new System.Windows.Forms.TabPage();
             this.butAddVisit = new System.Windows.Forms.Button();
             this.butDeleteVisit = new System.Windows.Forms.Button();
@@ -102,6 +95,15 @@
             this.dgvSpetialisations = new System.Windows.Forms.DataGridView();
             this.IDSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameSpetialisations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullNameDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpetialisationDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthdayDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmploymentDateDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CabinetNumberDoctors = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SheduleDoctorsCredantials = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Login = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcTabs.SuspendLayout();
             this.Patients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -168,7 +170,7 @@
             this.tcTabs.Location = new System.Drawing.Point(118, 12);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
-            this.tcTabs.Size = new System.Drawing.Size(886, 294);
+            this.tcTabs.Size = new System.Drawing.Size(944, 294);
             this.tcTabs.TabIndex = 8;
             this.tcTabs.Visible = false;
             // 
@@ -278,7 +280,7 @@
             this.Doctors.Location = new System.Drawing.Point(4, 22);
             this.Doctors.Name = "Doctors";
             this.Doctors.Padding = new System.Windows.Forms.Padding(3);
-            this.Doctors.Size = new System.Drawing.Size(878, 268);
+            this.Doctors.Size = new System.Drawing.Size(936, 268);
             this.Doctors.TabIndex = 1;
             this.Doctors.Text = "Doctors";
             this.Doctors.UseVisualStyleBackColor = true;
@@ -323,47 +325,13 @@
             this.BirthdayDoctors,
             this.EmploymentDateDoctors,
             this.CabinetNumberDoctors,
-            this.SheduleDoctorsCredantials});
+            this.SheduleDoctorsCredantials,
+            this.Login,
+            this.Password});
             this.dgvDoctors.Location = new System.Drawing.Point(9, 3);
             this.dgvDoctors.Name = "dgvDoctors";
-            this.dgvDoctors.Size = new System.Drawing.Size(702, 137);
+            this.dgvDoctors.Size = new System.Drawing.Size(931, 137);
             this.dgvDoctors.TabIndex = 0;
-            // 
-            // IDDoctors
-            // 
-            this.IDDoctors.HeaderText = "ID";
-            this.IDDoctors.Name = "IDDoctors";
-            this.IDDoctors.ReadOnly = true;
-            // 
-            // FullNameDoctors
-            // 
-            this.FullNameDoctors.HeaderText = "FullName";
-            this.FullNameDoctors.Name = "FullNameDoctors";
-            // 
-            // SpetialisationDoctors
-            // 
-            this.SpetialisationDoctors.HeaderText = "Spetialisation";
-            this.SpetialisationDoctors.Name = "SpetialisationDoctors";
-            // 
-            // BirthdayDoctors
-            // 
-            this.BirthdayDoctors.HeaderText = "Birthday";
-            this.BirthdayDoctors.Name = "BirthdayDoctors";
-            // 
-            // EmploymentDateDoctors
-            // 
-            this.EmploymentDateDoctors.HeaderText = "EmploymentDate";
-            this.EmploymentDateDoctors.Name = "EmploymentDateDoctors";
-            // 
-            // CabinetNumberDoctors
-            // 
-            this.CabinetNumberDoctors.HeaderText = "CabinetNumber";
-            this.CabinetNumberDoctors.Name = "CabinetNumberDoctors";
-            // 
-            // SheduleDoctorsCredantials
-            // 
-            this.SheduleDoctorsCredantials.HeaderText = "Shedule";
-            this.SheduleDoctorsCredantials.Name = "SheduleDoctorsCredantials";
             // 
             // ListsOfVisit
             // 
@@ -751,11 +719,57 @@
             this.NameSpetialisations.HeaderText = "Name";
             this.NameSpetialisations.Name = "NameSpetialisations";
             // 
+            // IDDoctors
+            // 
+            this.IDDoctors.HeaderText = "ID";
+            this.IDDoctors.Name = "IDDoctors";
+            this.IDDoctors.ReadOnly = true;
+            // 
+            // FullNameDoctors
+            // 
+            this.FullNameDoctors.HeaderText = "FullName";
+            this.FullNameDoctors.Name = "FullNameDoctors";
+            // 
+            // SpetialisationDoctors
+            // 
+            this.SpetialisationDoctors.HeaderText = "Spetialisation";
+            this.SpetialisationDoctors.Name = "SpetialisationDoctors";
+            // 
+            // BirthdayDoctors
+            // 
+            this.BirthdayDoctors.HeaderText = "Birthday";
+            this.BirthdayDoctors.Name = "BirthdayDoctors";
+            // 
+            // EmploymentDateDoctors
+            // 
+            this.EmploymentDateDoctors.HeaderText = "EmploymentDate";
+            this.EmploymentDateDoctors.Name = "EmploymentDateDoctors";
+            // 
+            // CabinetNumberDoctors
+            // 
+            this.CabinetNumberDoctors.HeaderText = "CabinetNumber";
+            this.CabinetNumberDoctors.Name = "CabinetNumberDoctors";
+            // 
+            // SheduleDoctorsCredantials
+            // 
+            this.SheduleDoctorsCredantials.HeaderText = "Shedule";
+            this.SheduleDoctorsCredantials.Name = "SheduleDoctorsCredantials";
+            // 
+            // Login
+            // 
+            this.Login.HeaderText = "tbLogin";
+            this.Login.Name = "Login";
+            // 
+            // Password
+            // 
+            this.Password.HeaderText = "tbPassword";
+            this.Password.Name = "Password";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 349);
+            this.ClientSize = new System.Drawing.Size(1065, 349);
             this.Controls.Add(this.tcTabs);
             this.Controls.Add(this.auth_but_logout);
             this.Controls.Add(this.auth_password);
@@ -802,12 +816,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumerPatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn CardNumerPatient;
         private System.Windows.Forms.DataGridView dgvDoctors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDDoctors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullNameDoctors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpetialisationDoctors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirthdayDoctors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmploymentDateDoctors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CabinetNumberDoctors;
         private System.Windows.Forms.TabPage ListsOfDiseases;
         private System.Windows.Forms.TabPage Medicines;
         private System.Windows.Forms.DataGridView dgvVisit;
@@ -851,7 +859,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CabinetNumberShedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartTimeShedule;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndTimeShedule;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SheduleDoctorsCredantials;
         private System.Windows.Forms.TabPage Spetialisations;
         private System.Windows.Forms.Button butAddSpetialisations;
         private System.Windows.Forms.Button butDeleteSpetialisations;
@@ -859,6 +866,15 @@
         private System.Windows.Forms.DataGridView dgvSpetialisations;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDSpetialisations;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameSpetialisations;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDDoctors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullNameDoctors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpetialisationDoctors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthdayDoctors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmploymentDateDoctors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CabinetNumberDoctors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SheduleDoctorsCredantials;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Login;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
     }
 }
 

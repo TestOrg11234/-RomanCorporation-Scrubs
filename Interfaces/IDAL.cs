@@ -10,7 +10,7 @@ namespace Interfaces
     public interface IDAL
     {
         int CreateNewPatients(Patient patient);
-        int CreateNewDoctorsCredantials(Doctor doctor);
+        void CreateNewDoctorsCredantials(Doctor doctor);
         int CreateNewListOfVisit(Visit visit);
         int CreateNewMedicines(Medicines medicines);
         int CreateNewCredentials(Credential credentials);

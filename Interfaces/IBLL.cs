@@ -10,7 +10,7 @@ namespace Interfaces
     public interface IBLL
     {
         int CreateNewPatients(Patient patient, string authKey);
-        int CreateNewDoctorsCredantials(Doctor doctor, string authKey);
+        void CreateNewDoctorsCredantials(Doctor doctor, string authKey);
         int CreateNewListOfVisit(Visit visit, string authKey);
         int CreateNewMedicines(Medicines medicines, string authKey);
         int CreateNewCredentials(Credential credentials, string authKey);
