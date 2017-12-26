@@ -30,18 +30,25 @@ namespace Scrubs
 
         private void auth_but_login_Click(object sender, EventArgs e)
         {
-            var cred = new Credential()
-            {
-                Login = auth_login.Text,
-                Password = auth_password.Text
-            };
-            Credential us = bll.GetCredentialFor(cred);
-            if (us != null)
-            {
-                HideBoxes();
-                credAuth = us;
-                LoadDataes();
-            }
+            //try
+            //{
+                var cred = new Credential()
+                {
+                    Login = auth_login.Text,
+                    Password = auth_password.Text
+                };
+                Credential us = bll.GetCredentialFor(cred);
+                if (us != null)
+                {
+                    HideBoxes();
+                    credAuth = us;
+                    LoadDataes();
+                }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Пользователь не найден", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
         }
 
@@ -70,7 +77,7 @@ namespace Scrubs
                 dgvDoctors[3, i].Value = doctors[i].BirthDay;
                 dgvDoctors[4, i].Value = doctors[i].EmploymentDate;
                 dgvDoctors[5, i].Value = doctors[i].CabinetNumber;
-                dgvShedule[6, i].Value = doctors[i]._Schedule.ID;
+                dgvDoctors[6, i].Value = doctors[i]._Schedule.ID;
             }
 
             List<Visit> visits = bll.GetAllVisits(credAuth.AuthKey);
@@ -143,21 +150,29 @@ namespace Scrubs
 
         private void butUpdatePatient_Click(object sender, EventArgs e)
         {
-            var p = new Patient()
+            try
             {
-                ID = int.Parse(dgvPatients.CurrentRow.Cells[0].Value + ""),
-                FullName = dgvPatients.CurrentRow.Cells[1].Value + "",
-                BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[2].Value + ""),
-                Gender = dgvPatients.CurrentRow.Cells[3].Value + "",
-                Address = dgvPatients.CurrentRow.Cells[4].Value + "",
-                PhoneNumer = dgvPatients.CurrentRow.Cells[5].Value + "",
-                CardNumer = int.Parse(dgvPatients.CurrentRow.Cells[6].Value + "")
-            };
-            bll.UpdatePatient(p, credAuth.AuthKey);
+                var p = new Patient()
+                {
+                    ID = int.Parse(dgvPatients.CurrentRow.Cells[0].Value + ""),
+                    FullName = dgvPatients.CurrentRow.Cells[1].Value + "",
+                    BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[2].Value + ""),
+                    Gender = dgvPatients.CurrentRow.Cells[3].Value + "",
+                    Address = dgvPatients.CurrentRow.Cells[4].Value + "",
+                    PhoneNumer = dgvPatients.CurrentRow.Cells[5].Value + "",
+                    CardNumer = int.Parse(dgvPatients.CurrentRow.Cells[6].Value + "")
+                };
+                bll.UpdatePatient(p, credAuth.AuthKey);
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butUpdateDoctor_Click(object sender, EventArgs e)
         {
+            try {
             var d = new Doctor()
             {
                 ID = int.Parse(dgvDoctors.CurrentRow.Cells[0].Value + ""),
@@ -172,231 +187,370 @@ namespace Scrubs
                 //возможно добавить shedule
             };
             bll.UpdateDoctor(d, credAuth.AuthKey);//realisation
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void butUpdateVisit_Click(object sender, EventArgs e)
         {
-            var v = new Visit()
+            try
             {
-                ID = int.Parse(dgvVisit.CurrentRow.Cells[0].Value + ""),
-                NumberCard = dgvVisit.CurrentRow.Cells[1].Value + "",
-                Data = DateTime.Parse(dgvVisit.CurrentRow.Cells[2].Value + ""),
-                DoctorID = int.Parse(dgvVisit.CurrentRow.Cells[3].Value + ""),
-                PatientID = int.Parse(dgvVisit.CurrentRow.Cells[4].Value + ""),
-                DiagnosisID = int.Parse(dgvVisit.CurrentRow.Cells[5].Value + "")
-            };
-            bll.UpdateVisit(v, credAuth.AuthKey);
+                var v = new Visit()
+                {
+                    ID = int.Parse(dgvVisit.CurrentRow.Cells[0].Value + ""),
+                    NumberCard = dgvVisit.CurrentRow.Cells[1].Value + "",
+                    Data = DateTime.Parse(dgvVisit.CurrentRow.Cells[2].Value + ""),
+                    DoctorID = int.Parse(dgvVisit.CurrentRow.Cells[3].Value + ""),
+                    PatientID = int.Parse(dgvVisit.CurrentRow.Cells[4].Value + ""),
+                    DiagnosisID = int.Parse(dgvVisit.CurrentRow.Cells[5].Value + "")
+                };
+                bll.UpdateVisit(v, credAuth.AuthKey);
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butUpdateDiagnose_Click(object sender, EventArgs e)
         {
-            var d = new Diseases()
+            try
             {
-                ID = int.Parse(dgvDiagnos.CurrentRow.Cells[0].Value + ""),
-                Name = dgvDiagnos.CurrentRow.Cells[1].Value + "",
-                Description = dgvDiagnos.CurrentRow.Cells[2].Value + ""
-            };
-            bll.UpdateDiagnose(d, credAuth.AuthKey);
+                var d = new Diseases()
+                {
+                    ID = int.Parse(dgvDiagnos.CurrentRow.Cells[0].Value + ""),
+                    Name = dgvDiagnos.CurrentRow.Cells[1].Value + "",
+                    Description = dgvDiagnos.CurrentRow.Cells[2].Value + ""
+                };
+                bll.UpdateDiagnose(d, credAuth.AuthKey);
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butUpdateMedicine_Click(object sender, EventArgs e)
         {
-            var m = new Medicines()
+            try
             {
-                ID = int.Parse(dgvMed.CurrentRow.Cells[0].Value + ""),
-                Name = dgvMed.CurrentRow.Cells[1].Value + "",
-                _Diagnosis = new Diseases()
+                var m = new Medicines()
                 {
-                    ID = int.Parse(dgvMed.CurrentRow.Cells[2].Value + "")
-                },
-                Description = dgvMed.CurrentRow.Cells[3].Value + ""
-            };
-            bll.UpdateMedicine(m, credAuth.AuthKey);
+                    ID = int.Parse(dgvMed.CurrentRow.Cells[0].Value + ""),
+                    Name = dgvMed.CurrentRow.Cells[1].Value + "",
+                    _Diagnosis = new Diseases()
+                    {
+                        ID = int.Parse(dgvMed.CurrentRow.Cells[2].Value + "")
+                    },
+                    Description = dgvMed.CurrentRow.Cells[3].Value + ""
+                };
+                bll.UpdateMedicine(m, credAuth.AuthKey);
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butDeletePatient_Click(object sender, EventArgs e)
         {
-            if (bll.DeletePatient((int)dgvPatients.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            try
             {
-                dgvPatients.Rows.RemoveAt(dgvPatients.CurrentRow.Index);
+                if (bll.DeletePatient((int)dgvPatients.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+                {
+                    dgvPatients.Rows.RemoveAt(dgvPatients.CurrentRow.Index);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Выбранный объект удалить невозможно", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void butDeleteDoctor_Click(object sender, EventArgs e)
         {
-            if (bll.DeleteCredentials((int)dgvDoctors.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            try
             {
-                dgvDoctors.Rows.RemoveAt(dgvDoctors.CurrentRow.Index);
+                if (bll.DeleteCredentials((int)dgvDoctors.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+                {
+                    dgvDoctors.Rows.RemoveAt(dgvDoctors.CurrentRow.Index);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Выбранный объект удалить невозможно", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void butDeleteVisit_Click(object sender, EventArgs e)
         {
-            if (bll.DeleteListOfVisit((int)dgvVisit.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            try
             {
-                dgvVisit.Rows.RemoveAt(dgvVisit.CurrentRow.Index);
+                if (bll.DeleteListOfVisit((int)dgvVisit.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+                {
+                    dgvVisit.Rows.RemoveAt(dgvVisit.CurrentRow.Index);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Выбранный объект удалить невозможно", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void butDeleteDiagnose_Click(object sender, EventArgs e)
         {
-            if (bll.DeleteListsOfDiseases((int)dgvDiagnos.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            try
             {
-                dgvDiagnos.Rows.RemoveAt(dgvDiagnos.CurrentRow.Index);
+                if (bll.DeleteListsOfDiseases((int)dgvDiagnos.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+                {
+                    dgvDiagnos.Rows.RemoveAt(dgvDiagnos.CurrentRow.Index);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Выбранный объект удалить невозможно", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void butDeleteMedicine_Click(object sender, EventArgs e)
         {
-            if (bll.DeleteMedicines((int)dgvMed.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            try
             {
-                dgvMed.Rows.RemoveAt(dgvMed.CurrentRow.Index);
+                if (bll.DeleteMedicines((int)dgvMed.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+                {
+                    dgvMed.Rows.RemoveAt(dgvMed.CurrentRow.Index);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Выбранный объект удалить невозможно", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void butAddPatient_Click(object sender, EventArgs e)
         {
-            var p = new Patient()
+            try
             {
-                FullName = (string)dgvPatients.CurrentRow.Cells[1].Value,
-                BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[2].Value + ""),
-                Gender = (string)dgvPatients.CurrentRow.Cells[3].Value,
-                Address = (string)dgvPatients.CurrentRow.Cells[4].Value,
-                PhoneNumer = (string)dgvPatients.CurrentRow.Cells[5].Value,
-                CardNumer = int.Parse(dgvPatients.CurrentRow.Cells[6].Value + "")
-            };
-            var id = bll.CreateNewPatients(p, credAuth.AuthKey);
-            dgvPatients.CurrentRow.Cells[0].Value = id;
+                var p = new Patient()
+                {
+                    FullName = (string)dgvPatients.CurrentRow.Cells[1].Value,
+                    BirthDay = DateTime.Parse(dgvPatients.CurrentRow.Cells[2].Value + ""),
+                    Gender = (string)dgvPatients.CurrentRow.Cells[3].Value,
+                    Address = (string)dgvPatients.CurrentRow.Cells[4].Value,
+                    PhoneNumer = (string)dgvPatients.CurrentRow.Cells[5].Value,
+                    CardNumer = int.Parse(dgvPatients.CurrentRow.Cells[6].Value + "")
+                };
+                var id = bll.CreateNewPatients(p, credAuth.AuthKey);
+                dgvPatients.CurrentRow.Cells[0].Value = id;
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butAddDoctor_Click(object sender, EventArgs e)
         {
-            var d = new Doctor()
+            try
             {
-                FullName = (string)dgvDoctors.CurrentRow.Cells[1].Value,
-                Spetialisation = new Spetialisations()
+                var d = new Doctor()
                 {
-                          ID = int.Parse(dgvDoctors.CurrentRow.Cells[2].Value + "")
-                },
-                BirthDay = DateTime.Parse(dgvDoctors.CurrentRow.Cells[3].Value + ""),
-                EmploymentDate = DateTime.Parse(dgvDoctors.CurrentRow.Cells[4].Value + ""),
-                CabinetNumber = int.Parse(dgvDoctors.CurrentRow.Cells[5].Value + ""),
-                _Schedule = new Schedule()
+                    FullName = (string)dgvDoctors.CurrentRow.Cells[1].Value,
+                    Spetialisation = new Spetialisations()
+                    {
+                        ID = int.Parse(dgvDoctors.CurrentRow.Cells[2].Value + "")
+                    },
+                    BirthDay = DateTime.Parse(dgvDoctors.CurrentRow.Cells[3].Value + ""),
+                    EmploymentDate = DateTime.Parse(dgvDoctors.CurrentRow.Cells[4].Value + ""),
+                    CabinetNumber = int.Parse(dgvDoctors.CurrentRow.Cells[5].Value + ""),
+                    _Schedule = new Schedule()
+                    {
+                        ID = int.Parse(dgvDoctors.CurrentRow.Cells[6].Value + "")
+                    }
+                };
+                var dc = new Credential()
                 {
-                    ID = int.Parse(dgvDoctors.CurrentRow.Cells[6].Value + "")
-                }
-            };
-            var dc = new Credential()
+                    Login = dgvDoctors.CurrentRow.Cells[7] + "",
+                    Password = dgvDoctors.CurrentRow.Cells[8] + "",
+                    _Role = new Roles() { ID = 1, NameRole = "Doctor" }//doctors
+                };
+                int id = bll.CreateNewCredentials(dc, credAuth.AuthKey);
+                d.ID = id;
+                bll.CreateNewDoctorsCredantials(d, credAuth.AuthKey);
+                dgvDoctors.CurrentRow.Cells[0].Value = id;
+            }
+            catch
             {
-                Login = dgvDoctors.CurrentRow.Cells[7]+"",
-                Password = dgvDoctors.CurrentRow.Cells[8]+"",
-                _Role = new Roles() { ID = 1, NameRole = "Doctor" }//doctors
-            };
-            int id = bll.CreateNewCredentials(dc, credAuth.AuthKey);
-            d.ID = id;
-            bll.CreateNewDoctorsCredantials(d, credAuth.AuthKey);
-            dgvDoctors.CurrentRow.Cells[0].Value = id;
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butAddVisit_Click(object sender, EventArgs e)
         {
-            var v = new Visit()
+            try
             {
-                NumberCard = (string)dgvVisit.CurrentRow.Cells[1].Value,
-                Data = DateTime.Parse(dgvVisit.CurrentRow.Cells[2].Value + ""),
-                DoctorID = int.Parse(dgvVisit.CurrentRow.Cells[3].Value + ""),
-                PatientID = int.Parse(dgvVisit.CurrentRow.Cells[4].Value + ""),
-                DiagnosisID = int.Parse(dgvVisit.CurrentRow.Cells[5].Value + ""),
-            };
-            var id = bll.CreateNewListOfVisit(v, credAuth.AuthKey);
-            dgvVisit.CurrentRow.Cells[0].Value = id;
+                var v = new Visit()
+                {
+                    NumberCard = (string)dgvVisit.CurrentRow.Cells[1].Value,
+                    Data = DateTime.Parse(dgvVisit.CurrentRow.Cells[2].Value + ""),
+                    DoctorID = int.Parse(dgvVisit.CurrentRow.Cells[3].Value + ""),
+                    PatientID = int.Parse(dgvVisit.CurrentRow.Cells[4].Value + ""),
+                    DiagnosisID = int.Parse(dgvVisit.CurrentRow.Cells[5].Value + ""),
+                };
+                var id = bll.CreateNewListOfVisit(v, credAuth.AuthKey);
+                dgvVisit.CurrentRow.Cells[0].Value = id;
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butAddDiagnose_Click(object sender, EventArgs e)
         {
-            var d = new Diseases()
+            try
             {
-                Name = (string)dgvDiagnos.CurrentRow.Cells[1].Value,
-                Description = (string)dgvDiagnos.CurrentRow.Cells[2].Value
-            };
-            var id = bll.CreateNewListsOfDiseases(d, credAuth.AuthKey);
-            dgvDiagnos.CurrentRow.Cells[0].Value = id;
+                var d = new Diseases()
+                {
+                    Name = (string)dgvDiagnos.CurrentRow.Cells[1].Value,
+                    Description = (string)dgvDiagnos.CurrentRow.Cells[2].Value
+                };
+                var id = bll.CreateNewListsOfDiseases(d, credAuth.AuthKey);
+                dgvDiagnos.CurrentRow.Cells[0].Value = id;
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butAddMedicine_Click(object sender, EventArgs e)
         {
-            var m = new Medicines()
+            try
             {
-                Name = (string)dgvMed.CurrentRow.Cells[1].Value,
-                _Diagnosis = new Diseases()
+                var m = new Medicines()
                 {
-                    ID = int.Parse(dgvMed.CurrentRow.Cells[2].Value + "")
-                },
-                Description = (string)dgvMed.CurrentRow.Cells[3].Value
-            };
-            var id = bll.CreateNewMedicines(m, credAuth.AuthKey);
-            dgvMed.CurrentRow.Cells[0].Value = id;
+                    Name = (string)dgvMed.CurrentRow.Cells[1].Value,
+                    _Diagnosis = new Diseases()
+                    {
+                        ID = int.Parse(dgvMed.CurrentRow.Cells[2].Value + "")
+                    },
+                    Description = (string)dgvMed.CurrentRow.Cells[3].Value
+                };
+                var id = bll.CreateNewMedicines(m, credAuth.AuthKey);
+                dgvMed.CurrentRow.Cells[0].Value = id;
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butUpdateShedule_Click(object sender, EventArgs e)
         {
-            var s = new Schedule()
+            try
             {
-                ID = int.Parse(dgvShedule.CurrentRow.Cells[0].Value + ""),
-                CabinetNumber = int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
-                Data = DateTime.Parse(dgvShedule.CurrentRow.Cells[1].Value + ""),
-                StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
-                EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + "")
-            };
-            bll.UpdateShedule(s, credAuth.AuthKey);
+                var s = new Schedule()
+                {
+                    ID = int.Parse(dgvShedule.CurrentRow.Cells[0].Value + ""),
+                    CabinetNumber = int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
+                    Data = DateTime.Parse(dgvShedule.CurrentRow.Cells[1].Value + ""),
+                    StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
+                    EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + "")
+                };
+                bll.UpdateShedule(s, credAuth.AuthKey);
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butDeleteShedule_Click(object sender, EventArgs e)
         {
-            if (bll.DeleteShedule((int)dgvShedule.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            try
             {
-                dgvShedule.Rows.RemoveAt(dgvShedule.CurrentRow.Index);
+                if (bll.DeleteShedule((int)dgvShedule.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+                {
+                    dgvShedule.Rows.RemoveAt(dgvShedule.CurrentRow.Index);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Выбранный объект удалить невозможно", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void butAddShedule_Click(object sender, EventArgs e)
         {
-            var s = new Schedule()
+            try
             {
-                Data = DateTime.Parse(dgvShedule.CurrentRow.Cells[1].Value + ""),
-                CabinetNumber = int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
-                StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
-                EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + ""),
-            };
-            int id = bll.AddSchedule(s, credAuth.AuthKey);
-            dgvShedule.CurrentRow.Cells[0].Value = id;
+                var s = new Schedule()
+                {
+                    Data = DateTime.Parse(dgvShedule.CurrentRow.Cells[1].Value + ""),
+                    CabinetNumber = int.Parse(dgvShedule.CurrentRow.Cells[2].Value + ""),
+                    StartTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[3].Value + ""),
+                    EndTime = DateTime.Parse(dgvShedule.CurrentRow.Cells[4].Value + ""),
+                };
+                int id = bll.AddSchedule(s, credAuth.AuthKey);
+                dgvShedule.CurrentRow.Cells[0].Value = id;
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void butUpdateSpetialisations_Click(object sender, EventArgs e)
         {
-            var s = new Spetialisations()
+            try
             {
-                ID = int.Parse(dgvSpetialisations.CurrentRow.Cells[0].Value + ""),
-                Name = (string)dgvSpetialisations.CurrentRow.Cells[1].Value
-            };
-            bll.UpdateSpetialisations(s, credAuth.AuthKey);
+                var s = new Spetialisations()
+                {
+                    ID = int.Parse(dgvSpetialisations.CurrentRow.Cells[0].Value + ""),
+                    Name = (string)dgvSpetialisations.CurrentRow.Cells[1].Value
+                };
+                bll.UpdateSpetialisations(s, credAuth.AuthKey);
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void butDeleteSpetialisations_Click(object sender, EventArgs e)
         {
-            if (bll.DeleteSpetialisations((int)dgvSpetialisations.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+            try
             {
-                dgvSpetialisations.Rows.RemoveAt(dgvSpetialisations.CurrentRow.Index);
+                if (bll.DeleteSpetialisations((int)dgvSpetialisations.CurrentRow.Cells[0].Value, credAuth.AuthKey))
+                {
+                    dgvSpetialisations.Rows.RemoveAt(dgvSpetialisations.CurrentRow.Index);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Выбранный объект удалить невозможно", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void butAddSpetialisations_Click(object sender, EventArgs e)
         {
-            var s = new Spetialisations()
+            try
             {
-                Name = (string)dgvSpetialisations.CurrentRow.Cells[1].Value
-            };
-            int id = bll.AddSpetialisations(s, credAuth.AuthKey);
-            dgvSpetialisations.CurrentRow.Cells[0].Value = id;
+                var s = new Spetialisations()
+                {
+                    Name = (string)dgvSpetialisations.CurrentRow.Cells[1].Value
+                };
+                int id = bll.AddSpetialisations(s, credAuth.AuthKey);
+                dgvSpetialisations.CurrentRow.Cells[0].Value = id;
+            }
+            catch
+            {
+                MessageBox.Show("Некорректные входные данные", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

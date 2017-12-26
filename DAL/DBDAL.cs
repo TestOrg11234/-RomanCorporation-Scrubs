@@ -321,7 +321,7 @@ namespace DAL
                         {
                             ParameterName = "@role",
                             SqlDbType = SqlDbType.Int,
-                            Value = credentials._Role
+                            Value = credentials._Role.ID
                         },
 
                         new SqlParameter()
@@ -655,7 +655,7 @@ namespace DAL
                             CabinetNumber = (int)reader["CabinetNumber"],
                             _Schedule = new Schedule()
                             {
-                                ID = (int)reader["_Shedule"],//!!!
+                                ID = (int)reader["Shedule"],//!!!
                             }
                         };
                     };
@@ -1539,6 +1539,32 @@ namespace DAL
                 }
             }
             return ID;
+        }
+
+        public void AddLog(string message)
+        {
+            using (SqlConnection scon = new SqlConnection(connectionstring))
+            {
+                using (SqlCommand cmd = new SqlCommand("AddLog", scon))
+                {
+                    #region sParams
+                    SqlParameter[] sParams =
+                    {
+                        new SqlParameter()
+                        {
+                            ParameterName = "@message",
+                            SqlDbType = SqlDbType.NVarChar,
+                            Size = -1,
+                            Value = message
+                        }
+                    };
+                    #endregion
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddRange(sParams);
+                    scon.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

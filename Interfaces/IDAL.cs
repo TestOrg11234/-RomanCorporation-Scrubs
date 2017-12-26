@@ -53,5 +53,6 @@ namespace Interfaces
         bool DeleteSpetialisations(int value);
         int AddSpetialisations(Spetialisations s);
         IEnumerable<Spetialisations> GetSpetialisations();
+        void AddLog(string message);
     }
 }

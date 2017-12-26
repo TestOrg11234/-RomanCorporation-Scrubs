@@ -20,6 +20,16 @@ namespace BLL
             dal = new DBDAL();
         }
 
+        private void AddLog(string secretKey, string action)
+        {
+            var u = authCreds.FirstOrDefault(x => x.AuthKey == secretKey);
+            dal.AddLog("User: " + u.ID + "Action: " + action);
+        }
+        private void AddLog(int idUser, string action)
+        {
+            dal.AddLog("User: " + idUser + "Action: " + action);
+        }
+
         private bool CheckAuth(string authKey)
         {
             return authCreds.FirstOrDefault(x => x.AuthKey == authKey) != null;
@@ -35,97 +45,139 @@ namespace BLL
         public int CreateNewCredentials(Credential credentials, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "CreateNewCredentials");
                 return dal.CreateNewCredentials(credentials);
+            }
             return 0;
         }
 
         public void CreateNewDoctorsCredantials(Doctor doctor, string authKey)
         {
             if (CheckAuth(authKey))
+            {
                 dal.CreateNewDoctorsCredantials(doctor);
+                AddLog(authKey, "CreateNewDoctorsCredantials");
+            }
         }
 
         public int CreateNewListOfVisit(Visit visit, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "CreateNewListOfVisit");
                 return dal.CreateNewListOfVisit(visit);
+            }
             return 0;
         }
 
         public int CreateNewListsOfDiseases(Diseases diseases, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "CreateNewListsOfDiseases");
                 return dal.CreateNewListsOfDiseases(diseases);
+            }
             return 0;
         }
 
         public int CreateNewMedicines(Medicines medicines, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "CreateNewMedicines");
                 return dal.CreateNewMedicines(medicines);
+            }
             return 0;
         }
 
         public int CreateNewPatients(Patient patient, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "CreateNewPatients");
                 return dal.CreateNewPatients(patient);
+            }
             return 0;
         }
 
         public int CreateNewRoles(Roles roles, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "CreateNewRoles");
                 return dal.CreateNewRoles(roles);
+            }
             return 0;
         }
 
         public int CreateNewSchedule(Schedule schedule, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "CreateNewSchedule");
                 return dal.CreateNewSchedule(schedule);
+            }
             return 0;
         }
 
         public int CreateNewSpetialisations(Spetialisations spetialisations, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "CreateNewSpetialisations");
                 return dal.CreateNewSpetialisations(spetialisations);
+            }
             return 0;
         }
 
         public bool DeleteCredentials(int ID, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "DeleteCredentials");
                 return dal.DeleteCredentials(ID);
+            }
             return false;
         }
 
         public bool DeleteListOfVisit(int ID, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "DeleteListOfVisit");
                 return dal.DeleteListOfVisit(ID);
+            }
             return false;
         }
 
         public bool DeleteListsOfDiseases(int ID, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "DeleteListsOfDiseases");
                 return dal.DeleteListsOfDiseases(ID);
+            }
             return false;
         }
 
         public bool DeleteMedicines(int ID, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "DeleteMedicines");
                 return dal.DeleteMedicines(ID);
+            }
             return false;
         }
 
         public bool DeleteRoles(int ID, string authKey)
         {
             if (CheckAuth(authKey))
+            {
+                AddLog(authKey, "DeleteRoles");
                 return dal.DeleteRoles(ID);
+            }
             return false;
         }
 
@@ -206,13 +258,15 @@ namespace BLL
 
         public void LogOut(string authKey)
         {
+            AddLog(authKey, "LogOut");
             authCreds.Remove(authCreds.FirstOrDefault(x => x.AuthKey == authKey));
         }
 
         public List<Patient> GetAllPatients(string authKey)
-        {            
+        {        
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "GetAllPatients");
                 return dal.GetPatients().ToList();
             }
             return null;
@@ -222,6 +276,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "UpdatePatient");
                 dal.UpdatePatient(p);
             }
         }
@@ -230,6 +285,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "GetAllDoctors");
                 return dal.GetDoctors().ToList();
             }
             return null;
@@ -239,6 +295,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "GetAllVisits");
                 return dal.GetVisits().ToList();
             }
             return null;
@@ -248,6 +305,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "GetAllDiseases");
                 return dal.GetDiagnosis().ToList();
             }
             return null;
@@ -257,6 +315,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "GetAllMedicines");
                 return dal.GetMedicines().ToList();
             }
             return null;
@@ -266,6 +325,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "UpdateDoctor");
                 dal.UpdateDoctor(d);
             }
         }
@@ -274,6 +334,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "UpdateVisit");
                 dal.UpdateVisit(v);
             }
         }
@@ -282,6 +343,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "UpdateDiagnose");
                 dal.UpdateDiagnose(d);
             }
         }
@@ -290,6 +352,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "UpdateMedicine");
                 dal.UpdateMedicine(m);
             }
         }
@@ -298,6 +361,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "UpdateShedule");
                 dal.UpdateSchedule(s);
             }
         }
@@ -306,6 +370,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "DeleteShedule");
                 return dal.DeleteSedule(value);
             }
             return false;
@@ -315,6 +380,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "AddSchedule");
                 return dal.AddSchedule(s);
             }
             return -1;
@@ -324,6 +390,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "GetAllSchedules");
                 return dal.GetSChedules().ToList();
             }
             return null;
@@ -333,6 +400,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "DeletePatient");
                 return dal.DeletePatient(value);
             }
             return false;
@@ -342,6 +410,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "UpdateSpetialisations");
                 dal.UpdateSpetialisations(s);
             }
         }
@@ -350,6 +419,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "DeleteSpetialisations");
                 return dal.DeleteSpetialisations(value);
             }
             return false;
@@ -359,6 +429,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "AddSpetialisations");
                 return dal.AddSpetialisations(s);
             }
             return -1;
@@ -368,6 +439,7 @@ namespace BLL
         {
             if (CheckAuth(authKey))
             {
+                AddLog(authKey, "GetAllSpetialisations");
                 return dal.GetSpetialisations().ToList();
             }
             return null;
